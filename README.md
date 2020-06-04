@@ -10,7 +10,9 @@ Compare:
 		* Javascript (Node, Graal)
 		* C, Crystal as a basis
 
-Running on AMD Ryzen 7 3800X, 16Gb DDR-4 3200 Mghz, host os Gentoo Linux x86_64, docker os Debian Testing
+I temporarily delete rbx from the benchmark, because it too slow.
+
+Running on AMD Ryzen 7 3800X, 16Gb DDR-4 3200 Mghz, host os Gentoo Linux x86_64, docker os Debian Testing.
 
 Build Docker image (20min, 4.7Gb):
 
