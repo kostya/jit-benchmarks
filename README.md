@@ -1,8 +1,14 @@
 # Benchmark for different interepted languages implementations.
 
-Most implementations from http://benchmarksgame.alioth.debian.org/. All implementations are chosen to be simplest, single-thread and without any low-level hacks. Also, the code for all languages trying to be implemented with one algorithm, use the same language constructs and containers, and be semantically similar to each other. The goal of the benchmark is to find the most successful JIT solutions. My other benchmarks: [Benchmarks](https://github.com/kostya/benchmarks), [Crystal Benchmarks Gam](https://github.com/kostya/crystal-benchmarks-game).
+Most implementations from http://benchmarksgame.alioth.debian.org/. All implementations are chosen to be simplest, single-thread and without any low-level hacks. Also, the code for all languages trying to be implemented with one algorithm, use the same language constructs and containers, and be semantically similar to each other. The goal of the benchmark is to find the most successful JIT solutions. My other benchmarks: [Benchmarks](https://github.com/kostya/benchmarks), [Crystal Benchmarks Game](https://github.com/kostya/crystal-benchmarks-game).
 
-Compare Ruby (MRI, Graal, Topaz, JRuby, Rbx), Python (Cpython, Graal, Pypy, Cython, Jython), Lua (JIT), Javascript (Node, Graal), also there is C, Crystal as a basis.
+Compare:
+		
+		* Ruby (MRI, Graal, Topaz, JRuby, Rbx)
+		* Python (Cpython, Graal, Pypy, Cython, Jython)
+		* Lua (JIT)
+		* Javascript (Node, Graal)
+		* C, Crystal as a basis
 
 Running on AMD Ryzen 7 3800X, 16Gb DDR-4 3200 Mghz, host os Gentoo Linux x86_64, docker os Debian Testing
 
