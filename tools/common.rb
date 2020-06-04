@@ -195,7 +195,8 @@ def generate_output(results)
     rows << row
   end
 
-  table = Terminal::Table.new :headings => ['Language', 'Interpreter', 'Time, s', 'Script Time, s', 'Memory, Mb'], :rows => rows
+  style = { :border_top => false, :border_bottom => false, :border_i => "|" }
+  table = Terminal::Table.new :headings => ['Language', 'Interpreter', 'Time, s', 'Script Time, s', 'Memory, Mb'], :rows => rows, :style => style
   puts table
 end
 

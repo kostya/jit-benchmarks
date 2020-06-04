@@ -1,4 +1,4 @@
-# benchmark for interpreted languages implementations.
+# Benchmark for interpreted languages implementations.
 
 Most implementations from http://benchmarksgame.alioth.debian.org/. All implementations are chosen to be simplest, single-thread and without any low-level hacks. Also, the code for all languages trying to be implemented with one algorithm, use the same language constructs and containers, and be semantically similar to each other. The goal of the benchmark is to find the most successful JIT solutions. My other benchmarks: [Benchmarks](https://github.com/kostya/benchmarks), [Crystal Benchmarks Game](https://github.com/kostya/crystal-benchmarks-game).
 
