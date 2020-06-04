@@ -4,7 +4,7 @@ Most implementations from http://benchmarksgame.alioth.debian.org/. All implemen
 
 Compare:
 		
-		* Ruby (MRI, Graal, Topaz, JRuby, Rbx)
+		* Ruby (MRI, MRI --jit, Graal, Topaz, JRuby, Rbx)
 		* Python (Cpython, Graal, Pypy, Cython, Jython)
 		* Lua (JIT)
 		* Javascript (Node, Graal)
