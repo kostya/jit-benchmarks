@@ -29,6 +29,7 @@ ruby run.rb
 
 ## Binarytrees
 
+<font size="1">
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
 | C++        | g++         | 1.26    | 1.27           | 34.9       |
@@ -53,7 +54,7 @@ ruby run.rb
 | Python3    |             | 36.35   | 36.38          | 105.7      |
 | Python2    |             | 43.00   | 43.02          | 113.0      |
 | Python3    | GraalVM     | 78.12   | 78.22          | 1124.6     |
-
+</font>
 
 ## Fannkuchredux
 
