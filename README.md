@@ -27,7 +27,7 @@ sh build.sh
 ruby run.rb
 ```
 
-### Binarytrees
+## Binarytrees
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
@@ -55,7 +55,7 @@ ruby run.rb
 | Python3    | GraalVM     | 78.12   | 78.22          | 1124.6     |
 
 
-### Fannkuchredux
+## Fannkuchredux
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
@@ -82,7 +82,7 @@ ruby run.rb
 | Python2    |             | 73.78   | 73.79          | 6.3        |
 
 
-### Fasta
+## Fasta
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
@@ -108,7 +108,7 @@ ruby run.rb
 | Python2    | Jython      | 115.45  | 116.55         | 594.8      |
 | Ruby       | GraalVM     | 246.00  | 246.04         | 694.6      |
 
-### Knucleotide
+## Knucleotide
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
@@ -134,7 +134,7 @@ ruby run.rb
 | Ruby       | GraalVM_JVM | 46.79   | 48.20          | 832.0      |
 | Ruby       | GraalVM     | 88.71   | 88.75          | 466.0      |
 
-### Mandelbrot
+## Mandelbrot
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
@@ -160,7 +160,7 @@ ruby run.rb
 | Python3    |             | 115.41  | 115.42         | 32.1       |
 | Python2    |             | 133.11  | 133.13         | 31.3       |
 
-### NBody
+## NBody
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
@@ -186,7 +186,7 @@ ruby run.rb
 | Python3    |             | 70.62   | 70.63          | 7.9        |
 | Python2    |             | 82.74   | 82.81          | 317.8      |
 
-### RegexDNA
+## RegexDNA
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
@@ -212,7 +212,7 @@ ruby run.rb
 | Ruby       | GraalVM     | 18.73   | 18.77          | 648.7      |
 | Javascript | GraalVM     | 25.36   | 25.50          | 1007.3     |
 
-### Revcomp
+## Revcomp
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
@@ -239,7 +239,7 @@ ruby run.rb
 | Python3    | GraalVM     | 76.91   | 77.19          | 2991.3     |
 
 
-### Pidigits
+## Pidigits
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
@@ -261,7 +261,7 @@ ruby run.rb
 | Ruby       | JIT         | 14.99   | 15.03          | 163.5      |
 | Ruby       | GraalVM     | 29.03   | 29.06          | 368.8      |
 
-### Spectralnorm
+## Spectralnorm
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
@@ -287,7 +287,7 @@ ruby run.rb
 | Python3    |             | 246.59  | 246.60         | 9.5        |
 | Python2    | Jython      | 480.11  | 481.22         | 499.1      |
 
-### Brainfuck
+## Brainfuck
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
@@ -311,7 +311,7 @@ ruby run.rb
 | Python2    | Jython      | 328.55  | 329.73         | 503.8      |
 | Python3    | GraalVM     | 860.77  | 862.31         | 593.3      |
 
-### Brainfuck2
+## Brainfuck2
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
@@ -337,7 +337,7 @@ ruby run.rb
 | Python2    | Jython      | 202.72  | 203.89         | 492.6      |
 | Python2    |             | 224.49  | 224.50         | 6.3        |
 
-### Matmul
+## Matmul
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
