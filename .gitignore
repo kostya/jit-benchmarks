@@ -1,0 +1,13 @@
+.crystal
+*.out
+.todo
+*.txt
+*.tmp
+*.swp
+*.class
+bin_*
+*.beam
+core
+todo
+*.log
+.jython_cache/

@@ -1,0 +1,30 @@
+# The Computer Language Benchmarks Game
+# http://benchmarksgame.alioth.debian.org
+#
+# Contributed by Peter Bjarke Olsen
+# Modified by Doug King
+# Modified by Joseph LaFata
+
+t = Time.now
+seq=""
+
+def revcomp(seq)
+  seq.reverse!.tr!('wsatugcyrkmbdhvnATUGCYRKMBDHVN','WSTAACGRYMKVHDBNTAACGRYMKVHDBN')
+  stringlen=seq.length-1
+  0.step(stringlen,60) {|x| print seq[x,60] , "\n"}
+end
+
+STDIN.each do |line|
+  if line.include? '>'
+    if !seq.empty?
+      revcomp(seq)
+      seq=""
+    end
+    puts line
+  else
+    line.chomp!
+    seq << line
+  end
+end
+revcomp(seq)
+STDERR.puts("time(#{Time.now - t})")
