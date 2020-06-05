@@ -87,27 +87,27 @@ ruby run.rb
 
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
-| C          | gcc         | 1.75    | 1.75           | 0.7        |
-| Crystal    |             | 2.66    | 2.67           | 4.2        |
-| Lua        | JIT         | 4.92    | 4.92           | 2.3        |
-| Python2    | Pypy        | 9.48    | 9.53           | 67.6       |
-| Javascript | Node        | 10.92   | 11.38          | 438.9      |
-| Python3    | Pypy        | 11.19   | 11.24          | 63.9       |
-| Lua        |             | 14.30   | 14.30          | 2.6        |
-| Python3    | GraalVM_JVM | 15.75   | 18.47          | 893.2      |
-| Ruby       | Topaz       | 19.17   | 19.20          | 193.7      |
-| Python3    |             | 29.94   | 29.95          | 8.1        |
-| Python2    | Cython      | 32.40   | 32.42          | 45.5       |
-| Python2    |             | 38.88   | 38.89          | 45.5       |
-| Javascript | GraalVM_JVM | 43.51   | 48.29          | 915.9      |
-| Ruby       | JIT         | 49.16   | 49.20          | 109.6      |
-| Python3    | GraalVM     | 50.56   | 50.69          | 531.5      |
-| Ruby       |             | 56.47   | 56.51          | 152.1      |
-| Javascript | GraalVM     | 72.58   | 74.59          | 602.8      |
-| Ruby       | GraalVM_JVM | 85.80   | 87.24          | 1394.2     |
-| Ruby       | JRuby       | 92.22   | 93.18          | 421.6      |
-| Python2    | Jython      | 115.45  | 116.55         | 594.8      |
-| Ruby       | GraalVM     | 246.00  | 246.04         | 694.6      |
+| C          | gcc         | 1.81    | 1.81           | 0.7        |
+| Crystal    |             | 2.69    | 2.69           | 4.2        |
+| Lua        | JIT         | 4.97    | 4.97           | 2.2        |
+| Python2    | Pypy        | 9.42    | 9.45           | 67.4       |
+| Ruby       | GraalVM_JVM | 9.94    | 11.43          | 649.4      |
+| Javascript | Node        | 11.09   | 11.55          | 438.7      |
+| Python3    | Pypy        | 11.26   | 11.30          | 63.5       |
+| Lua        |             | 14.39   | 14.39          | 2.5        |
+| Ruby       | Topaz       | 14.76   | 14.79          | 50.9       |
+| Python3    | GraalVM_JVM | 16.01   | 18.87          | 882.8      |
+| Ruby       | GraalVM     | 17.97   | 18.01          | 376.2      |
+| Python3    |             | 30.73   | 30.74          | 8.1        |
+| Python2    | Cython      | 33.23   | 33.25          | 45.1       |
+| Python2    |             | 38.13   | 38.15          | 45.5       |
+| Ruby       | JIT         | 46.57   | 46.61          | 42.7       |
+| Ruby       |             | 48.58   | 48.61          | 42.0       |
+| Python3    | GraalVM     | 51.19   | 51.30          | 522.4      |
+| Javascript | GraalVM_JVM | 53.12   | 57.93          | 1004.9     |
+| Ruby       | JRuby       | 71.06   | 72.12          | 336.3      |
+| Javascript | GraalVM     | 73.74   | 75.91          | 593.1      |
+| Python2    | Jython      | 118.31  | 119.48         | 541.9      |
 
 ## Knucleotide
 
