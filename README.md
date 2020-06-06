@@ -120,20 +120,20 @@ ruby run.rb
 | Python3    | Pypy        | 8.92    | 8.97           | 207.1      |
 | Lua        |             | 9.04    | 9.05           | 82.2       |
 | Python2    | Cython      | 10.87   | 10.94          | 534.6      |
-| Ruby       | Topaz       | 11.45   | 11.48          | 122.7      |
+| Ruby       | Topaz       | 11.40   | 11.43          | 133.3      |
 | Javascript | Node        | 12.36   | 12.70          | 165.7      |
 | Javascript | GraalVM_JVM | 13.49   | 14.82          | 930.9      |
 | Python2    |             | 15.93   | 16.05          | 534.8      |
 | Python3    | GraalVM_JVM | 17.28   | 19.92          | 1176.6     |
-| Ruby       | JIT         | 18.21   | 18.25          | 67.9       |
-| Ruby       | JRuby       | 18.48   | 19.48          | 682.1      |
+| Ruby       | JIT         | 18.20   | 18.23          | 66.8       |
+| Ruby       | JRuby       | 22.18   | 23.21          | 364.2      |
 | Python3    |             | 19.53   | 19.54          | 72.3       |
-| Ruby       |             | 20.52   | 20.55          | 67.7       |
+| Ruby       |             | 20.28   | 20.31          | 65.6       |
 | Python2    | Jython      | 21.06   | 22.16          | 2608.4     |
 | Javascript | GraalVM     | 23.16   | 23.27          | 524.0      |
+| Ruby       | GraalVM_JVM | 31.74   | 33.12          | 826.9      |
 | Python3    | GraalVM     | 43.47   | 43.57          | 600.8      |
-| Ruby       | GraalVM_JVM | 46.79   | 48.20          | 832.0      |
-| Ruby       | GraalVM     | 88.71   | 88.75          | 466.0      |
+| Ruby       | GraalVM     | 60.92   | 60.96          | 475.1      |
 
 ## Mandelbrot
 

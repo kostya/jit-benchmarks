@@ -9,11 +9,12 @@ seq = ""
 def frecuency(seq, length)
     n = seq.length - length + 1
     table = Hash.new(0)
-    (0 ... length).each do |f|
-        (f ... n).step(length) do |i|
-            table[seq[i, length]] += 1
-        end
+
+    (0...n).each do |f|
+        s = seq[f, length]
+        table[s] += 1
     end
+
     [n, table]
 end
 
