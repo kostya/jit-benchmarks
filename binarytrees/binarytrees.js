@@ -6,12 +6,29 @@
    sequential by Isaac Gouy
 */
 
+function TreeNode(item, left, right) {
+  this.item = item;
+  this.left = left;
+  this.right = right;
+
+  this.check = function() {
+    if (this.left === null) return this.item;
+    return this.item + this.left.check() - this.right.check();
+  }
+}
+
+function bottomUpTree(item, depth) {
+    return depth > 0
+        ? new TreeNode(item, bottomUpTree(item * 2 - 1, depth - 1), bottomUpTree(item * 2, depth - 1))
+        : new TreeNode(item, null, null);
+}
+
 function mainThread() {
     start = new Date();
     const maxDepth = Math.max(6, parseInt(process.argv[2]));
 
     const stretchDepth = maxDepth + 1;
-    const check = itemCheck(bottomUpTree(0, stretchDepth));
+    const check = bottomUpTree(0, stretchDepth).check();
     console.log(`stretch tree of depth ${stretchDepth}\t check: ${check}`);
 
     const longLivedTree = bottomUpTree(0, maxDepth);
@@ -21,34 +38,18 @@ function mainThread() {
         work(iterations, depth);
     }
 
-    console.log(`long lived tree of depth ${maxDepth}\t check: ${itemCheck(longLivedTree)}`);
+    console.log(`long lived tree of depth ${maxDepth}\t check: ${longLivedTree.check()}`);
     console.error("time(%d)", ((new Date()) - start) / 1000);
 }
 
 function work(iterations, depth) {
     let check = 0;
     for (let i = 0; i < iterations; i++) {
-        check += itemCheck(bottomUpTree(i, depth));
-        check += itemCheck(bottomUpTree(-i, depth));
+        check += bottomUpTree(i, depth).check();
+        check += bottomUpTree(-i, depth).check();
     }
     console.log(`${iterations * 2}\t trees of depth ${depth}\t check: ${check}`);
 }
 
-function TreeNode(item, left, right) {
-    return {left, right, item};
-}
-
-function itemCheck(node) {
-    if (node.left === null) {
-        return node.item;
-    }
-    return node.item + itemCheck(node.left) - itemCheck(node.right);
-}
-
-function bottomUpTree(item, depth) {
-    return depth > 0
-        ? new TreeNode(item, bottomUpTree(item * 2 - 1, depth - 1), bottomUpTree(item * 2, depth - 1))
-        : new TreeNode(item, null, null);
-}
-
 mainThread();
+
