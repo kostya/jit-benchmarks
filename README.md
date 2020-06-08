@@ -12,7 +12,7 @@ Compare:
 
 I temporarily delete rbx from the benchmark, because it too slow.
 
-Running on AMD Ryzen 7 3800X, 16Gb DDR-4 3200 Mghz, host os Gentoo Linux x86_64, docker os Debian Testing.
+Running on AMD Ryzen 7 3800X, 16Gb DDR-4 3200 Mghz, host os Arch Linux, docker os Debian Testing.
 
 Build Docker image (20min, 4.7Gb):
 
@@ -373,9 +373,9 @@ ruby run.rb
 * `g++ (Debian 9.3.0-13) 9.3.0`
 * `Lua 5.3.3  Copyright (C) 1994-2016 Lua.org, PUC-Rio`
 * `LuaJIT 2.1.0-beta3 -- Copyright (C) 2005-2017 Mike Pall. http://luajit.org/`
-* `Nodejs v10.20.1`
+* `Nodejs v10.21.0`
 * `ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x86_64-linux]`
-* `topaz (ruby-2.4.0p0) (git rev 52452d1d) (kostya build: https://github.com/kostya/topaz) [x86_64-linux]`
+* `topaz (ruby-2.4.0p0) (git rev 1e75dbec) (kostya build: https://github.com/kostya/topaz) [x86_64-linux]`
 * `jruby 9.2.11.1 (2.5.7) 2020-03-25 b1f55b1a40 OpenJDK 64-Bit Server VM 14.0.1+7-Debian-1 on 14.0.1+7-Debian-1 +jit [linux-x86_64]`
 * `Cython version 0.29.14`
 * `truffleruby 20.0.0, like ruby 2.6.5, GraalVM CE Native [x86_64-linux]`
@@ -387,3 +387,4 @@ ruby run.rb
 * `Python 3.7.4 (GraalVM CE JVM 20.0.0)`
 * `GraalNode v12.15.0`
 * `Jython 2.7.2`
+

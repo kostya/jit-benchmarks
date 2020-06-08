@@ -11,7 +11,7 @@ echo "Nodejs $(node --version)"
 ruby -v
 topaz -v
 jruby -v
-cython --version
+cython --version 2>&1
 truffleruby --version
 truffleruby --jvm --version
 echo "$(pypy --version 2>&1 | head -n 1) $(pypy --version 2>&1 | tail -n 1)"
