@@ -6,12 +6,15 @@
    sequential by Isaac Gouy
 */
 
-function TreeNode(item, left, right) {
-  this.item = item;
-  this.left = left;
-  this.right = right;
 
-  this.check = function() {
+class TreeNode {
+  constructor(item, left, right) {
+    this.item = item;
+    this.left = left;
+    this.right = right;
+  }
+
+  check () {
     if (this.left === null) return this.item;
     return this.item + this.left.check() - this.right.check();
   }
@@ -52,4 +55,3 @@ function work(iterations, depth) {
 }
 
 mainThread();
-
