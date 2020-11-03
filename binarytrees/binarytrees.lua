@@ -3,31 +3,35 @@
 -- contributed by Mike Pall
 -- *reset*
 
-local function TreeNode(_item, _left, _right)
+local function createTreeNode(_item, _left, _right)
   local item = _item;
   local left = _left;
   local right = _right;
 
-  local check = function()
-    if left then
-      return item + left.check() - right.check()
-    else
-      return item
-    end
-  end
-  
   return {
-    check = check;
-  };  
+    item = item,
+    left = left,
+    right = right,
+  };
+end
+
+local checkTreeNode
+
+checkTreeNode = function(branch)
+   if branch.left then
+     return branch.item + checkTreeNode(branch.left) - checkTreeNode(branch.right)
+   else
+     return branch.item
+   end
 end
 
 local function BottomUpTree(item, depth)
   if depth > 0 then
     depth = depth - 1
     local left, right = BottomUpTree(item * 2 - 1, depth), BottomUpTree(item * 2, depth)
-    return TreeNode(item, left, right)
+    return createTreeNode(item, left, right)
   else
-    return TreeNode(item, null, null)
+    return createTreeNode(item, null, null)
   end
 end
 
@@ -42,7 +46,7 @@ do
   local stretchdepth = maxdepth + 1
   local stretchtree = BottomUpTree(0, stretchdepth)
   io.write(string.format("stretch tree of depth %d\t check: %d\n",
-    stretchdepth, stretchtree.check()))
+    stretchdepth, checkTreeNode(stretchtree)))
 end
 
 local longlivedtree = BottomUpTree(0, maxdepth)
@@ -51,13 +55,13 @@ for depth=mindepth,maxdepth,2 do
   local iterations = 2 ^ (maxdepth - depth + mindepth)
   local check = 0
   for i=1,iterations do
-    check = check + BottomUpTree(i, depth).check() + BottomUpTree(-i, depth).check()
+    check = check + checkTreeNode(BottomUpTree(i, depth)) + checkTreeNode(BottomUpTree(-i, depth))
   end
   io.write(string.format("%d\t trees of depth %d\t check: %d\n",
     iterations * 2, depth, check))
 end
 
 io.write(string.format("long lived tree of depth %d\t check: %d\n",
-  maxdepth, longlivedtree.check()))
+  maxdepth, checkTreeNode(longlivedtree)))
 
 io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time))
