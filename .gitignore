@@ -11,3 +11,6 @@ core
 todo
 *.log
 .jython_cache/
+*.build/
+*.json
+node_modules/

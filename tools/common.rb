@@ -1,9 +1,19 @@
 ENV['JB_STDOUT'] = nil if ENV['JB_DEBUG']
 
+JB_OUTPUT = if ENV['JB_OUTPUT_FILE']
+    File.open(ENV['JB_OUTPUT_FILE'], "w")
+  else
+    STDOUT
+  end
+
+def output(str)
+  JB_OUTPUT.puts str
+end
+
 begin
   require "terminal-table"
 rescue LoadError
-  puts "Require to install: gem install terminal-table"
+  output "Require to install: gem install terminal-table"
   exit 1
 end
 
@@ -11,6 +21,7 @@ NAMES = {
   "./bin_cr" => %w{Crystal},
   "./bin_c" => %w{C gcc},
   "./bin_cpp" => %w{C++ g++},
+  "./bin_nuitka" => %w{Python3 Nuitka}, 
   "ruby" => %w{Ruby},
   "ruby --jit" => %W{Ruby JIT},
   "topaz" => %w{Ruby Topaz},
@@ -23,22 +34,24 @@ NAMES = {
   "graalpython --jvm" => %w{Python3 GraalVM_JVM},
   "python2.7" => %w{Python2},
   "python3.8" => %w{Python3},
-  "pypy" => %w{Python2 Pypy},
+  "pypy2" => %w{Python2 Pypy},
   "pypy3" => %w{Python3 Pypy},
-  "./bin_cython" => %w{Python2 Cython},
+  "./bin_cython3" => %w{Python3 Cython},
   "lua" => %w{Lua},
   "luajit" => %w{Lua JIT},
   "node" => %w{Javascript Node},
   "graalnode" => %w{Javascript GraalVM},
   "graalnode --jvm" => %w{Javascript GraalVM_JVM},
   "java" => %w{Java OpenJDK},
-  "jython" => %w{Python2 Jython}
+  "jython" => %w{Python2 Jython},
+  "ruby3" => %w{Ruby3},
+  "ruby3 --jit" => %W{Ruby3 JIT},
 }
 
-BINS = %w{./bin_c ./bin_cr ./bin_cython}
-RUBIES = ["ruby", "topaz", "jruby", "truffleruby", ["ruby", "--jit"], ["truffleruby", "--jvm"]] # , "rbx"
+BINS = %w{./bin_c ./bin_cr ./bin_cython3 ./bin_nuitka}
+RUBIES = ["ruby", "topaz", "jruby", "truffleruby", ["ruby", "--jit"], ["truffleruby", "--jvm"], "rbx", "ruby3", ["ruby3", "--jit"]]
 LUAS = ["lua", "luajit"]
-PYTHONS = ["python2.7", "python3.8", "pypy", "pypy3", "graalpython", ["graalpython", "--jvm"], "jython"]
+PYTHONS = ["python2.7", "python3.8", "pypy2", "pypy3", "graalpython", ["graalpython", "--jvm"], "jython"]
 JAVASCRIPTS = ["node", "graalnode", ["graalnode", "--jvm"]]
 
 def name_to_path(name)
@@ -51,6 +64,10 @@ end
 
 def cute_name_s(name)
   cute_name(name).join(' ')
+end
+
+def timeout # in seconds
+  (ENV["JB_TIMEOUT"] || 300).to_i
 end
 
 class MemoryProfile
@@ -100,7 +117,7 @@ class Run
       out_name = nil
     end
     _in = ENV['JB_STDIN']
-    print "#{_in ? "cat #{_in} | " : nil}#{@args.join(' ')}#{out_name}"
+    output "#{_in ? "cat #{_in} | " : nil}#{@args.join(' ')}#{out_name}"
     h = {:out => out, :err => @w, :chdir => Dir.pwd}
     if _in = ENV['JB_STDIN']
       h[:in] = _in
@@ -129,12 +146,31 @@ class Run
   end
 
   def wait
+    monitor_timeout!
     Process.wait(@pid)
     @w.close
     parse_time
     @mp.stop!
     @end = stamp
-    puts " - #{stat.inspect}"
+    output " - #{stat.inspect}"
+  end
+
+  def monitor_timeout!
+    Thread.new do
+      sleep timeout
+      unless @end
+        begin
+          Process.kill("QUIT", @pid)
+          sleep 0.5
+          Process.kill("TERM", @pid)
+          sleep 0.5
+          Process.kill("KILL", @pid)
+        rescue
+        end
+
+        @timeouted = true
+      end
+    end
   end
 
   def parse_time
@@ -157,7 +193,15 @@ class Run
   end
 
   def current_time
-    @current_time
+    if @timeouted
+      100000
+    else
+      @current_time
+    end
+  end
+
+  def timeouted?
+    @timeouted
   end
 
   def stat
@@ -188,8 +232,13 @@ def generate_output(results)
     row << lang
     row << n[1]
 
-    row << "%.2f" % r.current_time
-    row << "%.2f" % r.time
+    if r.timeouted?
+      row << "-"
+      row << "-"
+    else
+      row << "%.2f" % r.current_time
+      row << "%.2f" % r.time
+    end
     row << "%.1f" % (r.memory / 1024.0)
 
     rows << row
@@ -197,11 +246,11 @@ def generate_output(results)
 
   style = { :border_top => false, :border_bottom => false, :border_i => "|" }
   table = Terminal::Table.new :headings => ['Language', 'Interpreter', 'Time, s', 'Script Time, s', 'Memory, Mb'], :rows => rows, :style => style
-  puts table
+  output table
 end
 
 def run_cmds(cmds, args)
-  puts "start debug:#{!!ENV['JB_DEBUG']}, args: #{args.inspect}"
+  output "start debug:#{!!ENV['JB_DEBUG']}, args: #{args.inspect}"
 
   if debug?
     clean_tmp
@@ -243,8 +292,8 @@ def run_cmds(cmds, args)
     verify(results)
   end
 
-  puts 
-  puts
+  output ""
+  output ""
   generate_output(results)
 end
 

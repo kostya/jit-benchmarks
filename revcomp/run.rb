@@ -5,8 +5,8 @@ ENV['JB_STDIN'] = (ENV['JB_DEBUG'] ? "2.txt" : "1.txt")
 CMDS = {
 	"" => BINS,
 	"revcomp.rb" => RUBIES,
-	"revcomp.py" => PYTHONS - %w{python2.7 pypy jython},
-	"revcomp2.py" => %w{python2.7 pypy jython},
+	"revcomp.py" => PYTHONS - %w{python2.7 pypy2 jython},
+	"revcomp2.py" => %w{python2.7 pypy2 jython},
 	"revcomp.lua" => LUAS,
 	"revcomp.js" => JAVASCRIPTS
 }

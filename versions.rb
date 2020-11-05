@@ -11,16 +11,19 @@ echo "Nodejs $(node --version)"
 ruby -v
 topaz -v
 jruby -v
-cython --version 2>&1
+cython3 --version 2>&1
 truffleruby --version
 truffleruby --jvm --version
-echo "$(pypy --version 2>&1 | head -n 1) $(pypy --version 2>&1 | tail -n 1)"
+echo "$(pypy2 --version 2>&1 | head -n 1) $(pypy2 --version 2>&1 | tail -n 1)"
 echo "$(pypy3 --version 2>&1 | head -n 1) $(pypy3 --version 2>&1 | tail -n 1)"
 java -version 2>&1 | head -n 1
 graalpython --version
 graalpython --jvm --version
 echo "GraalNode $(graalnode --version)"
 jython --version 2>&1
+echo "Nuitka $(nuitka --version | head -n 1)"
+ruby3 -v
+rbx -v
 V
 
 puts "## Versions: "
