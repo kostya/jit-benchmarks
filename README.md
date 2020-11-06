@@ -238,7 +238,6 @@ ruby run.rb
 ## Revcomp
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
-| Python3    | GraalVM_JVM | 0.00    | 17.43          | 2063.1     |
 | C          | gcc         | 0.43    | 0.43           | 135.2      |
 | Python3    |             | 2.06    | 2.07           | 1182.9     |
 | Python2    |             | 2.13    | 2.17           | 823.2      |
@@ -263,6 +262,7 @@ ruby run.rb
 | Javascript | GraalVM_JVM | 20.81   | 22.53          | 1089.4     |
 | Python3    | GraalVM     | 56.70   | 56.79          | 3073.9     |
 | Ruby       | rbx         | -       | -              | 1020.7     |
+| Python3    | GraalVM_JVM | -       | -              | 2063.1     |
 
 
 ## Pidigits
