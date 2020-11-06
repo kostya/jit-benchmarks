@@ -91,7 +91,6 @@ ruby run.rb
 ## Fasta
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
-| Python3    | Cython      | -----   | 0.24           | 7.8        |
 | C          | gcc         | 1.85    | 1.86           | 0.5        |
 | Crystal    |             | 2.56    | 2.56           | 4.3        |
 | Lua        | JIT         | 4.61    | 4.61           | 2.3        |
