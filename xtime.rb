@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 def mem(pid); `ps p #{pid} -o rss`.split.last.to_i; end
 name = "#{ARGV[0]}"
-name += " #{ARGV[1]}" if ARGV[1].start_with?("--")
+name += " #{ARGV[1]}" if ARGV[1] && ARGV[1].start_with?("--")
 
 STDERR.puts("start(#{name})")
 t0 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
