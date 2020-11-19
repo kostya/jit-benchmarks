@@ -233,8 +233,8 @@ def generate_output(results)
     row << n[1]
 
     if r.timeouted?
-      row << "-"
-      row << "-"
+      row << "> #{timeout}"
+      row << "> #{timeout}"
     else
       row << "%.2f" % r.current_time
       row << "%.2f" % r.time

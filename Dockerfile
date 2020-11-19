@@ -18,7 +18,7 @@ ENV PATH="/opt/ruby/bin:${PATH}"
 
 RUN curl -L 'https://downloads.python.org/pypy/pypy2.7-v7.3.2-linux64.tar.bz2' > l.tar.bz2 \
   && tar xjf l.tar.bz2 \
-  && curl -L 'https://downloads.python.org/pypy/pypy2.7-v7.3.1-src.tar.bz2' > s.tar.bz2 \
+  && curl -L 'https://downloads.python.org/pypy/pypy2.7-v7.3.2-src.tar.bz2' > s.tar.bz2 \
   && tar xjf s.tar.bz2 \
   && rm *.tar.bz2 \
   && ln -sf /opt/pypy2.7-v7.3.2-linux64/bin/pypy /usr/bin/pypy2
@@ -31,7 +31,7 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
 RUN git clone https://github.com/kostya/topaz.git \
   && cd topaz \
   && pypy2-pip install -r requirements.txt \
-  && pypy2 ../pypy2.7-v7.3.1-src/rpython/bin/rpython -Ojit targettopaz.py \
+  && pypy2 ../pypy2.7-v7.3.2-src/rpython/bin/rpython -Ojit targettopaz.py \
   && rm -rf /tmp/*
 ENV PATH="/opt/topaz/bin:$PATH"  
 
@@ -48,7 +48,7 @@ RUN curl -L 'https://downloads.python.org/pypy/pypy3.7-v7.3.2-linux64.tar.bz2' >
   && ln -sf /opt/pypy3.7-v7.3.2-linux64/bin/pypy /usr/bin/pypy3
 
 # https://github.com/graalvm/graalvm-ce-builds/releases
-ARG GRAALVM=20.2.0
+ARG GRAALVM=20.3.0
 RUN wget --progress=dot:giga -O - \
     https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-$GRAALVM/graalvm-ce-java11-linux-amd64-$GRAALVM.tar.gz \
     | tar -xz \
@@ -81,7 +81,7 @@ RUN set -eux && \
     rm -f jython-installer.jar && \
     ln -sfv "$JYTHON_HOME/bin/"* /usr/local/bin/ 
 
-ARG NUITKA=0.6.9.4
+ARG NUITKA=0.6.9.7
 RUN wget --progress=dot:giga -O - \
     http://nuitka.net/releases/Nuitka-$NUITKA.tar.gz \
     | tar -xz \
