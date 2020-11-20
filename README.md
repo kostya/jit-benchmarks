@@ -211,7 +211,6 @@ ruby run.rb
 ## RegexDNA
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
-| Python3    | GraalVM_JVM | 0.00    | 7.71           | 1336.7     |
 | Javascript | Node        | 1.28    | 1.44           | 514.1      |
 | Python2    | Pypy        | 2.06    | 2.08           | 215.1      |
 | Python3    | Pypy        | 2.15    | 2.18           | 240.3      |
@@ -236,12 +235,12 @@ ruby run.rb
 | Ruby       | GraalVM     | > 60    | > 60           | 810.7      |
 | Ruby       | GraalVM_JVM | > 60    | > 60           | 789.3      |
 | Python3    | GraalVM     | > 60    | > 60           | 4621.6     |
+| Python3    | GraalVM_JVM | -       | -              | 1336.7     |
 
 
 ## Revcomp
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
-| Python2    | Jython      | 0.00    | 8.70           | 2.9        |
 | C          | gcc         | 0.42    | 0.43           | 147.4      |
 | Python2    |             | 2.09    | 2.14           | 857.3      |
 | Python3    |             | 2.16    | 2.18           | 1183.0     |
@@ -266,6 +265,7 @@ ruby run.rb
 | Python3    | GraalVM_JVM | 16.16   | 21.42          | 2107.3     |
 | Python3    | GraalVM     | 39.34   | 39.48          | 3553.0     |
 | Ruby       | rbx         | > 60    | > 60           | 494.3      |
+| Python2    | Jython      | -       | -              | 2.9        |
 
 
 ## Pidigits
