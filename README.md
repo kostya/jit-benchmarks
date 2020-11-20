@@ -271,11 +271,11 @@ ruby run.rb
 ## Pidigits
 | Language   | Interpreter | Time, s | Script Time, s | Memory, Mb |
 |------------|-------------|---------|----------------|------------|
-| Javascript | Node        | 0.00    | 0.05           | 3.2        |
-| Javascript | GraalVM     | 0.00    | 0.12           | 240.8      |
-| Javascript | GraalVM_JVM | 0.00    | 1.80           | 474.8      |
 | C          | gcc         | 2.32    | 2.33           | 3.4        |
 | Python3    | Cython      | 2.50    | 2.51           | 10.0       |
+| Javascript | Node        | 3.39    | 3.45           | 40.0       |
+| Javascript | GraalVM     | 4.92    | 5.09           | 551.7      |
+| Javascript | GraalVM_JVM | 6.90    | 8.95           | 578.0      |
 | Crystal    |             | 8.40    | 8.40           | 7.6        |
 | Python2    |             | 9.07    | 9.08           | 7.9        |
 | Python3    |             | 9.16    | 9.16           | 8.8        |
