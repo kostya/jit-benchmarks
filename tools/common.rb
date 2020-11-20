@@ -74,7 +74,7 @@ class MemoryProfile
   def initialize(pid)
     @pid = pid
     @stopped = false
-    @m = check
+    @m = 0
     start
   end
 
@@ -105,6 +105,7 @@ class Run
     args.flatten!   
     @name = args[0]
     @name += " #{args[1]}" if args[1].start_with?("--")
+    @exitstatus = 0
 
     @current_time = 0
     @args = args.map(&:to_s).reject(&:empty?)
@@ -148,6 +149,7 @@ class Run
   def wait
     monitor_timeout!
     Process.wait(@pid)
+    @exitstatus = $?.exitstatus
     @w.close
     parse_time
     @mp.stop!
@@ -193,11 +195,15 @@ class Run
   end
 
   def current_time
-    if @timeouted
+    if @timeouted || bad_exit?
       100000
     else
       @current_time
     end
+  end
+
+  def bad_exit?
+    @exitstatus != 0
   end
 
   def timeouted?
@@ -235,6 +241,9 @@ def generate_output(results)
     if r.timeouted?
       row << "> #{timeout}"
       row << "> #{timeout}"
+    elsif r.bad_exit?
+      row << "crashed"
+      row << "crashed"
     else
       row << "%.2f" % r.current_time
       row << "%.2f" % r.time
