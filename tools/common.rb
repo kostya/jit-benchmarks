@@ -1,7 +1,7 @@
 ENV['JB_STDOUT'] = nil if ENV['JB_DEBUG']
 
 JB_OUTPUT = if ENV['JB_OUTPUT_FILE']
-    File.open(ENV['JB_OUTPUT_FILE'], "w")
+    File.open(ENV['JB_OUTPUT_FILE'], "a")
   else
     STDOUT
   end
@@ -15,6 +15,10 @@ begin
 rescue LoadError
   output "Require to install: gem install terminal-table"
   exit 1
+end
+
+def test_name
+  Dir.pwd.split("/").last.capitalize
 end
 
 NAMES = {
@@ -255,10 +259,12 @@ def generate_output(results)
 
   style = { :border_top => false, :border_bottom => false, :border_i => "|" }
   table = Terminal::Table.new :headings => ['Language', 'Interpreter', 'Time, s', 'Script Time, s', 'Memory, Mb'], :rows => rows, :style => style
+  output "## #{test_name}"
   output table
 end
 
 def run_cmds(cmds, args)
+  output(">======================== #{test_name} =========================")
   output "start debug:#{!!ENV['JB_DEBUG']}, args: #{args.inspect}"
 
   if debug?
@@ -304,6 +310,7 @@ def run_cmds(cmds, args)
   output ""
   output ""
   generate_output(results)
+  output("<-------------------------------------------------------------")
 end
 
 def verify(results)
