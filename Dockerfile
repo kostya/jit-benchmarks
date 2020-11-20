@@ -16,22 +16,22 @@ RUN export VERSION=ruby-2.7.2 \
     && cd .. && rm -rf $VERSION    
 ENV PATH="/opt/ruby/bin:${PATH}"
 
-RUN curl -L 'https://downloads.python.org/pypy/pypy2.7-v7.3.2-linux64.tar.bz2' > l.tar.bz2 \
+RUN curl -L 'https://downloads.python.org/pypy/pypy2.7-v7.3.3-linux64.tar.bz2' > l.tar.bz2 \
   && tar xjf l.tar.bz2 \
-  && curl -L 'https://downloads.python.org/pypy/pypy2.7-v7.3.2-src.tar.bz2' > s.tar.bz2 \
+  && curl -L 'https://downloads.python.org/pypy/pypy2.7-v7.3.3-src.tar.bz2' > s.tar.bz2 \
   && tar xjf s.tar.bz2 \
   && rm *.tar.bz2 \
-  && ln -sf /opt/pypy2.7-v7.3.2-linux64/bin/pypy /usr/bin/pypy2
+  && ln -sf /opt/pypy2.7-v7.3.3-linux64/bin/pypy /usr/bin/pypy2
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
 	&& pypy2 get-pip.py \
 	&& rm get-pip.py \
-  && ln -sf /opt/pypy2.7-v7.3.2-linux64/bin/pip /usr/bin/pypy2-pip
+  && ln -sf /opt/pypy2.7-v7.3.3-linux64/bin/pip /usr/bin/pypy2-pip
 
 RUN git clone https://github.com/kostya/topaz.git \
   && cd topaz \
   && pypy2-pip install -r requirements.txt \
-  && pypy2 ../pypy2.7-v7.3.2-src/rpython/bin/rpython -Ojit targettopaz.py \
+  && pypy2 ../pypy2.7-v7.3.3-src/rpython/bin/rpython -Ojit targettopaz.py \
   && rm -rf /tmp/*
 ENV PATH="/opt/topaz/bin:$PATH"  
 
@@ -42,10 +42,10 @@ RUN wget --progress=dot:giga -O - \
     | tar -xz
 ENV PATH="/opt/crystal-$CRYSTAL-1/bin:${PATH}"
 
-RUN curl -L 'https://downloads.python.org/pypy/pypy3.7-v7.3.2-linux64.tar.bz2' > l.tar.bz2 \
+RUN curl -L 'https://downloads.python.org/pypy/pypy3.7-v7.3.3-linux64.tar.bz2' > l.tar.bz2 \
   && tar xjf l.tar.bz2 \
   && rm *.tar.bz2 \
-  && ln -sf /opt/pypy3.7-v7.3.2-linux64/bin/pypy /usr/bin/pypy3
+  && ln -sf /opt/pypy3.7-v7.3.3-linux64/bin/pypy /usr/bin/pypy3
 
 # https://github.com/graalvm/graalvm-ce-builds/releases
 ARG GRAALVM=20.3.0
@@ -61,7 +61,7 @@ RUN gu install python \
     && ln -s /opt/graalvm-ce-java11-$GRAALVM/bin/graalpython /usr/bin/graalpython
 
 # https://www.jruby.org/download
-ARG JRUBY=9.2.13.0
+ARG JRUBY=9.2.14.0
 RUN wget --progress=dot:giga -O - \
     https://repo1.maven.org/maven2/org/jruby/jruby-dist/$JRUBY/jruby-dist-$JRUBY-bin.tar.gz \
     | tar -xz \
@@ -81,11 +81,11 @@ RUN set -eux && \
     rm -f jython-installer.jar && \
     ln -sfv "$JYTHON_HOME/bin/"* /usr/local/bin/ 
 
-ARG NUITKA=0.6.9.7
+ARG NUITKA=0.6.10.1
 RUN wget --progress=dot:giga -O - \
     http://nuitka.net/releases/Nuitka-$NUITKA.tar.gz \
     | tar -xz \
-    && sed -i -e 's/env python/env python3.8/g' /opt/Nuitka-$NUITKA/bin/nuitka
+    && sed -i -e 's/env python/env python3.9/g' /opt/Nuitka-$NUITKA/bin/nuitka
 ENV PATH=$PATH:/opt/Nuitka-$NUITKA/bin
 
 ADD https://rubinius-binaries-rubinius-com.s3-us-west-2.amazonaws.com/ubuntu/16.04/x86_64/rubinius-5.0.tar.bz2 /tmp/rubinius.tar.bz2
@@ -93,7 +93,7 @@ RUN cd /opt && tar xvjf /tmp/rubinius.tar.bz2 && rm /tmp/rubinius.tar.bz2 \
    && ln -sf /opt/rubinius/5.0/bin/rbx /usr/bin/rbx
 
 # https://www.ruby-lang.org/en/downloads/
-RUN export VERSION=ruby-3.0.0-preview1 \
+RUN export VERSION=ruby-3.0.0-preview2 \
     && wget --progress=dot:giga -O - \
     https://cache.ruby-lang.org/pub/ruby/3.0/$VERSION.tar.gz \
     | tar -xz \

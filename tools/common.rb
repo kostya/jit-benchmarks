@@ -37,7 +37,7 @@ NAMES = {
   "graalpython" => %w{Python3 GraalVM},
   "graalpython --jvm" => %w{Python3 GraalVM_JVM},
   "python2.7" => %w{Python2},
-  "python3.8" => %w{Python3},
+  "python3.9" => %w{Python3},
   "pypy2" => %w{Python2 Pypy},
   "pypy3" => %w{Python3 Pypy},
   "./bin_cython3" => %w{Python3 Cython},
@@ -55,7 +55,7 @@ NAMES = {
 BINS = %w{./bin_c ./bin_cr ./bin_cython3 ./bin_nuitka}
 RUBIES = ["ruby", "topaz", "jruby", "truffleruby", ["ruby", "--jit"], ["truffleruby", "--jvm"], "rbx", "ruby3", ["ruby3", "--jit"]]
 LUAS = ["lua", "luajit"]
-PYTHONS = ["python2.7", "python3.8", "pypy2", "pypy3", "graalpython", ["graalpython", "--jvm"], "jython"]
+PYTHONS = ["python2.7", "python3.9", "pypy2", "pypy3", "graalpython", ["graalpython", "--jvm"], "jython"]
 JAVASCRIPTS = ["node", "graalnode", ["graalnode", "--jvm"]]
 
 def name_to_path(name)

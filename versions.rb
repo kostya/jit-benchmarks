@@ -1,7 +1,7 @@
 
 VERSIONS = <<-V.split("\n")
 python2.7 --version 2>&1 | head -n 1
-python3.8 --version | head -n 1
+python3.9 --version | head -n 1
 crystal --version | head -n 1
 gcc --version | head -n 1
 g++ --version | head -n 1
