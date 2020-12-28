@@ -4,7 +4,7 @@ Most programs from [benchmarks game](https://benchmarksgame-team.pages.debian.ne
 
 Compare:
 		
-		* Ruby (MRI, MRI --jit, Graal, [Topaz](https://github.com/kostya/topaz), JRuby, Rbx, Ruby3, Ruby3 --jit)
+		* Ruby (Ruby2.7, Ruby3, Graal, [Topaz](https://github.com/kostya/topaz), JRuby, Rbx)
 		* Python (Cpython, Graal, Pypy, Cython, Jython, Nuitka)
 		* Lua (JIT)
 		* Javascript (Node, Graal)
