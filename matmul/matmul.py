@@ -29,11 +29,8 @@ def build_matrix(n):
             m[i][j] = t * (i - j) * (i + j)
     return m
 
-def main(argv):
+def main(n):
     t = time.time()
-    n = 100
-    if len(sys.argv) > 1:
-        n = int(sys.argv[1])
 
     a = build_matrix(n)
     b = build_matrix(n)
@@ -42,6 +39,14 @@ def main(argv):
     print("%.9f" % (d[n // 2][n // 2]))
 
     sys.stderr.write("time({0})\n".format(time.time() - t))
+    sys.stderr.flush()
 
 if __name__ == "__main__":
-    main(sys.argv)
+    n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
+    times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
+    sys.stderr.write("started")
+    sys.stderr.flush()
+
+    for i in range(0,times):
+        main(n)

@@ -140,17 +140,20 @@ cdef Planet neptune = Planet(
 
 
 cdef main(n):
+    t = time.time()
     cdef Planet* bodies = [sun, jupiter, saturn, uranus, neptune]
     offset_momentum(bodies)
     print "%.9f" % energy(bodies)
     advance(bodies, 0.01, n)
     print "%.9f" % energy(bodies)
+    sys.stderr.write("time({0})\n".format(time.time() - t))
 
 if __name__ == '__main__':
-    try:
-        n = int(sys.argv[1])
-    except IndexError:
-        n = 50000000
-    t = time.time()
-    main(n)
-    sys.stderr.write("time({0})\n".format(time.time() - t))
+    n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
+    times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
+    sys.stderr.write("started")
+    sys.stderr.flush()
+
+    for i in range(0,times):
+        main(n)    

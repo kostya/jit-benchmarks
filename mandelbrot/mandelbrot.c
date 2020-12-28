@@ -13,7 +13,7 @@
 #include<stdio.h>
 #include "time.h"
 
-int main (int argc, char **argv)
+void run (int n)
 {
     clock_t t = clock();
     int w, h, bit_num = 0;
@@ -22,7 +22,7 @@ int main (int argc, char **argv)
     double x, y, limit = 2.0;
     double Zr, Zi, Cr, Ci, Tr, Ti;
 
-    w = h = atoi(argv[1]);
+    w = h = n;
 
     printf("P4\n%d %d\n",w,h);
 
@@ -65,3 +65,14 @@ int main (int argc, char **argv)
     fprintf(stderr, "time(%.2f)\n", (float)(clock() - t)/CLOCKS_PER_SEC);
 }
 
+int main(int argc, char* argv[])
+{
+  unsigned N = (argc > 1) ? atol(argv[1]) : 100;
+  unsigned times = (argc > 2) ? atol(argv[2]) : 1;
+
+  fprintf(stderr, "started\n");
+
+  for (int i = 0; i < times; i++) { run(N); }
+
+  return 0;
+} /* main() */

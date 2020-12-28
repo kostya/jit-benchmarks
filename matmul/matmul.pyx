@@ -36,11 +36,9 @@ cdef double *build_matrix(int n):
             tmp[i * n + j] = t * (i - j) * (i + j)
     return tmp
 
-def main(argv):
+def main(n1):
+    cdef int n = n1
     t = time.time()
-    cdef int n = 100
-    if len(sys.argv) > 1:
-        n = int(sys.argv[1])
 
     cdef double *a = build_matrix(n)
     cdef double *b = build_matrix(n)
@@ -49,6 +47,14 @@ def main(argv):
     print("%.9f" % (d[(n // 2) * n  + n // 2]))
 
     sys.stderr.write("time({0})\n".format(time.time() - t))
+    sys.stderr.flush()
 
 if __name__ == "__main__":
-    main(sys.argv)
+    n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
+    times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
+    sys.stderr.write("started")
+    sys.stderr.flush()
+
+    for i in range(0,times):
+        main(n)    

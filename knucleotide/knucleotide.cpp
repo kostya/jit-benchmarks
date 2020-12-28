@@ -50,21 +50,33 @@ void process(const string &sq) {
   cnt(sq, "GGTATTTTAATTTATAGT");
 }
 
-int main(void) {
+void run(string s) {
   clock_t t = clock();
+  process(s);
+  fprintf(stderr, "time(%.2f)\n", (float)(clock() - t)/CLOCKS_PER_SEC);
+}
+
+int main(int argc, char* argv[])
+{
+  unsigned times = (argc > 1) ? atol(argv[1]) : 1;
+
   string line;
+  string s;
   while (getline(cin, line)) {
     if (line.substr(0, 6) == ">THREE") {
-      string s;
       while (getline(cin, line)) {
         if (line[0] == '>') break;
         transform(line.begin(), line.end(), line.begin(), ::toupper);
         s += line;
       }
-      process(s);
       break;
     }
   }
-  fprintf(stderr, "time(%.2f)\n", (float)(clock() - t)/CLOCKS_PER_SEC);
+
+
+  fprintf(stderr, "started\n");
+
+  for (int i = 0; i < times; i++) { run(s); }
+
   return 0;
-}
+} /* main() */

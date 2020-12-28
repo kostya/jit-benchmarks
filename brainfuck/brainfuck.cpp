@@ -97,14 +97,24 @@ string read_file(string filename){
   return text;
 }
 
-int main(int argc, char** argv) {
+void run(string text) {
   clock_t t = clock();
-  string text = read_file(string(argv[1]));
 
   Program p(text);
   p.run();
 
   fprintf(stderr, "time(%.2f)\n", (float)(clock() - t)/CLOCKS_PER_SEC);
-  return 0;
 }
 
+
+int main(int argc, char* argv[])
+{
+  string text = read_file(string(argv[1]));
+  unsigned times = (argc > 2) ? atol(argv[2]) : 1;
+
+  fprintf(stderr, "started\n");
+
+  for (int i = 0; i < times; i++) { run(text); }
+
+  return 0;
+} /* main() */

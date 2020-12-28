@@ -3,7 +3,7 @@ FROM debian:testing
 WORKDIR /opt
 
 RUN apt-get update \
-  && apt-get install -y wget openssl curl procps gcc patch bzip2 gawk g++ autoconf automake bison libffi-dev libsqlite3-dev libtool libyaml-dev make pkg-config sqlite3 zlib1g-dev libgmp-dev libssl-dev less openjdk-14-jre-headless git nodejs npm lua5.4 luajit clang llvm vim libpcre3-dev libevent-dev libatomic1 python2.7 python2.7-dev libpython2.7-dev python3-dev cython3
+  && apt-get install -y wget openssl curl procps gcc patch bzip2 gawk g++ autoconf automake bison libffi-dev libsqlite3-dev libtool libyaml-dev make pkg-config sqlite3 zlib1g-dev libgmp-dev libssl-dev less openjdk-17-jre-headless git nodejs npm lua5.4 luajit clang llvm vim libpcre3-dev libevent-dev libatomic1 python2.7 python2.7-dev libpython2.7-dev python3-dev cython3
 # questions libedit-dev libgdbm-dev libncurses5-dev
 
 # https://www.ruby-lang.org/en/downloads/
@@ -23,20 +23,8 @@ RUN curl -L 'https://downloads.python.org/pypy/pypy2.7-v7.3.3-linux64.tar.bz2' >
   && rm *.tar.bz2 \
   && ln -sf /opt/pypy2.7-v7.3.3-linux64/bin/pypy /usr/bin/pypy2
 
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-	&& pypy2 get-pip.py \
-	&& rm get-pip.py \
-  && ln -sf /opt/pypy2.7-v7.3.3-linux64/bin/pip /usr/bin/pypy2-pip
-
-RUN git clone https://github.com/kostya/topaz.git \
-  && cd topaz \
-  && pypy2-pip install -r requirements.txt \
-  && pypy2 ../pypy2.7-v7.3.3-src/rpython/bin/rpython -Ojit targettopaz.py \
-  && rm -rf /tmp/*
-ENV PATH="/opt/topaz/bin:$PATH"  
-
 # https://github.com/crystal-lang/crystal/releases
-ARG CRYSTAL=0.35.1
+ARG CRYSTAL=0.36.1
 RUN wget --progress=dot:giga -O - \
     https://github.com/crystal-lang/crystal/releases/download/$CRYSTAL/crystal-$CRYSTAL-1-linux-x86_64.tar.gz \
     | tar -xz
@@ -48,7 +36,7 @@ RUN curl -L 'https://downloads.python.org/pypy/pypy3.7-v7.3.3-linux64.tar.bz2' >
   && ln -sf /opt/pypy3.7-v7.3.3-linux64/bin/pypy /usr/bin/pypy3
 
 # https://github.com/graalvm/graalvm-ce-builds/releases
-ARG GRAALVM=20.3.0
+ARG GRAALVM=21.0.0
 RUN wget --progress=dot:giga -O - \
     https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-$GRAALVM/graalvm-ce-java11-linux-amd64-$GRAALVM.tar.gz \
     | tar -xz \
@@ -81,7 +69,7 @@ RUN set -eux && \
     rm -f jython-installer.jar && \
     ln -sfv "$JYTHON_HOME/bin/"* /usr/local/bin/ 
 
-ARG NUITKA=0.6.10.1
+ARG NUITKA=0.6.11
 RUN wget --progress=dot:giga -O - \
     http://nuitka.net/releases/Nuitka-$NUITKA.tar.gz \
     | tar -xz \
@@ -93,7 +81,7 @@ RUN cd /opt && tar xvjf /tmp/rubinius.tar.bz2 && rm /tmp/rubinius.tar.bz2 \
    && ln -sf /opt/rubinius/5.0/bin/rbx /usr/bin/rbx
 
 # https://www.ruby-lang.org/en/downloads/
-RUN export VERSION=ruby-3.0.0-preview2 \
+RUN export VERSION=ruby-3.0.0 \
     && wget --progress=dot:giga -O - \
     https://cache.ruby-lang.org/pub/ruby/3.0/$VERSION.tar.gz \
     | tar -xz \
@@ -102,3 +90,16 @@ RUN export VERSION=ruby-3.0.0-preview2 \
     && cd .. && rm -rf $VERSION && ln -sf /opt/ruby3/bin/ruby /usr/local/bin/ruby3
 
 RUN npm install -g mpzjs
+
+
+RUN curl https://bootstrap.pypa.io/2.7/get-pip.py -o get-pip.py \
+  && pypy2 get-pip.py \
+  && rm get-pip.py \
+  && ln -sf /opt/pypy2.7-v7.3.3-linux64/bin/pip /usr/bin/pypy2-pip
+
+RUN git clone https://github.com/kostya/topaz.git \
+  && cd topaz \
+  && pypy2-pip install -r requirements.txt \
+  && pypy2 ../pypy2.7-v7.3.3-src/rpython/bin/rpython -Ojit targettopaz.py \
+  && rm -rf /tmp/*
+ENV PATH="/opt/topaz/bin:$PATH"  

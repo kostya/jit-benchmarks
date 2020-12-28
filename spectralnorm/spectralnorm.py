@@ -44,9 +44,8 @@ def eval_AtA_times_u(u):
     return eval_At_times_u(eval_A_times_u(u))
 
 
-def main():
+def main(n):
     t = time.time()
-    n = int(argv[1])
     u = [1] * n
     local_eval_AtA_times_u = eval_AtA_times_u
 
@@ -62,5 +61,13 @@ def main():
 
     print("%0.9f" % (sqrt(vBv/vv)))
     sys.stderr.write("time({0})\n".format(time.time() - t))
+    sys.stderr.flush()
 
-main()
+n = int(sys.argv[1]) if len(sys.argv) > 1 else 1000
+times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
+sys.stderr.write("started")
+sys.stderr.flush()
+
+for i in range(0,times):
+    main(n)

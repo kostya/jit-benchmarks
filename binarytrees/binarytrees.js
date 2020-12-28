@@ -26,9 +26,8 @@ function bottomUpTree(item, depth) {
         : new TreeNode(item, null, null);
 }
 
-function mainThread() {
-    start = new Date();
-    const maxDepth = Math.max(6, parseInt(process.argv[2]));
+function mainThread(maxDepth) {
+    start = new Date();    
 
     const stretchDepth = maxDepth + 1;
     const check = bottomUpTree(0, stretchDepth).check();
@@ -54,4 +53,8 @@ function work(iterations, depth) {
     console.log(`${iterations * 2}\t trees of depth ${depth}\t check: ${check}`);
 }
 
-mainThread();
+const maxDepth = parseInt(process.argv[2]) || 10;
+const times = parseInt(process.argv[3]) || 1;
+
+console.error("started");
+for (let i = 0; i < times; i++) { mainThread(maxDepth); }

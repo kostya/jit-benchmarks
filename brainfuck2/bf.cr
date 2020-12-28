@@ -75,7 +75,13 @@ class Program
   end
 end
 
-t = Time.local
+def run(text)
+  t = Time.local
+  Program.new(text).run
+  STDERR.puts "time(#{(Time.local - t).to_f})"
+end
+
 text = File.read(ARGV[0])
-Program.new(text).run
-STDERR.puts "time(#{(Time.local - t).to_f})"
+t = (ARGV[1]? || 1).to_i
+STDERR.puts "started"
+t.times { run(text) }

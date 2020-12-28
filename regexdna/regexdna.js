@@ -16,7 +16,7 @@ var i = "", ilen, clen, j, q = [ /agggtaaa|tttaccct/ig,
 
 const readline = require('readline');
 const rl = readline.createInterface({ input: process.stdin });
-start = new Date();
+const times = parseInt(process.argv[2]) || 1;
 
 rl.on('line', (line) => {
 	i+=line+"\n";	
@@ -27,10 +27,17 @@ rl.on('close', () => {
 
 	i = i.replace(/^>.*\n|\n/mg, ''); clen = i.length
 
-	for(j = 0; j<q.length; ++j) console.log(q[j].source, (i.match(q[j]) || []).length)
+	console.error("started");
 
-	for(j = -1; j<b.length - 1;) i = i.replace(b[++j], b[++j])
+	for (let k = 0; k < times; k++) { 
+		start = new Date();
+		for(j = 0; j<q.length; ++j) console.log(q[j].source, (i.match(q[j]) || []).length)
 
-	console.log(["", ilen, clen, i.length].join("\n"))
-	console.error("time(%d)", ((new Date()) - start) / 1000);
+		for(j = -1; j<b.length - 1;) i = i.replace(b[++j], b[++j])
+
+		console.log(["", ilen, clen, i.length].join("\n"))
+		console.error("time(%d)", ((new Date()) - start) / 1000);
+  }
+
 });
+

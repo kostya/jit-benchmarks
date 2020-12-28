@@ -62,7 +62,17 @@ def main(int n):
 
     print "long lived tree of depth %d\t check:" % max_depth, check_tree(long_lived_tree)
     sys.stderr.write("time({0})\n".format(time.time() - t))
+    sys.stderr.flush()
 
 if __name__ == '__main__':
     import sys
-    main(int(sys.argv[1]))
+
+    max_depth = int(sys.argv[1]) if len(sys.argv) > 1 else 10
+    times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
+    sys.stderr.write("started")
+    sys.stderr.flush()
+
+    for i in range(0,times):
+        main(max_depth)
+

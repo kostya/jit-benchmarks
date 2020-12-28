@@ -39,15 +39,18 @@ def matgen(n)
   a
 end
 
-t = Time.now
-n = 100
-if ARGV.length >= 1
-  n = ARGV[0].to_i
-end
-n = n / 2 * 2
-a = matgen(n)
-b = matgen(n)
-c = matmul(a, b)
-puts "%.9f" % c[n/2][n/2]
+def run(n)
+  t = Time.now
+  n = n / 2 * 2
+  a = matgen(n)
+  b = matgen(n)
+  c = matmul(a, b)
+  puts "%.9f" % c[n/2][n/2]
 
-STDERR.puts("time(#{Time.now - t})")
+  STDERR.puts("time(#{Time.now - t})")
+end
+
+n = (ARGV[0] || 10).to_i
+times = (ARGV[1] || 1).to_i
+STDERR.puts("started")
+times.times { run(n) }

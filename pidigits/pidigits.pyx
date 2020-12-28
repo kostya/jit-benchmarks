@@ -76,13 +76,20 @@ def pidigits(unsigned int n):
     if m != 9:
         print "%s%s\t:%s" % (line[:m+1].decode(), ' ' * (10-m), n)
 
+def main(n):
+    t = time.time()
+    pidigits(n)
+    sys.stderr.write("time({0})\n".format(time.time() - t))
+
 
 if __name__ == '__main__':
     import sys, time
-    t = time.time()
-    try:
-        n = int(sys.argv[1])
-    except IndexError:
-        n = 2500
-    pidigits(n)
-    sys.stderr.write("time({0})\n".format(time.time() - t))
+
+    n = int(sys.argv[1]) if len(sys.argv) > 1 else 100
+    times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
+    sys.stderr.write("started")
+    sys.stderr.flush()
+
+    for i in range(0,times):
+        main(n)

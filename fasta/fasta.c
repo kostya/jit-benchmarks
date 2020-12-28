@@ -141,22 +141,28 @@ char * alu =
    "AGGCGGAGGTTGCAGTGAGCCGAGATCGCGCCACTGCACTCC" \
    "AGCCTGGGCGACAGAGCGAGACTCCGTCTCAAAAA";
 
-int main (int argc, char * argv[]) {
+void run (int n) {
     clock_t t = clock();
-
-    int n = 1000;
-
-    if (argc > 1) sscanf (argv[1], "%d", &n);
-
-    makeCumulative (iub, IUB_LEN);
-    makeCumulative (homosapiens, HOMOSAPIENS_LEN);
 
     makeRepeatFasta ("ONE", "Homo sapiens alu", alu, n*2);
     makeRandomFasta ("TWO", "IUB ambiguity codes", iub, IUB_LEN, n*3);
     makeRandomFasta ("THREE", "Homo sapiens frequency", homosapiens, HOMOSAPIENS_LEN, n*5);
 
     fprintf(stderr, "time(%.2f)\n", (float)(clock() - t)/CLOCKS_PER_SEC);
-
-    return 0;
 }
 
+
+int main(int argc, char* argv[])
+{
+  makeCumulative (iub, IUB_LEN);
+  makeCumulative (homosapiens, HOMOSAPIENS_LEN);
+
+  unsigned N = (argc > 1) ? atol(argv[1]) : 100;
+  unsigned times = (argc > 2) ? atol(argv[2]) : 1;
+
+  fprintf(stderr, "started\n");
+
+  for (int i = 0; i < times; i++) { run(N); }
+
+  return 0;
+} /* main() */

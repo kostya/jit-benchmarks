@@ -107,17 +107,12 @@ static const char *subst[] = {
   "V", "(a|c|g)", "W", "(a|t)",     "Y", "(c|t)",   NULL
 };
 
-int main(int argc, char **argv)
+int run(fbuf_t *seq, size_t clen, size_t ilen)
 {
   clock_t t = clock();
-  fbuf_t seq[2];
-  const char **pp;
-  size_t ilen, clen, slen;
-  int flip;
-  fb_init(&seq[0]);
-  fb_init(&seq[1]);
-  ilen = fb_readall(&seq[0], stdin);
-  clen = fb_subst(&seq[1], &seq[0], ">.*|\n", "");
+  const char **pp;    
+  size_t slen;
+  int flip;    
   for (pp = variants; *pp; pp++)
     printf("%s %d\n", *pp, fb_countmatches(&seq[1], *pp));
   for (slen = 0, flip = 1, pp = subst; *pp; pp += 2, flip = 1-flip)
@@ -127,3 +122,20 @@ int main(int argc, char **argv)
   return 0;
 }
 
+int main(int argc, char* argv[])
+{
+    fbuf_t seq[2];
+    size_t ilen, clen;
+    fb_init(&seq[0]);
+    fb_init(&seq[1]);
+    ilen = fb_readall(&seq[0], stdin);
+    clen = fb_subst(&seq[1], &seq[0], ">.*|\n", "");
+
+    unsigned times = (argc > 1) ? atol(argv[1]) : 1;
+
+    fprintf(stderr, "started\n");
+
+    for (int i = 0; i < times; i++) { run(seq, clen, ilen); }
+
+    return 0;
+} /* main() */

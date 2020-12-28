@@ -52,9 +52,20 @@ def fannkuch(n):
                     print( checksum )
                     return maxFlipsCount
             count[r] -= 1
-from sys import argv
-t = time.time()
-n = int(argv[1])
 
-sys.stdout.write(( "Pfannkuchen(%i) = %i\n" % (n, fannkuch(n)) ))
-sys.stderr.write("time({0})\n".format(time.time() - t))
+from sys import argv
+
+def main(n):
+    t = time.time()
+
+    sys.stdout.write(( "Pfannkuchen(%i) = %i\n" % (n, fannkuch(n)) ))
+    sys.stderr.write("time({0})\n".format(time.time() - t))
+
+n = int(sys.argv[1]) if len(sys.argv) > 1 else 7
+times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
+sys.stderr.write("started")
+sys.stderr.flush()
+
+for i in range(0,times):
+    main(n)

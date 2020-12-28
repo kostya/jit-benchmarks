@@ -36,20 +36,8 @@ def find_seq(seq, s, frequences):
     print("%d\t%s" % (t.get(s, 0), s))
 
 
-def main():
+def main(sequence):
     t = time.time()
-
-    frequences = {}
-    for line in stdin:
-        if line[0:3] == ">TH":
-            break
-
-    seq = []
-    for line in stdin:
-        if line[0] in ">;":
-            break
-        seq.append( line[:-1] )
-    sequence = "".join(seq).upper()
 
     for nl in 1,2:
         sort_seq(sequence, nl, frequences)
@@ -58,5 +46,26 @@ def main():
         find_seq(sequence, se, frequences)
 
     sys.stderr.write("time({0})\n".format(time.time() - t))
+    sys.stderr.flush()
 
-main()
+
+times = int(sys.argv[1]) if len(sys.argv) > 1 else 1
+
+frequences = {}
+for line in stdin:
+    if line[0:3] == ">TH":
+        break
+
+seq = []
+for line in stdin:
+    if line[0] in ">;":
+        break
+    seq.append( line[:-1] )
+sequence = "".join(seq).upper()
+
+
+sys.stderr.write("started")
+sys.stderr.flush()
+
+for i in range(0,times):
+    main(sequence)

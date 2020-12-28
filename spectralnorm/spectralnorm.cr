@@ -28,18 +28,24 @@ def eval_AtA_times_u(u)
   eval_At_times_u(eval_A_times_u(u))
 end
 
-t = Time.local
+def run(n)
+  t = Time.local
+  u = Array.new(n, 1.0_f64)
+  v = Array.new(n, 1.0_f64)
+  10.times do
+    v = eval_AtA_times_u(u)
+    u = eval_AtA_times_u(v)
+  end
+  vBv = vv = 0.0_f64
+  (0...n).each do |i|
+    vBv += u[i] * v[i]
+    vv += v[i] * v[i]
+  end
+  puts "#{"%.9f" % [(Math.sqrt(vBv / vv))]}"
+  STDERR.puts "time(#{(Time.local - t).to_f})"
+end
+
 n = (ARGV[0]? || 1000).to_i
-u = Array.new(n, 1.0_f64)
-v = Array.new(n, 1.0_f64)
-10.times do
-  v = eval_AtA_times_u(u)
-  u = eval_AtA_times_u(v)
-end
-vBv = vv = 0.0_f64
-(0...n).each do |i|
-  vBv += u[i] * v[i]
-  vv += v[i] * v[i]
-end
-puts "#{"%.9f" % [(Math.sqrt(vBv / vv))]}"
-STDERR.puts "time(#{(Time.local - t).to_f})"
+t = (ARGV[1]? || 1).to_i
+STDERR.puts "started"
+t.times { run(n) }

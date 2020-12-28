@@ -83,7 +83,7 @@ def make_repeat_fasta(id, desc, s, n)
   end
 end
 
-iub = [
+IUB = [
   {'a', 0.27},
   {'c', 0.12},
   {'g', 0.12},
@@ -102,15 +102,22 @@ iub = [
   {'Y', 0.02},
 ]
 
-homosapiens = [{'a', 0.3029549426680}, {'c', 0.1979883004921}, {'g', 0.1975473066391}, {'t', 0.3015094502008}]
-alu = "GGCCGGGCGCGGTGGCTCACGCCTGTAATCCCAGCACTTTGGGAGGCCGAGGCGGGCGGATCACCTGAGGTCAGGAGTTCGAGACCAGCCTGGCCAACATGGTGAAACCCCGTCTCTACTAAAAATACAAAAATTAGCCGGGCGTGGTGGCGCGCGCCTGTAATCCCAGCTACTCGGGAGGCTGAGGCAGGAGAATCGCTTGAACCCGGGAGGCGGAGGTTGCAGTGAGCCGAGATCGCGCCACTGCACTCCAGCCTGGGCGACAGAGCGAGACTCCGTCTCAAAAA"
+HOMO = [{'a', 0.3029549426680}, {'c', 0.1979883004921}, {'g', 0.1975473066391}, {'t', 0.3015094502008}]
+ALU  = "GGCCGGGCGCGGTGGCTCACGCCTGTAATCCCAGCACTTTGGGAGGCCGAGGCGGGCGGATCACCTGAGGTCAGGAGTTCGAGACCAGCCTGGCCAACATGGTGAAACCCCGTCTCTACTAAAAATACAAAAATTAGCCGGGCGTGGTGGCGCGCGCCTGTAATCCCAGCTACTCGGGAGGCTGAGGCAGGAGAATCGCTTGAACCCGGGAGGCGGAGGTTGCAGTGAGCCGAGATCGCGCCACTGCACTCCAGCCTGGGCGACAGAGCGAGACTCCGTCTCAAAAA"
 
-t = Time.local
-n = (ARGV[0]? || 1000).to_i
-make_cumulative(iub)
-make_cumulative(homosapiens)
+def run(n)
+  t = Time.local
 
-make_repeat_fasta("ONE", "Homo sapiens alu", alu, n * 2)
-make_random_fasta("TWO", "IUB ambiguity codes", iub, n * 3)
-make_random_fasta("THREE", "Homo sapiens frequency", homosapiens, n * 5)
-STDERR.puts "time(#{(Time.local - t).to_f})"
+  make_repeat_fasta("ONE", "Homo sapiens alu", ALU, n * 2)
+  make_random_fasta("TWO", "IUB ambiguity codes", IUB, n * 3)
+  make_random_fasta("THREE", "Homo sapiens frequency", HOMO, n * 5)
+  STDERR.puts "time(#{(Time.local - t).to_f})"
+end
+
+make_cumulative(IUB)
+make_cumulative(HOMO)
+
+n = (ARGV[0]? || 100).to_i
+t = (ARGV[1]? || 1).to_i
+STDERR.puts "started"
+t.times { run(n) }

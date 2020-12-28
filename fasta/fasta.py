@@ -69,9 +69,8 @@ def randomFasta(table, n):
     if n % width:
         print(jn([chars[bb(probs, gR())] for i in range(n % width)]))
 
-def main():
-    n = int(sys.argv[1])
-
+def main(n):
+    t = time.time()
     print('>ONE Homo sapiens alu')
     repeatFasta(alu, n*2)
 
@@ -80,7 +79,14 @@ def main():
 
     print('>THREE Homo sapiens frequency')
     randomFasta(homosapiens, n*5)
+    sys.stderr.write("time({0})\n".format(time.time() - t))
+    sys.stderr.flush()
 
-t = time.time()
-main()
-sys.stderr.write("time({0})\n".format(time.time() - t))
+n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
+times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
+sys.stderr.write("started")
+sys.stderr.flush()
+
+for i in range(0,times):
+    main(n)

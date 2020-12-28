@@ -69,13 +69,12 @@ void DeleteTree(treeNode* tree)
 } /* DeleteTree() */
 
 
-int main(int argc, char* argv[])
+int run(unsigned   N)
 {
-    unsigned   N, depth, minDepth, maxDepth, stretchDepth;
+    unsigned   depth, minDepth, maxDepth, stretchDepth;
     treeNode   *stretchTree, *longLivedTree, *tempTree;
 
     clock_t t = clock();
-    N = atol(argv[1]);
 
     minDepth = 4;
 
@@ -134,6 +133,16 @@ int main(int argc, char* argv[])
     );
 
     fprintf(stderr, "time(%.2f)\n", (float)(clock() - t)/CLOCKS_PER_SEC);
+}
+
+int main(int argc, char* argv[])
+{
+    unsigned N = (argc > 1) ? atol(argv[1]) : 10;
+    unsigned times = (argc > 2) ? atol(argv[2]) : 1;
+
+    fprintf(stderr, "started\n");
+
+    for (int i = 0; i < times; i++) { run(N); }
 
     return 0;
 } /* main() */

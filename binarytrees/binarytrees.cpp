@@ -37,11 +37,8 @@ public:
   }
 };
 
-int main(int, char *argv[]) {
+void run(int n) {
   clock_t t = clock();
-
-  auto n = 0;
-  istringstream(argv[1]) >> n;
 
   auto min_depth = 4;
   auto max_depth = max(min_depth + 2, n);
@@ -71,5 +68,18 @@ int main(int, char *argv[]) {
        << "\t check: " << long_lived_tree->check() << endl;
 
   fprintf(stderr, "time(%.2f)\n", (float)(clock() - t)/CLOCKS_PER_SEC);
+}
+
+int main(int argc, char *argv[]) {
+  auto n = 10;
+  if (argc > 1) { istringstream(argv[1]) >> n; }
+  
+  auto times = 1;
+  if (argc > 2) { istringstream(argv[2]) >> times; }
+
+  fprintf(stderr, "started");
+
+  for (auto i = 0; i < times; i++) { run(n); }
+
   return 0;
 }

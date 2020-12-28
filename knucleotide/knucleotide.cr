@@ -20,7 +20,13 @@ def find_seq(seq, s)
   puts "#{table[s].to_s}\t#{s.upcase}"
 end
 
-t = Time.local
+def run(seq)
+  t = Time.local
+  (1..2).each { |i| sort_by_freq(seq, i) }
+  %w(ggt ggta ggtatt ggtattttaatt ggtattttaatttatagt).each { |s| find_seq(seq, s) }
+  STDERR.puts "time(#{(Time.local - t).to_f})"
+end
+
 seq = IO::Memory.new
 three = false
 
@@ -33,6 +39,6 @@ STDIN.each_line do |line|
 end
 seq = seq.to_s
 
-(1..2).each { |i| sort_by_freq(seq, i) }
-%w(ggt ggta ggtatt ggtattttaatt ggtattttaatttatagt).each { |s| find_seq(seq, s) }
-STDERR.puts "time(#{(Time.local - t).to_f})"
+t = (ARGV[0]? || 1).to_i
+STDERR.puts "started"
+t.times { run(seq) }

@@ -52,13 +52,22 @@ local function matmul(a, b, nn)
     return c;
 end
 
+local function run(N)
+    local start_time = os.clock();
+    local a = matgen(N);
+    local b = matgen(N);
+    local c = matmul(a, b, N);
 
-local start_time = os.clock();
-local N = tonumber(arg and arg[1]) or 100;
-local a = matgen(N);
-local b = matgen(N);
-local c = matmul(a, b, N);
+    local v = c[N / 2 + 1][N / 2 + 1];
+    io.write(string.format("%0.9f\n",v));
+    io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time));    
+end
 
-local v = c[N / 2 + 1][N / 2 + 1];
-io.write(string.format("%0.9f\n",v));
-io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time));
+local N = tonumber(arg and arg[1]) or 10
+local times = tonumber(arg and arg[2]) or 1
+
+io.stderr:write("started")
+
+for i=1,times,1 do
+  run(N)
+end

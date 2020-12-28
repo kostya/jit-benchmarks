@@ -64,9 +64,9 @@ function readSequence(f) {
   });
 }
 
-var start = new Date();
+function main(seq) {
+  var start = new Date();
 
-readSequence(function (seq) {
   sort(seq, 1);
   sort(seq, 2);
 
@@ -77,4 +77,12 @@ readSequence(function (seq) {
   find(seq, "GGTATTTTAATTTATAGT");  
 
   console.error("time(%d)", ((new Date()) - start) / 1000);
+}
+
+readSequence(function (seq) {
+  const times = parseInt(process.argv[2]) || 1;
+
+  console.error("started");
+  for (let i = 0; i < times; i++) { main(seq); }
 });
+

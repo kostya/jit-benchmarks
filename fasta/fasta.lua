@@ -87,10 +87,20 @@ local homosapiens = make_bisect{
   { "t", 0.3015094502008 },
 }
 
-start_time = os.clock()
+local function run(N)
+  start_time = os.clock()
 
-local N = tonumber(arg and arg[1]) or 1000
-make_repeat_fasta('ONE', 'Homo sapiens alu', alu, N*2)
-make_random_fasta('TWO', 'IUB ambiguity codes', iub, N*3)
-make_random_fasta('THREE', 'Homo sapiens frequency', homosapiens, N*5)
-io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time))
+  make_repeat_fasta('ONE', 'Homo sapiens alu', alu, N*2)
+  make_random_fasta('TWO', 'IUB ambiguity codes', iub, N*3)
+  make_random_fasta('THREE', 'Homo sapiens frequency', homosapiens, N*5)
+  io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time))
+end
+
+local N = tonumber(arg and arg[1]) or 10
+local times = tonumber(arg and arg[2]) or 1
+
+io.stderr:write("started")
+
+for i=1,times,1 do
+  run(N)
+end

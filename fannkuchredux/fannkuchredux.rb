@@ -53,10 +53,16 @@ def fannkuch(n)
   end
 end
 
-t = Time.now
+def run(n)
+  t = Time.now
 
-n = (ARGV[0] || 1).to_i
-sum, flips = fannkuch(n)
-puts "#{sum}\nPfannkuchen(#{n}) = #{flips}"
+  sum, flips = fannkuch(n)
+  puts "#{sum}\nPfannkuchen(#{n}) = #{flips}"
 
-STDERR.puts("time(#{Time.now - t})")
+  STDERR.puts("time(#{Time.now - t})")
+end
+
+n = (ARGV[0] || 7).to_i
+times = (ARGV[1] || 1).to_i
+STDERR.puts("started")
+times.times { run(n) }

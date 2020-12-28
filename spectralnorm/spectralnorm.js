@@ -47,6 +47,14 @@ function spectralnorm(n) {
   return Math.sqrt(vBv/vv);
 }
 
-start = new Date()
-console.log(spectralnorm(+process.argv[2]).toFixed(9));
-console.error("time(%d)", ((new Date()) - start) / 1000);
+function run(n) {
+  start = new Date()
+  console.log(spectralnorm(n).toFixed(9));
+  console.error("time(%d)", ((new Date()) - start) / 1000);
+}
+
+const n = parseInt(process.argv[2]) || 1000;
+const times = parseInt(process.argv[3]) || 1;
+
+console.error("started");
+for (let i = 0; i < times; i++) { run(n); }

@@ -21,10 +21,9 @@ class TreeNode():
         else:
             return self.item + self.left.check() - self.right.check()
 
-def main():
+def main(max_depth):
     t = time.time()
     min_depth = 4
-    max_depth = max(min_depth + 2, int(sys.argv[1]))
     stretch_depth = max_depth + 1
 
     print("stretch tree of depth %d\t check: %d" % (stretch_depth, TreeNode.create(0, stretch_depth).check()))
@@ -43,5 +42,15 @@ def main():
 
     print("long lived tree of depth %d\t check: %d" % (max_depth, long_lived_tree.check()))
     sys.stderr.write("time({0})\n".format(time.time() - t))
+    sys.stderr.flush()
 
-main()
+
+
+max_depth = int(sys.argv[1]) if len(sys.argv) > 1 else 10
+times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
+sys.stderr.write("started")
+sys.stderr.flush()
+
+for i in range(0,times):
+    main(max_depth)

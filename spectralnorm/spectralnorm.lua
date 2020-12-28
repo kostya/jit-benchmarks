@@ -28,20 +28,30 @@ local function AtAv(x, y, t, N)
   Atv(t, y, N)
 end
 
-start_time = os.clock()
+local function run(N)
+  start_time = os.clock()
 
-local N = tonumber(arg and arg[1]) or 100
-local u, v, t = {}, {}, {}
-for i=1,N do u[i] = 1 end
+  local u, v, t = {}, {}, {}
+  for i=1,N do u[i] = 1 end
 
-for i=1,10 do AtAv(u, v, t, N) AtAv(v, u, t, N) end
+  for i=1,10 do AtAv(u, v, t, N) AtAv(v, u, t, N) end
 
-local vBv, vv = 0, 0
-for i=1,N do
-  local ui, vi = u[i], v[i]
-  vBv = vBv + ui*vi
-  vv = vv + vi*vi
+  local vBv, vv = 0, 0
+  for i=1,N do
+    local ui, vi = u[i], v[i]
+    vBv = vBv + ui*vi
+    vv = vv + vi*vi
+  end
+  io.write(string.format("%0.9f\n", math.sqrt(vBv / vv)))
+
+  io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time))
 end
-io.write(string.format("%0.9f\n", math.sqrt(vBv / vv)))
 
-io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time))
+local N = tonumber(arg and arg[1]) or 1000
+local times = tonumber(arg and arg[2]) or 1
+
+io.stderr:write("started")
+
+for i=1,times,1 do
+  run(N)
+end

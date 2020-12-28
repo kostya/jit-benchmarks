@@ -5,7 +5,6 @@
 # From version ported by Michael Neumann from the C gcc version,
 # which was written by Christoph Bauer.
 
-t = Time.now
 SOLAR_MASS = 4 * Math::PI**2
 DAYS_PER_YEAR = 365.24
 
@@ -127,21 +126,30 @@ BODIES = [
 
 n = Integer(ARGV[0])
 
-offset_momentum(BODIES)
+def run(body, n)
+  t = Time.now
 
-puts "%.9f" % energy(BODIES)
+  offset_momentum(body)
 
-nbodies = BODIES.size
-dt = 0.01
+  puts "%.9f" % energy(body)
 
-n.times do
-  i = 0
-  while i < nbodies
-    b = BODIES[i]
-    b.move_from_i(BODIES, nbodies, dt, i + 1)
-    i += 1
+  nbodies = body.size
+  dt = 0.01
+
+  n.times do
+    i = 0
+    while i < nbodies
+      b = body[i]
+      b.move_from_i(body, nbodies, dt, i + 1)
+      i += 1
+    end
   end
+
+  puts "%.9f" % energy(body)
+  STDERR.puts("time(#{Time.now - t})")
 end
 
-puts "%.9f" % energy(BODIES)
-STDERR.puts("time(#{Time.now - t})")
+n = (ARGV[0] || 10).to_i
+times = (ARGV[1] || 1).to_i
+STDERR.puts("started")
+times.times { run(BODIES.map { |b| b.clone }, n) }

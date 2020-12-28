@@ -40,19 +40,20 @@ matgen = function (n) {
     return y
 }
 
-function main() {
-    var n = 100;
-    if (process.argv[2]) n = parseInt(process.argv[2]);
-
+function main(n) {
+    start = new Date();
     var a = matgen(n);
     var b = matgen(n);
     var c = matrix.mul(a, b, n);
     var v = c[(n/2)][(n / 2)];
     console.log(v.toFixed(9));
+    console.error("time(%d)", ((new Date()) - start) / 1000);
 }
 
 (async function() {
-    start = new Date();
-    main();
-    console.error("time(%d)", ((new Date()) - start) / 1000);
+    const n = parseInt(process.argv[2]) || 10;
+    const times = parseInt(process.argv[3]) || 1;
+
+    console.error("started");
+    for (let i = 0; i < times; i++) { main(n); }
 })();

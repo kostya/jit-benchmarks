@@ -31,7 +31,6 @@ def find_seq(seq, s)
     puts "#{table[s].to_s}\t#{s.upcase}"
 end
 
-t = Time.now
 start = false
 STDIN.each_line do |line|
   start = true if line.start_with?(">THREE")
@@ -41,6 +40,13 @@ STDIN.each_line do |line|
   end
 end
 
-(1..2).each { |i| sort_by_freq(seq, i) }
-%w(ggt ggta ggtatt ggtattttaatt ggtattttaatttatagt).each { |s| find_seq(seq, s) }
-STDERR.puts("time(#{Time.now - t})")
+def run(seq)
+    t = Time.now
+    (1..2).each { |i| sort_by_freq(seq, i) }
+    %w(ggt ggta ggtatt ggtattttaatt ggtattttaatttatagt).each { |s| find_seq(seq, s) }
+    STDERR.puts("time(#{Time.now - t})")
+end
+
+times = (ARGV[0] || 1).to_i
+STDERR.puts("started")
+times.times { run(seq) }

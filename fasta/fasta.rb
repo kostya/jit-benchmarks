@@ -12,7 +12,7 @@ def gen_random (max)
   (max * $last) / IM
 end
 
-alu =
+ALU =
    "GGCCGGGCGCGGTGGCTCACGCCTGTAATCCCAGCACTTTGG"+
    "GAGGCCGAGGCGGGCGGATCACCTGAGGTCAGGAGTTCGAGA"+
    "CCAGCCTGGCCAACATGGTGAAACCCCGTCTCTACTAAAAAT"+
@@ -21,7 +21,7 @@ alu =
    "AGGCGGAGGTTGCAGTGAGCCGAGATCGCGCCACTGCACTCC"+
    "AGCCTGGGCGACAGAGCGAGACTCCGTCTCAAAAA"
 
-iub = [
+IUB = [
   ["a", 0.27],
   ["c", 0.12],
   ["g", 0.12],
@@ -39,7 +39,7 @@ iub = [
   ["W", 0.02],
   ["Y", 0.02],
 ]
-homosapiens = [
+HOMO = [
   ["a", 0.3029549426680],
   ["c", 0.1979883004921],
   ["g", 0.1975473066391],
@@ -72,20 +72,28 @@ def make_random_fasta(id, desc, table, n)
   width = 60
   puts ">#{id} #{desc}"
   rand, v = nil,nil
-  prob = 0.0
-  table.each { |v| v[1] = (prob += v[1]) }
   (n / width).times { puts_line(table, width) }
   if n % width > 0
     puts_line(table, n % width)
   end
 end
 
-t = Time.now
+def run(n)
+  t = Time.now
 
-n = (ARGV[0] or 27).to_i
+  make_repeat_fasta('ONE', 'Homo sapiens alu', ALU, n*2)
+  make_random_fasta('TWO', 'IUB ambiguity codes', IUB, n*3)
+  make_random_fasta('THREE', 'Homo sapiens frequency', HOMO, n*5)
 
-make_repeat_fasta('ONE', 'Homo sapiens alu', alu, n*2)
-make_random_fasta('TWO', 'IUB ambiguity codes', iub, n*3)
-make_random_fasta('THREE', 'Homo sapiens frequency', homosapiens, n*5)
+  STDERR.puts("time(#{Time.now - t})")
+end
 
-STDERR.puts("time(#{Time.now - t})")
+prob = 0.0
+IUB.each { |v| v[1] = (prob += v[1]) }
+prob = 0.0
+HOMO.each { |v| v[1] = (prob += v[1]) }
+
+n = (ARGV[0] || 10).to_i
+times = (ARGV[1] || 1).to_i
+STDERR.puts("started")
+times.times { run(n) }

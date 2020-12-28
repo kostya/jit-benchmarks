@@ -74,13 +74,16 @@ var Brainfuck = function(text) {
 }
 
 function main(text) {
+    start = new Date();
     var brainfuck = new Brainfuck(text);
     brainfuck.run();
+    console.error("time(%d)", ((new Date()) - start) / 1000);
 }
 
 (async function() {
-    start = new Date();
     var text = require('fs').readFileSync(process.argv[2].toString()).toString();
-    main(text);
-    console.error("time(%d)", ((new Date()) - start) / 1000);
+    const times = parseInt(process.argv[3]) || 1;
+
+    console.error("started");
+    for (let i = 0; i < times; i++) { main(text); }    
 })();

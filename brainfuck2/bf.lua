@@ -85,13 +85,22 @@ local function Brainfuck(text)
   };
 end
 
-start_time = os.clock()
+local function run(text)
+  start_time = os.clock()
+  local brainfuck = Brainfuck(text)
+  brainfuck.run()
+
+  io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time))
+end
 
 local f = io.open(arg[1])
 local text = f:read("*a")
 f:close()
-local brainfuck = Brainfuck(text)
-brainfuck.run()
 
-io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time))
+local times = tonumber(arg and arg[2]) or 1
 
+io.stderr:write("started")
+
+for i=1,times,1 do
+  run(text)
+end

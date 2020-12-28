@@ -44,8 +44,14 @@ def fannkuchredux(n)
   end
 end
 
-t = Time.local
-n = (ARGV[0]? || 10).to_i
-sum, flips = fannkuchredux(n)
-puts "#{sum}\nPfannkuchen(#{n}) = #{flips}"
-STDERR.puts "time(#{(Time.local - t).to_f})"
+def run(n)
+  t = Time.local
+  sum, flips = fannkuchredux(n)
+  puts "#{sum}\nPfannkuchen(#{n}) = #{flips}"
+  STDERR.puts "time(#{(Time.local - t).to_f})"
+end
+
+n = (ARGV[0]? || 7).to_i
+t = (ARGV[1]? || 1).to_i
+STDERR.puts "started"
+t.times { run(n) }

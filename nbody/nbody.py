@@ -56,11 +56,7 @@ BODIES = {
                 5.15138902046611451e-05 * SOLAR_MASS) }
 
 
-SYSTEM = list(BODIES.values())
-PAIRS = combinations(SYSTEM)
-
-
-def advance(dt, bodies=SYSTEM, pairs=PAIRS):
+def advance(dt, bodies, pairs):
 
     for (([x1, y1, z1], v1, m1),
       ([x2, y2, z2], v2, m2)) in pairs:
@@ -82,7 +78,7 @@ def advance(dt, bodies=SYSTEM, pairs=PAIRS):
         r[2] += dt * vz
 
 
-def report_energy(bodies=SYSTEM, pairs=PAIRS, e=0.0):
+def report_energy(bodies, pairs, e=0.0):
 
     for (((x1, y1, z1), v1, m1),
          ((x2, y2, z2), v2, m2)) in pairs:
@@ -94,7 +90,7 @@ def report_energy(bodies=SYSTEM, pairs=PAIRS, e=0.0):
         e += m * (vx * vx + vy * vy + vz * vz) / 2.
     print("%.9f" % e)
 
-def offset_momentum(ref, bodies=SYSTEM, px=0.0, py=0.0, pz=0.0):
+def offset_momentum(ref, bodies, px=0.0, py=0.0, pz=0.0):
 
     for (r, [vx, vy, vz], m) in bodies:
         px -= vx * m
@@ -105,19 +101,29 @@ def offset_momentum(ref, bodies=SYSTEM, px=0.0, py=0.0, pz=0.0):
     v[1] = py / m
     v[2] = pz / m
 
-def main():
+def main(n):
     t = time.time()
-    n = int(sys.argv[1])
+    import copy
+    bodies = copy.deepcopy(BODIES)
+    system = list(bodies.values())
+    pairs = combinations(system)
 
-    offset_momentum(BODIES['sun'])
-    report_energy()
+    offset_momentum(bodies['sun'], system)
+    report_energy(system, pairs)
 
     for n in range(n):
-        advance(0.01)
+        advance(0.01, system, pairs)
 
-    report_energy()
+    report_energy(system, pairs)
 
     sys.stderr.write("time({0})\n".format(time.time() - t))
 
 if __name__ == '__main__':
-    main()
+    n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
+    times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
+    sys.stderr.write("started")
+    sys.stderr.flush()
+
+    for i in range(0,times):
+        main(n)    

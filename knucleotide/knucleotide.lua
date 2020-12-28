@@ -56,15 +56,25 @@ local function readseq()
   return string.upper(table.concat(lines, "", 1, ln))
 end
 
-start_time = os.clock()
+local function run(seq)
+  start_time = os.clock()
+  
+  frequency(seq, 1)
+  frequency(seq, 2)
+  count(seq, "GGT")
+  count(seq, "GGTA")
+  count(seq, "GGTATT")
+  count(seq, "GGTATTTTAATT")
+  count(seq, "GGTATTTTAATTTATAGT")
 
+  io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time))
+end
+
+local times = tonumber(arg and arg[1]) or 1
 local seq = readseq()
-frequency(seq, 1)
-frequency(seq, 2)
-count(seq, "GGT")
-count(seq, "GGTA")
-count(seq, "GGTATT")
-count(seq, "GGTATTTTAATT")
-count(seq, "GGTATTTTAATTTATAGT")
 
-io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time))
+io.stderr:write("started")
+
+for i=1,times,1 do
+  run(seq)
+end

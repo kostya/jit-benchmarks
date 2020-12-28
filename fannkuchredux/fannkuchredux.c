@@ -75,11 +75,21 @@ int fannkuchredux(int n)
     }
 }
 
-int main(int argc, char *argv[])
+void run(int n)
 {
     clock_t t = clock();
-    int n = argc > 1 ? atoi(argv[1]) : 7;
     printf("Pfannkuchen(%d) = %d\n", n, fannkuchredux(n));
     fprintf(stderr, "time(%.2f)\n", (float)(clock() - t)/CLOCKS_PER_SEC);
-    return 0;
 }
+
+int main(int argc, char* argv[])
+{
+  unsigned N = (argc > 1) ? atol(argv[1]) : 7;
+  unsigned times = (argc > 2) ? atol(argv[2]) : 1;
+
+  fprintf(stderr, "started\n");
+
+  for (int i = 0; i < times; i++) { run(N); }
+
+  return 0;
+} /* main() */

@@ -26,28 +26,33 @@ class TreeNode
   end
 end
 
-t = Time.now
+def run(n)
+  t = Time.now
+  min_depth = 4
+  max_depth = [min_depth + 2, n].max
+  stretch_depth = max_depth + 1
+  check = TreeNode.create(0, stretch_depth).check
 
-n = (ARGV[0] || 0).to_i
-min_depth = 4
-max_depth = [min_depth + 2, n].max
-stretch_depth = max_depth + 1
-check = TreeNode.create(0, stretch_depth).check
+  puts "stretch tree of depth #{max_depth + 1}\t check: #{check}"
 
-puts "stretch tree of depth #{max_depth + 1}\t check: #{check}"
+  long_lived_tree = TreeNode.create 0, max_depth
+  min_depth.step(max_depth, 2) do |depth|
+    iterations = 1 << (max_depth - depth + min_depth)
+    check = 0
 
-long_lived_tree = TreeNode.create 0, max_depth
-min_depth.step(max_depth, 2) do |depth|
-  iterations = 1 << (max_depth - depth + min_depth)
-  check = 0
-
-  1.upto(iterations) do |i|
-    check += TreeNode.create(i, depth).check
-    check += TreeNode.create(-i, depth).check
+    1.upto(iterations) do |i|
+      check += TreeNode.create(i, depth).check
+      check += TreeNode.create(-i, depth).check
+    end
+    puts "#{iterations << 1}\t trees of depth #{depth}\t check: #{check}"
   end
-  puts "#{iterations << 1}\t trees of depth #{depth}\t check: #{check}"
+
+  puts "long lived tree of depth #{max_depth}\t check: #{long_lived_tree.check}"
+
+  STDERR.puts("time(#{Time.now - t})")
 end
 
-puts "long lived tree of depth #{max_depth}\t check: #{long_lived_tree.check}"
-
-STDERR.puts("time(#{Time.now - t})")
+n = (ARGV[0] || 10).to_i
+times = (ARGV[1] || 1).to_i
+STDERR.puts("started")
+times.times { run(n) }

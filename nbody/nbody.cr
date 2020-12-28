@@ -1,9 +1,10 @@
 # Copied with little modifications from: http://benchmarksgame.alioth.debian.org/u32/program.php?test=nbody&lang=yarv&id=2
-t = Time.local
 SOLAR_MASS    = 4 * Math::PI**2
 DAYS_PER_YEAR = 365.24
 
 class Planet
+  def_clone
+
   property x : Float64
   property y : Float64
   property z : Float64
@@ -123,29 +124,29 @@ BODIES = [
     5.15138902046611451e-05),
 ]
 
-if ARGV.size != 1
-  puts "Usage: nbody n"
-  exit 1
-end
+def run(body, n)
+  t = Time.local
+  offset_momentum(body)
 
-n = ARGV[0].to_i
+  puts "%.9f" % energy(body)
 
-offset_momentum(BODIES)
+  nbodies = body.size
+  dt = 0.01
 
-puts "%.9f" % energy(BODIES)
-
-nbodies = BODIES.size
-dt = 0.01
-
-n.times do
-  i = 0
-  while i < nbodies
-    b = BODIES[i]
-    b.move_from_i(BODIES, nbodies, dt, i + 1)
-    i += 1
+  n.times do
+    i = 0
+    while i < nbodies
+      b = body[i]
+      b.move_from_i(body, nbodies, dt, i + 1)
+      i += 1
+    end
   end
+
+  puts "%.9f" % energy(body)
+  STDERR.puts "time(#{(Time.local - t).to_f})"
 end
 
-puts "%.9f" % energy(BODIES)
-
-STDERR.puts "time(#{(Time.local - t).to_f})"
+n = (ARGV[0]? || 10).to_i
+t = (ARGV[1]? || 1).to_i
+STDERR.puts "started"
+t.times { run(BODIES.clone, n) }

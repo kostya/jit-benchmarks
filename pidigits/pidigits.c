@@ -36,10 +36,9 @@ void next_term(ui k) {
    mpz_mul_ui(num, num, k);
 }
 
-int main(int argc, char **argv) {
+void run(int n) {
    clock_t t = clock();
    ui d, k, i;
-   int n = atoi(argv[1]);
 
    mpz_init(tmp1);
    mpz_init(tmp2);
@@ -64,6 +63,16 @@ int main(int argc, char **argv) {
    }
 
    fprintf(stderr, "time(%.2f)\n", (float)(clock() - t)/CLOCKS_PER_SEC);
-
-   return 0;
 }
+
+int main(int argc, char* argv[])
+{
+  unsigned N = (argc > 1) ? atol(argv[1]) : 100;
+  unsigned times = (argc > 2) ? atol(argv[2]) : 1;
+
+  fprintf(stderr, "started\n");
+
+  for (int i = 0; i < times; i++) { run(N); }
+
+  return 0;
+} /* main() */

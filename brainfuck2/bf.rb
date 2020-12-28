@@ -69,7 +69,13 @@ private
   end
 end
 
-t = Time.now
+def run(text)
+  t = Time.now
+  Program.new(text).run
+  STDERR.puts("time(#{Time.now - t})")
+end
+
 text = IO.read(ARGV[0])
-Program.new(text).run
-STDERR.puts("time(#{Time.now - t})")
+times = (ARGV[1] || 1).to_i
+STDERR.puts("started")
+times.times { run(text) }

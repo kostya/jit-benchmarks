@@ -73,8 +73,18 @@ cdef long fannkuch(long n):
                     return maxFlipsCount
             count[r] -= 1
 
-t = time.time()
-cdef long n = int(argv[1])
-cdef long res = fannkuch(n)
-print( "Pfannkuchen(%i) = %i" % (n, res) )
-sys.stderr.write("time({0})\n".format(time.time() - t))
+def main(n1):
+    t = time.time()
+    cdef long n = n1
+    cdef long res = fannkuch(n)
+    print( "Pfannkuchen(%i) = %i" % (n, res) )
+    sys.stderr.write("time({0})\n".format(time.time() - t))
+
+n = int(sys.argv[1]) if len(sys.argv) > 1 else 7
+times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
+sys.stderr.write("started")
+sys.stderr.flush()
+
+for i in range(0,times):
+    main(n)    

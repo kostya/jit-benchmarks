@@ -45,5 +45,8 @@ function mandelbrot(size) {
   console.error("time(%d)", ((new Date()) - start) / 1000);
 }
 
-mandelbrot(parseInt(process.argv[2]))
+const n = parseInt(process.argv[2]) || 100;
+const times = parseInt(process.argv[3]) || 1;
 
+console.error("started");
+for (let i = 0; i < times; i++) { mandelbrot(n); }

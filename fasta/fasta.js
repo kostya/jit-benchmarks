@@ -58,8 +58,7 @@ function fastaRepeat(n, seq) {
 }
 
 function fastaRandom(n, table) {
-  var line = new Array(60);
-  makeCumulative(table);
+  var line = new Array(60);  
   while (n>0) {
     if (n<line.length) line = new Array(n);
     for (var i=0; i<line.length; i++) {
@@ -76,17 +75,26 @@ function fastaRandom(n, table) {
   }
 }
 
-start = new Date();
+function main(n) {
+  start = new Date();
 
-var n = +process.argv[2];
+  console.log(">ONE Homo sapiens alu")
+  fastaRepeat(2*n, ALU)
 
-console.log(">ONE Homo sapiens alu")
-fastaRepeat(2*n, ALU)
+  console.log(">TWO IUB ambiguity codes")
+  fastaRandom(3*n, IUB)
 
-console.log(">TWO IUB ambiguity codes")
-fastaRandom(3*n, IUB)
+  console.log(">THREE Homo sapiens frequency")
+  fastaRandom(5*n, HomoSap)
+      
+  console.error("time(%d)", ((new Date()) - start) / 1000);
+}
 
-console.log(">THREE Homo sapiens frequency")
-fastaRandom(5*n, HomoSap)
-    
-console.error("time(%d)", ((new Date()) - start) / 1000);
+makeCumulative(IUB);
+makeCumulative(HomoSap);
+
+const n = parseInt(process.argv[2]) || 10;
+const times = parseInt(process.argv[3]) || 1;
+
+console.error("started");
+for (let i = 0; i < times; i++) { main(n); }

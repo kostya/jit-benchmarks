@@ -6,8 +6,8 @@ ENV['JB_TIMEOUT'] = "60"
 CMDS = {
 	"" => BINS,
 	"revcomp.rb" => RUBIES,
-	"revcomp.py" => PYTHONS - %w{python2.7 pypy2 jython},
-	"revcomp2.py" => %w{python2.7 pypy2 jython},
+	"revcomp.py" => PYTHONS - %w{python2 pypy2 jython},
+	"revcomp2.py" => %w{python2 pypy2 jython},
 	"revcomp.lua" => LUAS,
 	"revcomp.js" => JAVASCRIPTS
 }

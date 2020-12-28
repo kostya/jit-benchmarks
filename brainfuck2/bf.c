@@ -240,16 +240,32 @@ void eval(const struct op_list *ops, struct tape *tape)
 	}
 }
 
-int main(int argc, char *argv[])
+void run(char *code)
 {
 	clock_t t = clock();
+	struct op_list ops;
+	struct tape tape;
+	struct string_iterator it;
+
+	tape_init(&tape);
+	op_list_init(&ops);
+	string_iterator_init(&it, code);
+	parse(&it, &ops);
+
+	eval(&ops, &tape);
+	
+	tape_free(tape);
+	op_list_free(&ops);
+
+	fprintf(stderr, "time(%.2f)\n", (float)(clock() - t)/CLOCKS_PER_SEC);
+}
+
+int main(int argc, char* argv[])
+{
 	FILE *f;
 	int fsize;
 	const char *filename;
 	char *code;
-	struct op_list ops;
-	struct tape tape;
-	struct string_iterator it;
 
 	if (argc < 2) {
 		fprintf(stderr, "Expected filename\n");
@@ -273,19 +289,13 @@ int main(int argc, char *argv[])
 	fclose(f);
 	code[fsize] = 0;
 
+  unsigned times = (argc > 2) ? atol(argv[2]) : 1;
 
-	tape_init(&tape);
-	op_list_init(&ops);
-	string_iterator_init(&it, code);
-	parse(&it, &ops);
+  fprintf(stderr, "started\n");
 
-	eval(&ops, &tape);
+  for (int i = 0; i < times; i++) { run(code); }
 
-	free(code);
-	tape_free(tape);
-	op_list_free(&ops);
+  free(code);
 
-	fprintf(stderr, "time(%.2f)\n", (float)(clock() - t)/CLOCKS_PER_SEC);
-
-	return 0;
-}
+  return 0;
+} /* main() */

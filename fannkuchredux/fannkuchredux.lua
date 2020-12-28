@@ -43,10 +43,20 @@ local function fannkuch(n)
   until false
 end
 
-start_time = os.clock()
+local function run(n)
+  start_time = os.clock()
 
-local n = tonumber(arg and arg[1]) or 1
-local sum, flips = fannkuch(n)
-io.write(sum, "\nPfannkuchen(", n, ") = ", flips, "\n")
+  local sum, flips = fannkuch(n)
+  io.write(sum, "\nPfannkuchen(", n, ") = ", flips, "\n")
 
-io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time))
+  io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time))
+end
+
+local N = tonumber(arg and arg[1]) or 7
+local times = tonumber(arg and arg[2]) or 1
+
+io.stderr:write("started")
+
+for i=1,times,1 do
+  run(N)
+end

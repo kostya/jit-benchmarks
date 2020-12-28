@@ -35,33 +35,43 @@ local function BottomUpTree(item, depth)
   end
 end
 
-start_time = os.clock()
+local function run(N)
+  start_time = os.clock()
 
-local N = tonumber(arg and arg[1]) or 0
-local mindepth = 4
-local maxdepth = mindepth + 2
-if maxdepth < N then maxdepth = N end
+  local mindepth = 4
+  local maxdepth = mindepth + 2
+  if maxdepth < N then maxdepth = N end
 
-do
-  local stretchdepth = maxdepth + 1
-  local stretchtree = BottomUpTree(0, stretchdepth)
-  io.write(string.format("stretch tree of depth %d\t check: %d\n",
-    stretchdepth, checkTreeNode(stretchtree)))
-end
-
-local longlivedtree = BottomUpTree(0, maxdepth)
-
-for depth=mindepth,maxdepth,2 do
-  local iterations = 2 ^ (maxdepth - depth + mindepth)
-  local check = 0
-  for i=1,iterations do
-    check = check + checkTreeNode(BottomUpTree(i, depth)) + checkTreeNode(BottomUpTree(-i, depth))
+  do
+    local stretchdepth = maxdepth + 1
+    local stretchtree = BottomUpTree(0, stretchdepth)
+    io.write(string.format("stretch tree of depth %d\t check: %d\n",
+      stretchdepth, checkTreeNode(stretchtree)))
   end
-  io.write(string.format("%d\t trees of depth %d\t check: %d\n",
-    iterations * 2, depth, check))
+
+  local longlivedtree = BottomUpTree(0, maxdepth)
+
+  for depth=mindepth,maxdepth,2 do
+    local iterations = 2 ^ (maxdepth - depth + mindepth)
+    local check = 0
+    for i=1,iterations do
+      check = check + checkTreeNode(BottomUpTree(i, depth)) + checkTreeNode(BottomUpTree(-i, depth))
+    end
+    io.write(string.format("%d\t trees of depth %d\t check: %d\n",
+      iterations * 2, depth, check))
+  end
+
+  io.write(string.format("long lived tree of depth %d\t check: %d\n",
+    maxdepth, checkTreeNode(longlivedtree)))
+
+  io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time))
 end
 
-io.write(string.format("long lived tree of depth %d\t check: %d\n",
-  maxdepth, checkTreeNode(longlivedtree)))
+local N = tonumber(arg and arg[1]) or 10
+local times = tonumber(arg and arg[2]) or 1
 
-io.stderr:write(string.format("time(%.9f)\n", os.clock() - start_time))
+io.stderr:write("started")
+
+for i=1,times,1 do
+  run(N)
+end

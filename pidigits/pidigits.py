@@ -65,7 +65,18 @@ def pidigits(length):
                 a *= 10
                 n *= 10
 
-t = time.time()
-n = int(sys.argv[1])
-pidigits(n)
-sys.stderr.write("time({0})\n".format(time.time() - t))
+def main(n):
+    t = time.time()
+    pidigits(n)
+    sys.stderr.write("time({0})\n".format(time.time() - t))
+    sys.stderr.flush()
+
+
+n = int(sys.argv[1]) if len(sys.argv) > 1 else 100
+times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
+sys.stderr.write("started")
+sys.stderr.flush()
+
+for i in range(0,times):
+    main(n)

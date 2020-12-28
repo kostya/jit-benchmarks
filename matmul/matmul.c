@@ -52,17 +52,26 @@ double **mm_mul(int n, double *const *a, double *const *b)
   return m;
 }
 
-int main(int argc, char *argv[])
+void run(int n)
 {
   clock_t t = clock();
-  int n = 100;
   double **a, **b, **m;
-  if (argc > 1) n = atoi(argv[1]);
   n = (n/2) * 2;
   a = mm_gen(n); b = mm_gen(n);
   m = mm_mul(n, a, b);
   fprintf(stdout, "%.9f\n", m[n/2][n/2]);
   mm_destroy(n, a); mm_destroy(n, b); mm_destroy(n, m);
   fprintf(stderr, "time(%.2f)\n", (float)(clock() - t)/CLOCKS_PER_SEC);
-  return 0;
 }
+
+int main(int argc, char* argv[])
+{
+  unsigned N = (argc > 1) ? atol(argv[1]) : 100;
+  unsigned times = (argc > 2) ? atol(argv[2]) : 1;
+
+  fprintf(stderr, "started\n");
+
+  for (int i = 0; i < times; i++) { run(N); }
+
+  return 0;
+} /* main() */

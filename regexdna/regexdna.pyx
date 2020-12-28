@@ -8,14 +8,8 @@ from sys import stdin,stdout
 from re import sub, findall
 import sys, time
 
-def main():
-    seq = stdin.buffer.read()
-    write = stdout.buffer.write
-    ilen = len(seq)
-
-    seq = sub(b'>.*\n|\n', b'', seq)
-    clen = len(seq)
-
+def main(seq, clen, ilen):
+    t = time.time()
     variants = (
           b'agggtaaa|tttaccct',
           b'[cgt]gggtaaa|tttaccc[acg]',
@@ -39,7 +33,23 @@ def main():
     write(bytes(str(ilen),encoding='latin1') + b'\n')
     write(bytes(str(clen),encoding='latin1') + b'\n')
     write(bytes(str(len(seq)),encoding='latin1') + b'\n')
+    sys.stderr.write("time({0})\n".format(time.time() - t))
 
-t = time.time()
-main()
-sys.stderr.write("time({0})\n".format(time.time() - t))
+if __name__ == '__main__':
+    import sys
+
+    seq = stdin.buffer.read()
+    write = stdout.buffer.write
+    ilen = len(seq)
+
+    seq = sub(b'>.*\n|\n', b'', seq)
+    clen = len(seq)
+
+    times = int(sys.argv[1]) if len(sys.argv) > 1 else 1
+
+    sys.stderr.write("started")
+    sys.stderr.flush()
+
+    for i in range(0,times):
+        main(seq, clen, ilen)
+

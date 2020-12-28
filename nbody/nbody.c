@@ -9,16 +9,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "time.h"
+#include <string.h>
 
 #define pi 3.141592653589793
 #define solar_mass (4 * pi * pi)
 #define days_per_year 365.24
 
-struct planet {
+typedef struct planet {
   double x, y, z;
   double vx, vy, vz;
   double mass;
-};
+} planet;
 
 void advance(int nbodies, struct planet * bodies, double dt)
 {
@@ -127,18 +128,32 @@ struct planet bodies[NBODIES] = {
   }
 };
 
-int main(int argc, char ** argv)
+void run(int n)
 {
   clock_t t = clock();
-  int n = atoi(argv[1]);
   int i;
 
-  offset_momentum(NBODIES, bodies);
-  printf ("%.9f\n", energy(NBODIES, bodies));
+  planet *bodies2 = (planet *)malloc(sizeof(planet) * NBODIES);
+  memcpy(bodies2, bodies, sizeof(planet) * NBODIES);
+
+  offset_momentum(NBODIES, bodies2);
+  printf ("%.9f\n", energy(NBODIES, bodies2));
   for (i = 1; i <= n; i++)
-    advance(NBODIES, bodies, 0.01);
-  printf ("%.9f\n", energy(NBODIES, bodies));
+    advance(NBODIES, bodies2, 0.01);
+  printf ("%.9f\n", energy(NBODIES, bodies2));
   fprintf(stderr, "time(%.2f)\n", (float)(clock() - t)/CLOCKS_PER_SEC);
-  return 0;
+
+  free(bodies2);
 }
 
+int main(int argc, char* argv[])
+{
+    unsigned N = (argc > 1) ? atol(argv[1]) : 10;
+    unsigned times = (argc > 2) ? atol(argv[2]) : 1;
+
+    fprintf(stderr, "started\n");
+
+    for (int i = 0; i < times; i++) { run(N); }
+
+    return 0;
+} /* main() */

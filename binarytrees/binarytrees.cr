@@ -4,28 +4,35 @@
 # Contributed by Akzhan Abdulin.
 # Based on the Java program from Heikki Salokanto, Chandra Sekar, Mike Krüger.
 
-t = Time.local
-n = (ARGV[0]? || 0).to_i
-min_depth = 4
-max_depth = Math.max min_depth + 2, n
-stretch_depth = max_depth + 1
-check = TreeNode.create(0, stretch_depth).check
+n = (ARGV[0]? || 10).to_i
+t = (ARGV[1]? || 1).to_i
+STDERR.puts "started"
+t.times { run(n) }
 
-puts "stretch tree of depth #{max_depth + 1}\t check: #{check}"
+def run(n)
+  t = Time.local
+  min_depth = 4
+  max_depth = Math.max min_depth + 2, n
+  stretch_depth = max_depth + 1
+  check = TreeNode.create(0, stretch_depth).check
 
-long_lived_tree = TreeNode.create 0, max_depth
-min_depth.step(to: max_depth, by: 2) do |depth|
-  iterations = 1 << (max_depth - depth + min_depth)
-  check = 0
+  puts "stretch tree of depth #{max_depth + 1}\t check: #{check}"
 
-  1.upto(iterations) do |i|
-    check += TreeNode.create(i, depth).check
-    check += TreeNode.create(-i, depth).check
+  long_lived_tree = TreeNode.create 0, max_depth
+  min_depth.step(to: max_depth, by: 2) do |depth|
+    iterations = 1 << (max_depth - depth + min_depth)
+    check = 0
+
+    1.upto(iterations) do |i|
+      check += TreeNode.create(i, depth).check
+      check += TreeNode.create(-i, depth).check
+    end
+    puts "#{iterations << 1}\t trees of depth #{depth}\t check: #{check}"
   end
-  puts "#{iterations << 1}\t trees of depth #{depth}\t check: #{check}"
-end
 
-puts "long lived tree of depth #{max_depth}\t check: #{long_lived_tree.check}"
+  puts "long lived tree of depth #{max_depth}\t check: #{long_lived_tree.check}"
+  STDERR.puts "time(#{(Time.local - t).to_f})"
+end
 
 class TreeNode
   property left : TreeNode?
@@ -49,5 +56,3 @@ class TreeNode
     lft.check - rgt.check + item
   end
 end
-
-STDERR.puts "time(#{(Time.local - t).to_f})"

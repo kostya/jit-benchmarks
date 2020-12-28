@@ -62,10 +62,19 @@ class Program(object):
                 sys.stdout.flush()
             pc += 1
 
-t = time.time()
+def main(text):
+    t = time.time()
+    Program(text).run()
+    sys.stderr.write("time({0})\n".format(time.time() - t))
+    sys.stderr.flush()
+
 import os
 f = open(sys.argv[1], "r")
 text = f.read()
+times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
 
-Program(text).run()
-sys.stderr.write("time({0})\n".format(time.time() - t))
+sys.stderr.write("started")
+sys.stderr.flush()
+
+for i in range(0,times):
+    main(text)

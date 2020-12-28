@@ -46,10 +46,17 @@ function fannkuch(n) {
    } while (true);
 }
 
-start = new Date()
+function run(n) {
+   start = new Date()
 
-var n = 1*process.argv[2]*1;
-var pf = fannkuch(n);
-console.log(pf[0] + "\n" + "Pfannkuchen(" + n + ") = " + pf[1]);
+   var pf = fannkuch(n);
+   console.log(pf[0] + "\n" + "Pfannkuchen(" + n + ") = " + pf[1]);
 
-console.error("time(%d)", ((new Date()) - start) / 1000);
+   console.error("time(%d)", ((new Date()) - start) / 1000);
+}
+
+const n = parseInt(process.argv[2]) || 7;
+const times = parseInt(process.argv[3]) || 1;
+
+console.error("started");
+for (let i = 0; i < times; i++) { run(n); }

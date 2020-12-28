@@ -43,8 +43,10 @@ cdef double *eval_At_times_u(double* u, long n):
 cdef double *eval_AtA_times_u(double* u, long n):
     return eval_At_times_u(eval_A_times_u(u, n), n)
 
-def main():
-    cdef long n = int(argv[1])
+def main(n1):    
+    t = time.time()
+
+    cdef long n = n1
     cdef double* u = <double *> malloc(n*sizeof(double))
     cdef double* v = <double *> malloc(n*sizeof(double))
     cdef double* tmp = <double *> malloc(n*sizeof(double))
@@ -63,8 +65,15 @@ def main():
         vv += v[i] * v[i] 
 
     print "%0.9f" % (sqrt(vBv/vv))
+    sys.stderr.write("time({0})\n".format(time.time() - t))
+    sys.stderr.flush()
 
 import sys, time
-t = time.time()
-main()
-sys.stderr.write("time({0})\n".format(time.time() - t))
+n = int(sys.argv[1]) if len(sys.argv) > 1 else 1000
+times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
+sys.stderr.write("started")
+sys.stderr.flush()
+
+for i in range(0,times):
+    main(n)

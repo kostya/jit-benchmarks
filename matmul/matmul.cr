@@ -35,13 +35,17 @@ def matgen(n)
   a
 end
 
-t = Time.local
-
 n = (ARGV[0]? || 100).to_i
-n = n >> 1 << 1
-a = matgen(n)
-b = matgen(n)
-c = matmul(a, b)
-puts "%.9f" % c[n >> 1][n >> 1]
+t = (ARGV[1]? || 1).to_i
+STDERR.puts "started"
+t.times { run(n) }
 
-STDERR.puts "time(#{(Time.local - t).to_f})"
+def run(n)
+  t = Time.local
+  a = matgen(n)
+  b = matgen(n)
+  c = matmul(a, b)
+  puts "%.9f" % c[n >> 1][n >> 1]
+
+  STDERR.puts "time(#{(Time.local - t).to_f})"
+end
