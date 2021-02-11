@@ -27,6 +27,8 @@ sh build.sh
 ruby run.rb
 ```
 
+Every test run code by 5 times, within one process, it allow to do some warnups for jitted languages.
+
 ## Spectralnorm (5 runs)
 | Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
 |------------|-------------|----------|-------------|-----------|------------|
