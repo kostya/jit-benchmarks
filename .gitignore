@@ -14,3 +14,8 @@ todo
 *.build/
 *.json
 node_modules/
+*.so
+build/
+run_mypyc
+__pycache__
+.mypy_cache

@@ -79,12 +79,12 @@ def main(n):
 	sys.stderr.write("time({0})\n".format(time.time() - t))
 	sys.stderr.flush()
 
-if __name__=='__main__':
-  n = int(sys.argv[1]) if len(sys.argv) > 1 else 100
-  times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+n = int(sys.argv[1]) if len(sys.argv) > 1 else 100
+times = int(sys.argv[2]) if len(sys.argv) > 2 else 1
 
-  sys.stderr.write("started")
-  sys.stderr.flush()
+sys.stderr.write("started")
+sys.stderr.flush()
+print("HERE")
 
-  for i in range(0,times):
-      main(n)
+for i in range(0,times):
+  main(n)

@@ -4,8 +4,8 @@ Most programs from [benchmarks game](https://benchmarksgame-team.pages.debian.ne
 
 Compare:
 		
-		* Ruby (Ruby2.7, Ruby3, Graal, [Topaz](https://github.com/kostya/topaz), JRuby, Rbx)
-		* Python (Cpython, Graal, Pypy, Cython, Jython, Nuitka)
+		* Ruby (Ruby2.7, Ruby3, Graal, Topaz, JRuby, Rbx)
+		* Python (Cpython, Graal, Pypy, Cython, Jython, Nuitka, Mypyc)
 		* Lua (JIT)
 		* Javascript (Node, Graal)
 		* C, Crystal as a basis
@@ -29,428 +29,443 @@ ruby run.rb
 
 Every test run code by 5 times, within one process, it allow to do some warnups for jitted languages.
 
-## Spectralnorm (5 runs)
-| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
-|------------|-------------|----------|-------------|-----------|------------|
-| C          | gcc         | 0.11     | 0.11        | 0.0       | 0.83       |
-| Python3    | Cython      | 0.11     | 0.11        | 0.0       | 10.05      |
-| Javascript | Node        | 0.11     | 0.13        | 0.1       | 38.92      |
-| Crystal    |             | 0.12     | 0.12        | 0.0       | 4.40       |
-| Lua        | JIT         | 0.12     | 0.13        | 0.0       | 2.39       |
-| Ruby       | GraalVM     | 0.22     | 0.39        | 0.2       | 420.65     |
-| Ruby       | GraalVM_JVM | 0.22     | 0.93        | 1.9       | 523.73     |
-| Javascript | GraalVM     | 0.24     | 0.62        | 0.3       | 573.21     |
-| Javascript | GraalVM_JVM | 0.37     | 0.84        | 1.9       | 707.74     |
-| Python2    | Pypy        | 0.67     | 0.69        | 0.0       | 67.96      |
-| Python3    | Pypy        | 0.77     | 0.81        | 0.0       | 69.39      |
-| Ruby       | Topaz       | 1.49     | 1.54        | 0.0       | 32.17      |
-| Lua        |             | 4.36     | 4.40        | 0.0       | 2.75       |
-| Ruby       | JRuby_InDy  | 5.39     | 5.72        | 1.0       | 450.43     |
-| Ruby3      | JIT         | 10.00    | 10.52       | 0.0       | 14.35      |
-| Ruby       | JRuby       | 10.12    | 10.45       | 1.2       | 376.28     |
-| Ruby2.7    | JIT         | 12.51    | 12.52       | 0.0       | 14.38      |
-| Python3    | GraalVM_JVM | 12.52    | 15.69       | 4.8       | 977.92     |
-| Python2    |             | 15.24    | 15.30       | 0.0       | 7.16       |
-| Ruby2.7    |             | 15.62    | 15.66       | 0.0       | 13.73      |
-| Ruby3      |             | 16.47    | 16.71       | 0.0       | 14.03      |
-| Python3    |             | 18.30    | 18.34       | 0.0       | 8.23       |
-| Python3    | GraalVM     | 19.80    | 20.14       | 0.1       | 1151.59    |
-| Python3    | Nuitka      | 25.42    | 25.70       | 0.0       | 11.38      |
-| Python2    | Jython      | 40.25    | 40.25       | 1.7       | 528.58     |
-| Ruby       | Rbx         | > 80     | > 80        | 0.1       | 614.75     |
-
-
-## Knucleotide (5 runs)
-| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
-|------------|-------------|----------|-------------|-----------|------------|
-| Lua        | JIT         | 0.89     | 1.04        | 0.0       | 45.11      |
-| C++        | g++         | 2.16     | 2.21        | 0.2       | 30.59      |
-| Python2    | Pypy        | 2.18     | 2.27        | 0.1       | 138.36     |
-| Crystal    |             | 2.36     | 2.39        | 0.0       | 52.98      |
-| Python3    | Pypy        | 3.53     | 3.55        | 0.1       | 147.86     |
-| Python3    | GraalVM_JVM | 3.66     | 6.23        | 9.7       | 1121.65    |
-| Lua        |             | 4.46     | 4.50        | 0.1       | 63.45      |
-| Ruby       | Topaz       | 5.12     | 5.19        | 0.2       | 119.28     |
-| Javascript | Node        | 5.23     | 6.18        | 0.2       | 160.95     |
-| Javascript | GraalVM_JVM | 6.40     | 8.99        | 8.6       | 971.75     |
-| Python2    |             | 6.68     | 6.76        | 0.1       | 263.32     |
-| Python3    | GraalVM     | 7.32     | 10.61       | 2.6       | 1103.11    |
-| Ruby       | JRuby       | 8.58     | 9.28        | 1.5       | 558.90     |
-| Ruby       | JRuby_InDy  | 8.79     | 9.11        | 1.6       | 649.40     |
-| Python3    |             | 8.97     | 8.99        | 0.1       | 48.93      |
-| Ruby2.7    | JIT         | 9.25     | 9.45        | 0.1       | 88.64      |
-| Python3    | Cython      | 9.45     | 9.48        | 0.1       | 49.76      |
-| Javascript | GraalVM     | 9.96     | 11.81       | 4.2       | 1118.26    |
-| Python2    | Jython      | 10.40    | 11.12       | 2.2       | 1605.11    |
-| Ruby3      | JIT         | 10.43    | 10.73       | 0.1       | 98.71      |
-| Python3    | Nuitka      | 10.67    | 10.81       | 0.1       | 51.77      |
-| Ruby2.7    |             | 11.11    | 11.25       | 0.1       | 89.09      |
-| Ruby3      |             | 12.57    | 12.64       | 0.1       | 97.70      |
-| Ruby       | Rbx         | > 60     | > 60        | 0.0       | 492.53     |
-| Ruby       | GraalVM     | > 60     | > 60        | 1.1       | 662.25     |
-| Ruby       | GraalVM_JVM | > 60     | > 60        | 4.5       | 630.57     |
-
-
-## Fannkuchredux (5 runs)
-| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
-|------------|-------------|----------|-------------|-----------|------------|
-| Python3    | Cython      | 0.14     | 0.14        | 0.0       | 8.09       |
-| Javascript | Node        | 0.16     | 0.20        | 0.1       | 37.11      |
-| Javascript | GraalVM_JVM | 0.20     | 0.68        | 1.8       | 516.73     |
-| Crystal    |             | 0.21     | 0.21        | 0.0       | 3.11       |
-| C          | gcc         | 0.22     | 0.22        | 0.0       | 0.57       |
-| Javascript | GraalVM     | 0.23     | 0.43        | 0.1       | 419.37     |
-| Lua        | JIT         | 0.27     | 0.27        | 0.0       | 2.25       |
-| Ruby       | GraalVM_JVM | 0.29     | 1.15        | 1.7       | 529.16     |
-| Ruby       | GraalVM     | 0.34     | 0.71        | 0.0       | 534.18     |
-| Python3    | GraalVM_JVM | 0.40     | 1.50        | 4.4       | 849.17     |
-| Ruby       | Topaz       | 0.43     | 0.49        | 0.0       | 30.10      |
-| Python3    | GraalVM     | 0.55     | 1.27        | 0.2       | 715.26     |
-| Python2    | Pypy        | 0.69     | 0.71        | 0.0       | 66.36      |
-| Ruby       | JRuby_InDy  | 1.32     | 2.25        | 1.1       | 206.75     |
-| Lua        |             | 1.66     | 1.70        | 0.0       | 1.31       |
-| Ruby       | JRuby       | 2.24     | 2.65        | 1.1       | 175.72     |
-| Python3    | Pypy        | 3.53     | 3.53        | 0.1       | 60.59      |
-| Python2    |             | 3.80     | 3.82        | 0.0       | 6.34       |
-| Python3    |             | 3.99     | 4.00        | 0.0       | 7.64       |
-| Python3    | Nuitka      | 4.11     | 4.12        | 0.0       | 10.51      |
-| Ruby3      |             | 4.16     | 4.20        | 0.0       | 13.30      |
-| Ruby3      | JIT         | 4.16     | 4.49        | 0.0       | 13.64      |
-| Python2    | Jython      | 4.44     | 4.92        | 1.8       | 506.50     |
-| Ruby2.7    |             | 4.59     | 4.64        | 0.0       | 13.56      |
-| Ruby2.7    | JIT         | 4.61     | 4.76        | 0.0       | 13.60      |
-| Ruby       | Rbx         | > 60     | > 60        | 0.1       | 502.85     |
-
-
-## Pidigits (5 runs)
-| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
-|------------|-------------|----------|-------------|-----------|------------|
-| C          | gcc         | 1.64     | 1.65        | 0.0       | 5.34       |
-| Python3    | Cython      | 1.76     | 1.84        | 0.0       | 11.55      |
-| Javascript | Node        | 2.25     | 2.35        | 0.1       | 42.18      |
-| Javascript | GraalVM     | 3.41     | 3.77        | 0.2       | 715.29     |
-| Javascript | GraalVM_JVM | 4.70     | 5.35        | 2.1       | 677.35     |
-| Crystal    |             | 5.63     | 6.80        | 0.0       | 8.51       |
-| Python3    |             | 6.26     | 6.30        | 0.0       | 9.16       |
-| Python2    |             | 6.33     | 6.42        | 0.0       | 7.96       |
-| Python3    | Nuitka      | 7.03     | 7.35        | 0.0       | 12.07      |
-| Ruby       | Topaz       | 8.04     | 8.25        | 0.0       | 35.38      |
-| Python2    | Pypy        | 8.68     | 8.82        | 0.0       | 70.85      |
-| Python3    | Pypy        | 8.73     | 8.91        | 0.0       | 67.73      |
-| Ruby       | JRuby       | 8.83     | 9.21        | 1.0       | 383.46     |
-| Ruby       | JRuby_InDy  | 9.16     | 10.13       | 1.0       | 407.77     |
-| Ruby       | GraalVM_JVM | 9.62     | 10.34       | 1.8       | 777.07     |
-| Python2    | Jython      | 10.26    | 10.74       | 1.7       | 773.18     |
-| Ruby3      | JIT         | 11.27    | 11.73       | 0.0       | 152.80     |
-| Ruby3      |             | 11.34    | 11.53       | 0.0       | 152.88     |
-| Ruby       | GraalVM     | 11.67    | 12.11       | 0.0       | 898.81     |
-| Ruby2.7    | JIT         | 11.78    | 11.94       | 0.0       | 164.42     |
-| Ruby2.7    |             | 11.80    | 12.16       | 0.0       | 164.27     |
-| Python3    | GraalVM_JVM | 12.75    | 13.28       | 4.2       | 1084.82    |
-| Python3    | GraalVM     | 15.81    | 16.39       | 0.1       | 1170.71    |
-| Ruby       | Rbx         | 23.45    | 23.64       | 0.1       | 89.30      |
-
-
 ## Binarytrees (5 runs)
 | Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
 |------------|-------------|----------|-------------|-----------|------------|
-| C++        | g++         | 0.45     | 0.45        | 0.0       | 16.80      |
-| Crystal    |             | 0.68     | 0.78        | 0.0       | 37.94      |
-| Ruby       | GraalVM_JVM | 0.69     | 3.63        | 1.6       | 1167.12    |
-| Python3    | Cython      | 0.77     | 0.84        | 0.0       | 24.22      |
-| Ruby       | JRuby_InDy  | 0.80     | 1.36        | 1.2       | 765.91     |
-| C          | gcc         | 0.85     | 0.85        | 0.0       | 49.92      |
-| Ruby       | GraalVM     | 1.01     | 2.09        | 0.0       | 860.02     |
-| Javascript | Node        | 1.29     | 1.56        | 0.1       | 144.84     |
-| Javascript | GraalVM_JVM | 1.95     | 3.66        | 2.6       | 1449.33    |
-| Ruby       | Topaz       | 2.07     | 2.22        | 0.0       | 63.47      |
-| Javascript | GraalVM     | 2.50     | 3.22        | 0.1       | 1062.63    |
-| Ruby       | JRuby       | 2.67     | 2.96        | 1.1       | 557.80     |
-| Python3    | GraalVM_JVM | 3.29     | 21.59       | 5.8       | 1754.27    |
-| Python3    | Pypy        | 4.23     | 4.45        | 0.0       | 127.47     |
-| Python2    | Pypy        | 4.54     | 4.75        | 0.0       | 140.46     |
-| Ruby3      | JIT         | 4.86     | 5.03        | 0.0       | 53.75      |
-| Python3    | GraalVM     | 5.26     | 13.42       | 0.1       | 1541.63    |
-| Ruby3      |             | 5.48     | 5.55        | 0.0       | 53.50      |
-| Ruby2.7    | JIT         | 5.87     | 5.91        | 0.0       | 40.19      |
-| Ruby2.7    |             | 6.33     | 6.37        | 0.0       | 39.12      |
-| Lua        | JIT         | 8.90     | 10.03       | 0.0       | 184.50     |
-| Ruby       | Rbx         | 15.68    | 15.96       | 0.1       | 421.41     |
-| Lua        |             | 22.19    | 24.72       | 0.0       | 145.56     |
-| Python2    | Jython      | 24.92    | 25.41       | 2.0       | 1289.77    |
-| Python3    | Nuitka      | 83.60    | 83.60       | 0.0       | 108.20     |
-| Python3    |             | 85.84    | 85.84       | 0.0       | 105.23     |
-| Python2    |             | > 100    | > 100       | 0.0       | 205.80     |
-
-
-## Revcomp (1 runs)
-| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
-|------------|-------------|----------|-------------|-----------|------------|
-| C          | gcc         | 0.46     | 0.46        | 0.0       | 147.41     |
-| Python2    |             | 2.20     | 2.20        | 0.0       | 815.62     |
-| Python3    |             | 2.25     | 2.25        | 0.0       | 1183.05    |
-| Python3    | Cython      | 2.64     | 2.64        | 0.0       | 1183.71    |
-| Python3    | Nuitka      | 2.70     | 2.70        | 0.0       | 1186.21    |
-| Lua        | JIT         | 2.75     | 2.75        | 0.0       | 395.34     |
-| Python2    | Pypy        | 3.10     | 3.10        | 0.0       | 1402.64    |
-| Crystal    |             | 3.84     | 3.84        | 0.0       | 916.49     |
-| Ruby2.7    | JIT         | 3.90     | 3.90        | 0.0       | 157.33     |
-| Javascript | Node        | 4.00     | 4.00        | 0.0       | 230.50     |
-| Ruby2.7    |             | 4.00     | 4.00        | 0.0       | 157.07     |
-| Ruby3      | JIT         | 4.20     | 4.20        | 0.0       | 157.43     |
-| Ruby3      |             | 4.40     | 4.40        | 0.0       | 157.31     |
-| Ruby       | Topaz       | 4.84     | 4.84        | 0.0       | 841.23     |
-| Python3    | Pypy        | 5.47     | 5.47        | 0.0       | 1441.71    |
-| Ruby       | JRuby       | 7.34     | 7.34        | 0.0       | 828.41     |
-| Ruby       | JRuby_InDy  | 8.14     | 8.14        | 0.0       | 831.43     |
-| Lua        |             | 9.20     | 9.20        | 0.0       | 649.44     |
-| Javascript | GraalVM     | 11.47    | 11.47       | 0.0       | 1414.57    |
-| Ruby       | GraalVM     | 13.42    | 13.42       | 0.0       | 1985.41    |
-| Ruby       | GraalVM_JVM | 16.06    | 16.06       | 0.0       | 2008.59    |
-| Javascript | GraalVM_JVM | 22.31    | 22.31       | 0.0       | 1197.00    |
-| Python3    | GraalVM_JVM | 24.26    | 24.26       | 0.0       | 2141.66    |
-| Python3    | GraalVM     | 40.05    | 40.05       | 0.0       | 3206.81    |
-| Ruby       | Rbx         | > 60     | > 60        | 0.0       | 483.73     |
-| Python2    | Jython      | crashed  | crashed     | crashed   | 1503.15    |
-
-
-## Nbody (5 runs)
-| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
-|------------|-------------|----------|-------------|-----------|------------|
-| Python3    | Cython      | 0.73     | 0.75        | 0.0       | 7.86       |
-| C          | gcc         | 0.74     | 0.75        | 0.0       | 0.88       |
-| Javascript | Node        | 0.75     | 0.77        | 0.1       | 38.64      |
-| Crystal    |             | 0.78     | 0.79        | 0.0       | 3.23       |
-| Lua        | JIT         | 1.14     | 1.16        | 0.0       | 2.39       |
-| Ruby       | GraalVM_JVM | 1.18     | 2.41        | 2.7       | 552.54     |
-| Ruby       | GraalVM     | 1.20     | 1.68        | 0.2       | 618.84     |
-| Javascript | GraalVM     | 3.78     | 4.07        | 0.1       | 685.03     |
-| Python3    | GraalVM_JVM | 3.79     | 4.66        | 4.7       | 735.32     |
-| Python3    | GraalVM     | 4.49     | 4.91        | 0.1       | 608.31     |
-| Ruby       | Topaz       | 5.67     | 9.46        | 0.0       | 33.80      |
-| Javascript | GraalVM_JVM | 6.19     | 6.83        | 1.9       | 677.36     |
-| Python2    | Pypy        | 6.28     | 6.45        | 0.0       | 67.85      |
-| Ruby       | JRuby_InDy  | 8.18     | 9.60        | 1.7       | 731.75     |
-| Lua        |             | 18.18    | 18.27       | 0.0       | 1.25       |
-| Python3    | Pypy        | 31.17    | 31.17       | 0.0       | 63.87      |
-| Ruby2.7    | JIT         | 35.80    | 35.85       | 0.0       | 13.73      |
-| Ruby       | JRuby       | 45.82    | 45.82       | 1.7       | 620.23     |
-| Ruby2.7    |             | 48.09    | 48.09       | 0.0       | 13.45      |
-| Python3    |             | 48.59    | 48.59       | 0.0       | 8.00       |
-| Ruby3      | JIT         | 51.82    | 51.82       | 0.0       | 13.55      |
-| Ruby3      |             | 52.22    | 52.22       | 0.0       | 13.31      |
-| Python2    |             | 55.94    | 55.94       | 0.0       | 286.77     |
-| Python2    | Jython      | 61.66    | 61.66       | 1.6       | 1088.25    |
-| Python3    | Nuitka      | 73.61    | 73.61       | 0.0       | 10.95      |
-| Ruby       | Rbx         | > 80     | > 80        | 0.2       | 594.85     |
-
-
-## Fasta (5 runs)
-| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
-|------------|-------------|----------|-------------|-----------|------------|
-| C          | gcc         | 0.62     | 0.63        | 0.0       | 0.55       |
-| Crystal    |             | 0.84     | 0.85        | 0.0       | 4.25       |
-| Lua        | JIT         | 1.55     | 1.55        | 0.0       | 2.37       |
-| Ruby       | GraalVM_JVM | 2.56     | 5.53        | 1.7       | 810.31     |
-| Ruby       | GraalVM     | 2.95     | 3.91        | 0.0       | 883.45     |
-| Python2    | Pypy        | 2.97     | 3.01        | 0.0       | 68.42      |
-| Python3    | Pypy        | 3.51     | 3.57        | 0.0       | 66.28      |
-| Javascript | Node        | 3.53     | 3.59        | 0.1       | 45.56      |
-| Lua        |             | 3.84     | 3.86        | 0.0       | 1.25       |
-| Ruby       | Topaz       | 4.07     | 4.18        | 0.0       | 43.01      |
-| Python3    | Cython      | 5.75     | 5.83        | 0.0       | 8.52       |
-| Python3    | GraalVM_JVM | 6.19     | 14.16       | 4.5       | 1006.68    |
-| Python3    |             | 8.47     | 8.53        | 0.0       | 7.60       |
-| Python3    | GraalVM     | 9.05     | 15.15       | 0.1       | 1109.50    |
-| Python2    |             | 11.63    | 11.72       | 0.0       | 19.93      |
-| Javascript | GraalVM_JVM | 11.93    | 25.83       | 1.9       | 946.60     |
-| Python3    | Nuitka      | 12.81    | 12.85       | 0.0       | 10.57      |
-| Ruby       | JRuby_InDy  | 14.86    | 15.40       | 1.2       | 364.30     |
-| Ruby2.7    |             | 16.42    | 16.70       | 0.0       | 52.07      |
-| Ruby3      | JIT         | 16.43    | 16.49       | 0.0       | 42.64      |
-| Ruby2.7    | JIT         | 18.88    | 19.06       | 0.1       | 69.99      |
-| Ruby3      |             | 19.25    | 19.53       | 0.0       | 42.45      |
-| Javascript | GraalVM     | 20.42    | 25.17       | 0.1       | 983.49     |
-| Ruby       | JRuby       | 23.59    | 23.86       | 1.1       | 355.91     |
-| Python2    | Jython      | 37.21    | 37.40       | 1.6       | 520.98     |
-| Ruby       | Rbx         | > 80     | > 80        | 0.1       | 539.89     |
-
-
-## Regexdna (5 runs)
-| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
-|------------|-------------|----------|-------------|-----------|------------|
-| Javascript | Node        | 0.48     | 1.05        | 0.6       | 610.61     |
-| Javascript | GraalVM_JVM | 2.02     | 14.10       | 10.6      | 1331.86    |
-| Python2    | Pypy        | 2.22     | 2.33        | 0.3       | 367.70     |
-| Ruby       | Topaz       | 2.35     | 3.16        | 0.4       | 476.29     |
-| Python3    |             | 5.00     | 5.05        | 0.9       | 183.53     |
-| Javascript | GraalVM     | 5.06     | 25.54       | 8.9       | 1319.13    |
-| Python2    |             | 5.16     | 5.22        | 1.0       | 180.33     |
-| Crystal    |             | 5.55     | 5.58        | 0.1       | 372.58     |
-| C          | gcc         | 5.77     | 6.59        | 0.1       | 90.18      |
-| Ruby2.7    |             | 5.98     | 6.44        | 0.2       | 181.71     |
-| Ruby2.7    | JIT         | 5.99     | 6.36        | 0.2       | 181.75     |
-| Ruby3      |             | 6.26     | 6.62        | 0.2       | 182.16     |
-| Ruby3      | JIT         | 6.28     | 6.65        | 0.2       | 182.13     |
-| Python3    | Cython      | 6.32     | 6.37        | 0.3       | 224.84     |
-| Python3    | Nuitka      | 6.34     | 6.37        | 1.0       | 183.49     |
-| Ruby       | Rbx         | 7.02     | 12.32       | 1.6       | 450.87     |
-| Python2    | Jython      | 7.13     | 8.14        | 3.1       | 1777.36    |
-| Ruby       | GraalVM_JVM | 8.06     | 9.04        | 3.7       | 1383.88    |
-| Lua        | JIT         | 9.07     | 9.18        | 0.6       | 274.49     |
-| Lua        |             | 9.56     | 9.61        | 0.5       | 293.83     |
-| Ruby       | JRuby_InDy  | 9.92     | 11.33       | 1.3       | 453.32     |
-| Ruby       | JRuby       | 10.04    | 11.36       | 1.5       | 457.89     |
-| Python3    | Pypy        | 11.82    | 11.82       | 0.3       | 357.60     |
-| Ruby       | GraalVM     | 14.32    | 15.19       | 1.0       | 1658.77    |
-| Python3    | GraalVM     | crashed  | crashed     | crashed   | 4134.39    |
-| Python3    | GraalVM_JVM | crashed  | crashed     | crashed   | 1362.53    |
+| C++        | g++         | 0.47     | 0.48        | 0.0       | 17.04      |
+| Crystal    |             | 0.53     | 0.56        | 0.0       | 28.97      |
+| Ruby       | GraalVM_JVM | 0.69     | 1.96        | 1.7       | 739.38     |
+| Ruby       | JRuby_InDy  | 0.78     | 1.18        | 1.5       | 592.58     |
+| Python3    | Cython      | 0.84     | 0.91        | 0.0       | 23.86      |
+| C          | gcc         | 0.92     | 0.95        | 0.0       | 49.77      |
+| Javascript | Node        | 0.94     | 1.06        | 0.1       | 139.31     |
+| Ruby       | GraalVM     | 1.03     | 1.64        | 0.0       | 615.84     |
+| Javascript | GraalVM_JVM | 1.42     | 2.46        | 1.8       | 761.21     |
+| Python3    | GraalVM_JVM | 2.01     | 3.47        | 3.0       | 1048.27    |
+| Ruby       | Topaz       | 2.04     | 2.19        | 0.0       | 63.32      |
+| Javascript | GraalVM     | 2.06     | 2.81        | 0.2       | 810.99     |
+| Ruby       | JRuby       | 3.03     | 3.34        | 1.5       | 562.57     |
+| Python3    | GraalVM     | 3.07     | 4.14        | 0.1       | 974.04     |
+| Python3    | Pypy        | 3.93     | 4.01        | 0.0       | 126.85     |
+| Python2    | Pypy        | 3.99     | 4.18        | 0.0       | 141.14     |
+| Ruby3      | JIT         | 4.29     | 4.31        | 0.1       | 296.94     |
+| Ruby3      |             | 5.64     | 5.67        | 0.0       | 41.32      |
+| Ruby2.7    | JIT         | 6.06     | 6.10        | 0.0       | 27.80      |
+| Ruby2.7    |             | 6.73     | 6.75        | 0.0       | 47.03      |
+| Lua        | JIT         | 7.17     | 8.09        | 0.0       | 184.43     |
+| Ruby       | Rbx         | 15.65    | 16.11       | 0.1       | 421.44     |
+| Lua        |             | 17.24    | 19.68       | 0.0       | 169.71     |
+| Python2    | Jython      | 22.42    | 23.24       | 1.1       | 1021.79    |
+| Python3    | Mypyc       | 26.47    | 26.76       | 0.0       | 0.73       |
+| Python3    |             | 74.23    | 74.23       | 0.0       | 105.33     |
+| Python3    | Nuitka      | 75.57    | 75.57       | 0.0       | 107.87     |
+| Python2    |             | 90.99    | 90.99       | 0.0       | 205.93     |
 
 
 ## Brainfuck (2 runs)
 | Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
 |------------|-------------|----------|-------------|-----------|------------|
-| C++        | g++         | 2.40     | 2.43        | 0.0       | 1.48       |
-| Crystal    |             | 4.91     | 4.91        | 0.0       | 3.16       |
-| Javascript | Node        | 5.27     | 9.64        | 0.1       | 37.36      |
-| Python2    | Pypy        | 6.86     | 7.89        | 0.0       | 63.17      |
-| Python3    | Pypy        | 9.76     | 9.94        | 0.1       | 66.76      |
-| Ruby       | GraalVM_JVM | 17.58    | 18.91       | 2.4       | 552.24     |
-| Ruby       | Topaz       | 17.61    | 17.62       | 0.1       | 29.76      |
-| Ruby       | GraalVM     | 19.11    | 19.90       | 0.3       | 623.05     |
-| Javascript | GraalVM_JVM | 39.25    | 42.22       | 1.9       | 844.95     |
-| Python3    | GraalVM     | 43.30    | 45.49       | 0.9       | 802.16     |
-| Python3    | GraalVM_JVM | 44.74    | 44.81       | 5.2       | 1002.43    |
-| Javascript | GraalVM     | 50.14    | 51.46       | 0.2       | 773.80     |
-| Ruby       | JRuby_InDy  | 53.91    | 55.24       | 1.1       | 412.81     |
-| Ruby2.7    | JIT         | 105.16   | 105.30      | 0.0       | 13.52      |
-| Ruby3      | JIT         | 105.91   | 106.32      | 0.0       | 13.59      |
-| Ruby2.7    |             | 121.42   | 121.82      | 0.0       | 13.38      |
-| Ruby3      |             | 122.18   | 122.22      | 0.1       | 13.24      |
-| Ruby       | JRuby       | 127.82   | 127.82      | 1.5       | 398.49     |
-| Python3    | Cython      | 182.86   | 182.86      | 0.0       | 9.41       |
-| Python3    | Nuitka      | 204.84   | 204.84      | 0.0       | 11.00      |
-| Python2    |             | 229.81   | 229.81      | 0.0       | 6.07       |
-| Ruby       | Rbx         | > 250    | > 250       | 0.2       | 1133.30    |
-| Python3    |             | > 250    | > 250       | 0.0       | 8.91       |
-| Python2    | Jython      | > 250    | > 250       | 1.8       | 488.32     |
-
-
-## Matmul (5 runs)
-| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
-|------------|-------------|----------|-------------|-----------|------------|
-| C          | gcc         | 0.24     | 0.24        | 0.0       | 16.34      |
-| Crystal    |             | 0.26     | 0.27        | 0.0       | 22.29      |
-| Javascript | Node        | 0.27     | 0.28        | 0.1       | 75.75      |
-| Lua        | JIT         | 0.28     | 0.29        | 0.0       | 46.45      |
-| Python2    | Pypy        | 0.36     | 0.37        | 0.0       | 84.85      |
-| Python3    | Pypy        | 0.36     | 0.38        | 0.0       | 84.04      |
-| Python3    | Cython      | 0.41     | 0.41        | 0.0       | 84.28      |
-| Ruby       | Topaz       | 1.96     | 2.05        | 0.0       | 88.97      |
-| Ruby       | GraalVM_JVM | 1.98     | 3.90        | 1.7       | 975.52     |
-| Python3    | GraalVM_JVM | 2.21     | 4.22        | 5.4       | 840.76     |
-| Python3    | GraalVM     | 2.30     | 3.00        | 0.3       | 821.47     |
-| Javascript | GraalVM_JVM | 2.35     | 4.13        | 2.2       | 604.33     |
-| Ruby       | GraalVM     | 2.35     | 3.35        | 0.0       | 856.48     |
-| Javascript | GraalVM     | 2.86     | 4.17        | 0.1       | 461.75     |
-| Lua        |             | 5.85     | 6.04        | 0.0       | 74.20      |
-| Ruby2.7    | JIT         | 14.16    | 14.51       | 0.0       | 59.11      |
-| Ruby2.7    |             | 18.54    | 19.02       | 0.0       | 58.81      |
-| Python3    |             | 18.65    | 18.84       | 0.0       | 24.52      |
-| Ruby3      |             | 19.53    | 19.64       | 0.0       | 58.90      |
-| Ruby3      | JIT         | 20.40    | 20.57       | 0.0       | 59.11      |
-| Python2    |             | 24.11    | 24.24       | 0.0       | 22.29      |
-| Ruby       | JRuby_InDy  | 25.52    | 28.12       | 1.0       | 485.28     |
-| Python3    | Nuitka      | 26.38    | 26.66       | 0.0       | 26.57      |
-| Ruby       | JRuby       | 28.75    | 36.79       | 1.0       | 702.28     |
-| Ruby       | Rbx         | > 80     | > 80        | 0.1       | 720.14     |
-| Python2    | Jython      | > 80     | > 80        | 2.1       | 589.69     |
+| C++        | g++         | 2.56     | 2.56        | 0.0       | 1.59       |
+| Crystal    |             | 4.76     | 4.76        | 0.0       | 3.16       |
+| Javascript | Node        | 5.27     | 9.67        | 0.1       | 36.19      |
+| Python2    | Pypy        | 6.70     | 7.41        | 0.0       | 61.90      |
+| Python3    | Pypy        | 8.65     | 9.28        | 0.0       | 59.38      |
+| Ruby       | GraalVM_JVM | 16.38    | 18.02       | 1.8       | 362.05     |
+| Ruby       | Topaz       | 16.74    | 16.79       | 0.0       | 29.42      |
+| Ruby       | GraalVM     | 17.11    | 18.21       | 0.0       | 308.84     |
+| Python3    | GraalVM_JVM | 28.78    | 29.85       | 3.6       | 584.96     |
+| Python3    | GraalVM     | 41.66    | 44.89       | 0.3       | 609.61     |
+| Javascript | GraalVM_JVM | 50.90    | 51.14       | 1.9       | 483.73     |
+| Ruby       | JRuby_InDy  | 57.93    | 58.84       | 1.5       | 297.98     |
+| Javascript | GraalVM     | 73.07    | 75.16       | 0.2       | 602.63     |
+| Python3    | Mypyc       | 102.52   | 102.63      | 0.0       | 0.73       |
+| Ruby3      | JIT         | 109.28   | 109.28      | 0.1       | 270.12     |
+| Ruby2.7    | JIT         | 111.57   | 111.57      | 0.0       | 13.15      |
+| Ruby2.7    |             | 121.86   | 121.86      | 0.0       | 12.82      |
+| Ruby3      |             | 124.13   | 124.13      | 0.0       | 13.40      |
+| Ruby       | JRuby       | 142.35   | 142.35      | 1.5       | 279.37     |
+| Python3    | Nuitka      | 163.35   | 163.35      | 0.0       | 10.71      |
+| Python3    | Cython      | 174.77   | 174.77      | 0.0       | 9.28       |
+| Ruby       | Rbx         | > 190    | > 190       | 0.1       | 1001.40    |
+| Python2    |             | > 190    | > 190       | 0.0       | 6.07       |
+| Python3    |             | > 190    | > 190       | 0.0       | 8.95       |
+| Python2    | Jython      | > 190    | > 190       | 1.1       | 466.74     |
 
 
 ## Brainfuck2 (2 runs)
 | Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
 |------------|-------------|----------|-------------|-----------|------------|
-| C          | gcc         | 1.26     | 1.27        | 0.0       | 0.49       |
-| Crystal    |             | 2.11     | 2.12        | 0.0       | 3.11       |
-| Javascript | Node        | 3.89     | 9.22        | 0.1       | 37.46      |
-| Lua        | JIT         | 6.01     | 6.48        | 0.0       | 2.29       |
-| Ruby       | GraalVM_JVM | 10.64    | 13.28       | 2.1       | 1090.10    |
-| Python3    | GraalVM_JVM | 11.15    | 15.53       | 6.8       | 977.66     |
-| Python2    | Pypy        | 11.85    | 11.86       | 0.0       | 67.96      |
-| Python3    | Pypy        | 11.87    | 12.06       | 0.0       | 64.79      |
-| Ruby       | GraalVM     | 11.91    | 19.61       | 0.0       | 931.88     |
-| Python3    | GraalVM     | 13.48    | 14.90       | 0.3       | 852.70     |
-| Javascript | GraalVM     | 14.08    | 15.06       | 0.1       | 724.22     |
-| Javascript | GraalVM_JVM | 16.53    | 17.13       | 1.9       | 727.48     |
-| Ruby       | Topaz       | 23.62    | 23.62       | 0.0       | 31.73      |
-| Ruby       | JRuby_InDy  | 42.32    | 44.35       | 1.4       | 507.82     |
-| Lua        |             | 51.19    | 52.79       | 0.0       | 1.24       |
-| Ruby2.7    | JIT         | 56.45    | 56.61       | 0.0       | 13.73      |
-| Ruby3      | JIT         | 57.68    | 58.18       | 0.0       | 13.49      |
-| Ruby       | JRuby       | 91.72    | 93.29       | 1.2       | 364.79     |
-| Ruby2.7    |             | 95.75    | 98.10       | 0.0       | 13.36      |
-| Ruby3      |             | 113.55   | 113.74      | 0.0       | 13.27      |
-| Python3    | Nuitka      | 149.00   | 149.00      | 0.0       | 11.44      |
-| Python3    |             | 152.45   | 152.45      | 0.0       | 8.80       |
-| Python2    |             | 167.61   | 167.61      | 0.0       | 6.64       |
-| Python3    | Cython      | 187.85   | 187.85      | 0.0       | 9.49       |
-| Python2    | Jython      | 192.09   | 192.09      | 2.1       | 523.74     |
-| Ruby       | Rbx         | > 250    | > 250       | 0.2       | 1021.73    |
+| C          | gcc         | 1.26     | 1.27        | 0.0       | 0.71       |
+| Crystal    |             | 2.11     | 2.11        | 0.0       | 3.07       |
+| Javascript | Node        | 3.85     | 9.10        | 0.1       | 37.87      |
+| Lua        | JIT         | 5.93     | 6.36        | 0.0       | 2.23       |
+| Ruby       | GraalVM_JVM | 6.58     | 10.64       | 1.7       | 713.26     |
+| Ruby       | GraalVM     | 7.04     | 10.65       | 0.0       | 541.31     |
+| Python3    | Pypy        | 11.16    | 11.25       | 0.1       | 68.75      |
+| Python2    | Pypy        | 11.45    | 11.86       | 0.0       | 67.41      |
+| Javascript | GraalVM_JVM | 12.41    | 12.95       | 1.9       | 659.43     |
+| Python3    | GraalVM_JVM | 13.10    | 14.03       | 3.6       | 817.14     |
+| Javascript | GraalVM     | 13.45    | 13.52       | 0.2       | 496.74     |
+| Python3    | GraalVM     | 14.64    | 14.68       | 0.5       | 793.48     |
+| Ruby       | Topaz       | 23.14    | 23.18       | 0.0       | 31.81      |
+| Ruby       | JRuby_InDy  | 40.37    | 41.46       | 1.5       | 262.98     |
+| Ruby3      | JIT         | 46.81    | 46.85       | 0.1       | 270.29     |
+| Lua        |             | 57.35    | 57.36       | 0.0       | 1.43       |
+| Ruby2.7    | JIT         | 66.88    | 67.00       | 0.0       | 13.23      |
+| Python3    | Mypyc       | 75.70    | 75.91       | 0.0       | 0.72       |
+| Ruby3      |             | 95.12    | 95.33       | 0.0       | 13.54      |
+| Ruby       | JRuby       | 95.80    | 96.64       | 1.5       | 227.44     |
+| Ruby2.7    |             | 97.67    | 97.80       | 0.0       | 12.79      |
+| Python3    | Nuitka      | 133.79   | 133.79      | 0.0       | 10.70      |
+| Python2    |             | 155.23   | 155.23      | 0.0       | 6.12       |
+| Python3    |             | 155.71   | 155.71      | 0.0       | 8.86       |
+| Python3    | Cython      | 188.72   | 188.72      | 0.0       | 9.50       |
+| Python2    | Jython      | 209.80   | 209.80      | 1.1       | 476.05     |
+| Ruby       | Rbx         | > 250    | > 250       | 0.1       | 1021.77    |
+
+
+## Fannkuchredux (5 runs)
+| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
+|------------|-------------|----------|-------------|-----------|------------|
+| Python3    | Cython      | 0.14     | 0.14        | 0.0       | 7.93       |
+| Javascript | Node        | 0.16     | 0.20        | 0.1       | 36.50      |
+| Javascript | GraalVM_JVM | 0.18     | 0.70        | 1.7       | 339.42     |
+| C          | gcc         | 0.21     | 0.22        | 0.0       | 0.70       |
+| Javascript | GraalVM     | 0.22     | 0.44        | 0.2       | 272.80     |
+| Ruby       | GraalVM_JVM | 0.22     | 1.19        | 1.7       | 364.52     |
+| Crystal    |             | 0.22     | 0.22        | 0.0       | 3.11       |
+| Lua        | JIT         | 0.27     | 0.27        | 0.0       | 2.36       |
+| Ruby       | GraalVM     | 0.31     | 0.65        | 0.0       | 293.14     |
+| Python3    | GraalVM_JVM | 0.39     | 1.69        | 3.1       | 490.96     |
+| Ruby       | Topaz       | 0.43     | 0.48        | 0.0       | 29.80      |
+| Python3    | GraalVM     | 0.59     | 1.10        | 0.1       | 505.86     |
+| Python2    | Pypy        | 0.70     | 0.72        | 0.0       | 65.46      |
+| Ruby       | JRuby_InDy  | 1.13     | 2.12        | 1.5       | 260.50     |
+| Lua        |             | 1.97     | 1.97        | 0.0       | 1.37       |
+| Ruby       | JRuby       | 2.34     | 2.55        | 1.4       | 182.84     |
+| Python3    | Mypyc       | 3.13     | 3.16        | 0.0       | 0.66       |
+| Python3    | Pypy        | 3.36     | 3.36        | 0.0       | 59.70      |
+| Python3    | Nuitka      | 3.67     | 3.72        | 0.0       | 9.84       |
+| Python2    |             | 3.75     | 3.75        | 0.0       | 6.21       |
+| Python3    |             | 4.19     | 4.20        | 0.0       | 7.85       |
+| Python2    | Jython      | 4.43     | 5.34        | 1.1       | 455.48     |
+| Ruby2.7    | JIT         | 4.73     | 4.79        | 0.0       | 12.88      |
+| Ruby2.7    |             | 4.77     | 4.88        | 0.0       | 12.86      |
+| Ruby3      |             | 5.54     | 5.55        | 0.0       | 13.44      |
+| Ruby3      | JIT         | 5.62     | 5.64        | 0.1       | 270.05     |
+| Ruby       | Rbx         | > 60     | > 60        | 0.1       | 502.86     |
+
+
+## Fasta (5 runs)
+| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
+|------------|-------------|----------|-------------|-----------|------------|
+| C          | gcc         | 0.63     | 0.63        | 0.0       | 0.65       |
+| Crystal    |             | 0.85     | 0.86        | 0.0       | 3.75       |
+| Lua        | JIT         | 1.54     | 1.56        | 0.0       | 2.34       |
+| Ruby       | GraalVM_JVM | 2.66     | 5.46        | 2.3       | 448.52     |
+| Python2    | Pypy        | 2.88     | 2.91        | 0.2       | 68.69      |
+| Python3    | Pypy        | 3.30     | 3.35        | 0.2       | 67.69      |
+| Javascript | Node        | 3.33     | 3.41        | 0.1       | 45.63      |
+| Lua        |             | 3.67     | 3.69        | 0.0       | 1.32       |
+| Ruby       | GraalVM     | 3.73     | 4.58        | 0.3       | 400.38     |
+| Ruby       | Topaz       | 4.12     | 4.22        | 0.0       | 40.77      |
+| Python3    | GraalVM_JVM | 4.77     | 10.78       | 3.5       | 662.95     |
+| Python3    | Cython      | 5.66     | 5.69        | 0.0       | 8.35       |
+| Python3    | Mypyc       | 6.31     | 6.34        | 0.0       | 0.72       |
+| Python3    |             | 8.31     | 8.37        | 0.0       | 7.41       |
+| Javascript | GraalVM_JVM | 8.73     | 17.16       | 2.0       | 614.66     |
+| Python3    | GraalVM     | 8.87     | 12.67       | 0.6       | 596.14     |
+| Python2    |             | 11.37    | 11.42       | 0.0       | 19.63      |
+| Python3    | Nuitka      | 12.14    | 12.18       | 0.0       | 10.02      |
+| Javascript | GraalVM     | 13.16    | 17.89       | 0.4       | 550.05     |
+| Ruby3      | JIT         | 13.50    | 13.57       | 0.1       | 289.82     |
+| Ruby2.7    | JIT         | 17.62    | 17.75       | 0.0       | 57.29      |
+| Ruby2.7    |             | 17.73    | 17.80       | 0.0       | 59.11      |
+| Ruby3      |             | 17.79    | 18.02       | 0.1       | 33.23      |
+| Ruby       | JRuby_InDy  | 20.46    | 20.83       | 1.5       | 256.93     |
+| Ruby       | JRuby       | 28.48    | 28.53       | 1.8       | 288.71     |
+| Python2    | Jython      | 36.60    | 37.13       | 1.3       | 559.30     |
+| Ruby       | Rbx         | > 80     | > 80        | 0.2       | 539.93     |
+
+
+## Knucleotide (5 runs)
+| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
+|------------|-------------|----------|-------------|-----------|------------|
+| Lua        | JIT         | 0.87     | 1.03        | 0.0       | 44.98      |
+| C++        | g++         | 2.01     | 2.04        | 0.2       | 30.66      |
+| Python2    | Pypy        | 2.06     | 2.18        | 0.1       | 138.47     |
+| Crystal    |             | 2.48     | 2.55        | 0.0       | 59.78      |
+| Python3    | GraalVM_JVM | 2.79     | 4.29        | 3.8       | 697.67     |
+| Python3    | Pypy        | 3.45     | 3.56        | 0.1       | 146.07     |
+| Lua        |             | 3.92     | 4.09        | 0.1       | 63.02      |
+| Ruby       | Topaz       | 5.09     | 5.35        | 0.2       | 118.86     |
+| Javascript | Node        | 5.12     | 5.97        | 0.1       | 148.23     |
+| Python3    | GraalVM     | 5.97     | 6.66        | 0.9       | 549.47     |
+| Javascript | GraalVM_JVM | 6.13     | 7.25        | 3.8       | 556.20     |
+| Ruby       | GraalVM_JVM | 6.19     | 9.71        | 3.3       | 690.75     |
+| Python2    |             | 7.32     | 7.64        | 0.1       | 262.72     |
+| Python3    | Cython      | 8.90     | 8.95        | 0.1       | 49.56      |
+| Ruby       | JRuby_InDy  | 9.32     | 10.23       | 1.7       | 361.02     |
+| Ruby       | GraalVM     | 9.33     | 13.55       | 1.0       | 990.39     |
+| Python3    | Mypyc       | 9.39     | 9.46        | 0.1       | 0.73       |
+| Python3    |             | 9.41     | 9.50        | 0.1       | 49.05      |
+| Python2    | Jython      | 9.52     | 10.38       | 1.3       | 1392.27    |
+| Ruby       | JRuby       | 9.56     | 11.03       | 1.7       | 440.48     |
+| Ruby2.7    | JIT         | 9.92     | 10.31       | 0.1       | 61.23      |
+| Javascript | GraalVM     | 10.09    | 10.97       | 2.7       | 658.43     |
+| Python3    | Nuitka      | 10.23    | 10.29       | 0.1       | 51.04      |
+| Ruby3      | JIT         | 10.64    | 11.15       | 0.2       | 336.45     |
+| Ruby2.7    |             | 10.88    | 11.20       | 0.1       | 64.49      |
+| Ruby3      |             | 12.15    | 12.31       | 0.1       | 87.00      |
+| Ruby       | Rbx         | > 60     | > 60        | 0.0       | 492.45     |
 
 
 ## Mandelbrot (5 runs)
 | Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
 |------------|-------------|----------|-------------|-----------|------------|
-| C          | gcc         | 0.46     | 0.47        | 0.0       | 0.49       |
-| Crystal    |             | 0.46     | 0.46        | 0.0       | 3.05       |
-| Python3    | Cython      | 0.46     | 0.47        | 0.0       | 7.86       |
-| Javascript | Node        | 0.48     | 0.49        | 0.1       | 71.52      |
-| Lua        | JIT         | 0.51     | 0.51        | 0.0       | 0.93       |
-| Javascript | GraalVM     | 0.56     | 1.46        | 0.1       | 806.21     |
-| Javascript | GraalVM_JVM | 0.56     | 1.65        | 2.2       | 611.68     |
-| Python2    | Pypy        | 0.58     | 1.87        | 0.0       | 85.16      |
-| Python3    | Pypy        | 0.58     | 1.90        | 0.0       | 82.15      |
-| Ruby       | GraalVM     | 0.87     | 1.98        | 0.0       | 668.09     |
-| Ruby       | GraalVM_JVM | 0.95     | 3.75        | 1.7       | 707.86     |
-| Ruby       | Topaz       | 1.00     | 1.02        | 0.0       | 27.09      |
-| Python3    | GraalVM     | 1.30     | 1.98        | 0.1       | 739.14     |
-| Python3    | GraalVM_JVM | 1.37     | 2.39        | 5.4       | 790.57     |
-| Ruby       | JRuby_InDy  | 5.71     | 6.41        | 1.1       | 440.02     |
-| Lua        |             | 5.81     | 5.86        | 0.0       | 1.29       |
-| Ruby       | JRuby       | 13.68    | 14.78       | 1.1       | 411.16     |
-| Python2    | Jython      | 17.18    | 37.50       | 2.0       | 874.00     |
-| Ruby2.7    | JIT         | 20.05    | 20.10       | 0.0       | 13.61      |
-| Ruby2.7    |             | 20.34    | 20.45       | 0.0       | 13.65      |
-| Ruby3      |             | 21.78    | 22.08       | 0.0       | 13.55      |
-| Ruby3      | JIT         | 21.86    | 22.05       | 0.0       | 13.73      |
-| Python3    |             | 29.32    | 30.05       | 0.0       | 16.26      |
-| Python3    | Nuitka      | 33.36    | 33.50       | 0.0       | 19.16      |
-| Python2    |             | 35.20    | 36.08       | 0.0       | 15.32      |
-| Ruby       | Rbx         | > 120    | > 120       | 0.1       | 787.88     |
+| C          | gcc         | 0.46     | 0.46        | 0.0       | 0.65       |
+| Crystal    |             | 0.46     | 0.46        | 0.0       | 3.12       |
+| Python3    | Cython      | 0.46     | 0.47        | 0.0       | 7.95       |
+| Javascript | Node        | 0.47     | 0.49        | 0.1       | 71.46      |
+| Lua        | JIT         | 0.50     | 0.51        | 0.0       | 0.95       |
+| Javascript | GraalVM_JVM | 0.51     | 1.89        | 1.9       | 388.29     |
+| Python3    | Pypy        | 0.54     | 1.70        | 0.0       | 83.55      |
+| Javascript | GraalVM     | 0.55     | 1.50        | 0.2       | 457.70     |
+| Python2    | Pypy        | 0.56     | 1.80        | 0.0       | 87.02      |
+| Ruby       | GraalVM     | 0.91     | 1.86        | 0.0       | 316.61     |
+| Ruby       | GraalVM_JVM | 0.91     | 2.86        | 2.2       | 398.54     |
+| Ruby       | Topaz       | 0.96     | 1.00        | 0.0       | 26.53      |
+| Python3    | GraalVM_JVM | 1.01     | 1.66        | 3.2       | 441.50     |
+| Python3    | GraalVM     | 1.30     | 1.45        | 0.1       | 338.18     |
+| Lua        |             | 5.04     | 5.07        | 0.0       | 1.43       |
+| Ruby       | JRuby_InDy  | 5.43     | 6.01        | 1.4       | 460.41     |
+| Python2    | Jython      | 11.54    | 32.59       | 1.1       | 655.66     |
+| Ruby       | JRuby       | 16.56    | 19.60       | 1.6       | 643.15     |
+| Ruby2.7    | JIT         | 17.75    | 17.78       | 0.0       | 13.09      |
+| Ruby2.7    |             | 17.76    | 17.80       | 0.0       | 12.86      |
+| Ruby3      |             | 19.16    | 19.43       | 0.0       | 13.50      |
+| Ruby3      | JIT         | 19.98    | 20.29       | 0.1       | 270.22     |
+| Python3    | Mypyc       | 23.75    | 23.87       | 0.0       | 0.66       |
+| Python3    |             | 28.83    | 28.86       | 0.0       | 16.29      |
+| Python3    | Nuitka      | 30.42    | 30.58       | 0.0       | 18.51      |
+| Python2    |             | 32.98    | 33.06       | 0.0       | 15.20      |
+| Ruby       | Rbx         | > 120    | > 120       | 0.1       | 787.76     |
 
-## Versions: 
+
+## Matmul (5 runs)
+| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
+|------------|-------------|----------|-------------|-----------|------------|
+| C          | gcc         | 0.24     | 0.24        | 0.0       | 16.38      |
+| Crystal    |             | 0.26     | 0.27        | 0.0       | 22.35      |
+| Javascript | Node        | 0.26     | 0.28        | 0.1       | 76.88      |
+| Lua        | JIT         | 0.28     | 0.28        | 0.0       | 47.64      |
+| Javascript | GraalVM_JVM | 0.30     | 4.46        | 1.9       | 417.91     |
+| Python3    | Pypy        | 0.35     | 0.37        | 0.0       | 82.00      |
+| Python2    | Pypy        | 0.35     | 0.37        | 0.0       | 84.81      |
+| Python3    | Cython      | 0.41     | 0.41        | 0.0       | 83.94      |
+| Javascript | GraalVM     | 0.45     | 3.99        | 0.2       | 355.30     |
+| Python3    | GraalVM_JVM | 0.48     | 1.72        | 3.5       | 532.79     |
+| Python3    | GraalVM     | 0.49     | 0.94        | 0.2       | 458.04     |
+| Ruby       | GraalVM_JVM | 0.68     | 2.17        | 1.7       | 511.51     |
+| Ruby       | GraalVM     | 1.05     | 2.04        | 0.0       | 673.50     |
+| Ruby       | Topaz       | 1.84     | 1.88        | 0.0       | 88.95      |
+| Lua        |             | 6.13     | 6.18        | 0.0       | 73.95      |
+| Ruby3      | JIT         | 15.65    | 15.70       | 0.1       | 315.77     |
+| Ruby2.7    | JIT         | 16.85    | 16.93       | 0.0       | 58.50      |
+| Ruby3      |             | 18.54    | 18.58       | 0.0       | 58.99      |
+| Ruby2.7    |             | 19.00    | 19.05       | 0.0       | 58.22      |
+| Python3    |             | 19.48    | 19.79       | 0.0       | 24.50      |
+| Python2    |             | 22.46    | 22.63       | 0.0       | 21.88      |
+| Python3    | Nuitka      | 22.70    | 22.73       | 0.0       | 25.86      |
+| Python3    | Mypyc       | 23.91    | 24.07       | 0.0       | 0.66       |
+| Ruby       | JRuby_InDy  | 25.50    | 27.74       | 1.5       | 657.30     |
+| Ruby       | JRuby       | 35.45    | 35.74       | 1.5       | 576.41     |
+| Ruby       | Rbx         | > 80     | > 80        | 0.1       | 720.04     |
+| Python2    | Jython      | > 80     | > 80        | 1.2       | 450.19     |
+
+
+## Nbody (5 runs)
+| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
+|------------|-------------|----------|-------------|-----------|------------|
+| Python3    | Cython      | 0.68     | 0.69        | 0.0       | 7.79       |
+| Javascript | Node        | 0.75     | 0.78        | 0.1       | 39.81      |
+| Crystal    |             | 0.77     | 0.77        | 0.0       | 3.24       |
+| C          | gcc         | 0.80     | 0.80        | 0.0       | 1.01       |
+| Ruby       | GraalVM_JVM | 0.84     | 1.65        | 2.0       | 380.34     |
+| Ruby       | GraalVM     | 1.02     | 1.32        | 0.3       | 299.38     |
+| Lua        | JIT         | 1.15     | 1.17        | 0.0       | 1.02       |
+| Python3    | GraalVM_JVM | 3.37     | 4.46        | 3.1       | 557.64     |
+| Python3    | GraalVM     | 4.33     | 4.63        | 0.2       | 428.38     |
+| Ruby       | Topaz       | 5.45     | 9.14        | 0.0       | 33.46      |
+| Javascript | GraalVM     | 5.80     | 6.37        | 0.2       | 536.71     |
+| Javascript | GraalVM_JVM | 6.24     | 7.83        | 2.4       | 386.59     |
+| Python2    | Pypy        | 6.36     | 6.42        | 0.0       | 67.15      |
+| Ruby       | JRuby_InDy  | 8.15     | 8.86        | 1.5       | 418.39     |
+| Lua        |             | 17.44    | 17.52       | 0.0       | 1.38       |
+| Ruby3      | JIT         | 27.73    | 27.75       | 0.1       | 270.29     |
+| Python3    | Pypy        | 32.23    | 32.23       | 0.0       | 64.93      |
+| Ruby2.7    | JIT         | 36.78    | 36.80       | 0.0       | 13.24      |
+| Ruby2.7    |             | 42.80    | 42.80       | 0.0       | 12.88      |
+| Ruby3      |             | 44.52    | 44.52       | 0.0       | 13.39      |
+| Ruby       | JRuby       | 49.89    | 49.89       | 1.5       | 269.25     |
+| Python3    |             | 49.90    | 49.90       | 0.0       | 8.09       |
+| Python2    |             | 58.56    | 58.56       | 0.0       | 286.70     |
+| Python2    | Jython      | 62.50    | 62.50       | 1.1       | 1072.20    |
+| Python3    | Nuitka      | 66.95    | 66.95       | 0.0       | 10.20      |
+| Ruby       | Rbx         | > 80     | > 80        | 0.2       | 605.08     |
+| Python3    | Mypyc       | crashed  |             |           |            |
+
+
+## Pidigits (5 runs)
+| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
+|------------|-------------|----------|-------------|-----------|------------|
+| C          | gcc         | 1.63     | 1.64        | 0.0       | 5.49       |
+| Python3    | Cython      | 1.75     | 1.75        | 0.0       | 11.51      |
+| Javascript | Node        | 2.23     | 2.42        | 0.1       | 42.22      |
+| Javascript | GraalVM     | 3.15     | 3.59        | 0.2       | 474.75     |
+| Javascript | GraalVM_JVM | 3.79     | 4.38        | 2.1       | 342.32     |
+| Crystal    |             | 5.82     | 6.55        | 0.0       | 7.39       |
+| Python2    |             | 6.27     | 6.41        | 0.0       | 7.54       |
+| Python3    | Mypyc       | 6.41     | 6.42        | 0.0       | 0.72       |
+| Python3    |             | 6.46     | 6.57        | 0.0       | 9.11       |
+| Python3    | Nuitka      | 7.00     | 7.03        | 0.0       | 11.50      |
+| Ruby       | Topaz       | 7.39     | 7.43        | 0.0       | 35.21      |
+| Ruby       | GraalVM_JVM | 8.09     | 8.55        | 1.7       | 665.53     |
+| Python2    | Pypy        | 8.42     | 8.82        | 0.0       | 69.98      |
+| Ruby       | JRuby_InDy  | 8.49     | 9.38        | 1.4       | 387.00     |
+| Python3    | Pypy        | 8.68     | 8.90        | 0.0       | 65.58      |
+| Ruby       | JRuby       | 8.83     | 9.59        | 1.5       | 461.59     |
+| Python2    | Jython      | 9.64     | 10.15       | 1.1       | 696.97     |
+| Python3    | GraalVM_JVM | 10.46    | 11.17       | 3.1       | 737.56     |
+| Ruby       | GraalVM     | 11.02    | 11.22       | 0.0       | 383.44     |
+| Ruby3      | JIT         | 11.12    | 11.18       | 0.1       | 337.36     |
+| Ruby3      |             | 11.23    | 11.66       | 0.0       | 79.91      |
+| Ruby2.7    |             | 11.71    | 11.80       | 0.0       | 163.69     |
+| Ruby2.7    | JIT         | 11.72    | 11.81       | 0.0       | 163.64     |
+| Python3    | GraalVM     | 15.34    | 15.63       | 0.1       | 665.70     |
+| Ruby       | Rbx         | 22.49    | 22.60       | 0.1       | 89.05      |
+
+
+## Regexdna (5 runs)
+| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
+|------------|-------------|----------|-------------|-----------|------------|
+| Javascript | Node        | 0.45     | 0.99        | 0.4       | 608.45     |
+| Crystal    |             | 1.34     | 1.38        | 0.1       | 408.23     |
+| Ruby       | GraalVM_JVM | 1.67     | 6.14        | 3.7       | 1657.30    |
+| Ruby       | GraalVM     | 1.67     | 9.52        | 1.3       | 2503.38    |
+| Python3    | GraalVM_JVM | 2.06     | 7.54        | 5.2       | 1676.43    |
+| Javascript | GraalVM_JVM | 2.13     | 7.64        | 7.0       | 1608.17    |
+| Python2    | Pypy        | 2.17     | 2.27        | 0.1       | 329.50     |
+| Javascript | GraalVM     | 2.18     | 11.39       | 3.7       | 1061.76    |
+| Ruby       | Topaz       | 2.26     | 3.14        | 0.4       | 440.91     |
+| Python3    | GraalVM     | 2.86     | 9.97        | 1.4       | 998.57     |
+| Python3    |             | 5.12     | 5.13        | 0.8       | 185.02     |
+| Python3    | Mypyc       | 5.13     | 5.19        | 0.8       | 0.73       |
+| Python2    |             | 5.56     | 5.67        | 0.8       | 179.55     |
+| C          | gcc         | 5.63     | 6.36        | 0.1       | 90.09      |
+| Ruby2.7    | JIT         | 5.89     | 6.24        | 0.2       | 181.27     |
+| Ruby2.7    |             | 5.99     | 6.33        | 0.2       | 181.10     |
+| Python3    | Nuitka      | 6.42     | 6.44        | 1.1       | 182.44     |
+| Ruby3      |             | 6.55     | 6.61        | 0.3       | 137.89     |
+| Ruby3      | JIT         | 6.57     | 6.61        | 0.3       | 394.39     |
+| Python3    | Cython      | 6.58     | 6.63        | 0.3       | 228.38     |
+| Ruby       | Rbx         | 6.74     | 11.78       | 1.5       | 429.74     |
+| Python2    | Jython      | 7.04     | 7.37        | 2.3       | 1352.54    |
+| Lua        |             | 8.88     | 8.96        | 0.5       | 300.92     |
+| Lua        | JIT         | 8.96     | 9.01        | 0.6       | 274.47     |
+| Ruby       | JRuby_InDy  | 9.97     | 11.08       | 1.7       | 404.66     |
+| Ruby       | JRuby       | 10.71    | 11.77       | 1.6       | 442.88     |
+| Python3    | Pypy        | 11.48    | 11.48       | 0.2       | 363.45     |
+
+
+## Revcomp (1 runs)
+| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
+|------------|-------------|----------|-------------|-----------|------------|
+| C          | gcc         | 0.47     | 0.47        | 0.0       | 137.14     |
+| Python3    |             | 2.09     | 2.09        | 0.0       | 1183.07    |
+| Python2    |             | 2.10     | 2.10        | 0.0       | 805.16     |
+| Python3    | Nuitka      | 2.26     | 2.26        | 0.0       | 1185.86    |
+| Lua        | JIT         | 2.62     | 2.62        | 0.0       | 395.30     |
+| Python2    | Pypy        | 2.64     | 2.64        | 0.0       | 1312.89    |
+| Javascript | Node        | 3.49     | 3.49        | 0.0       | 231.54     |
+| Python3    | Cython      | 3.55     | 3.55        | 0.0       | 1183.47    |
+| Python3    | Pypy        | 3.80     | 3.80        | 0.0       | 1341.07    |
+| Ruby2.7    | JIT         | 4.07     | 4.07        | 0.0       | 156.77     |
+| Ruby3      | JIT         | 4.15     | 4.15        | 0.0       | 413.34     |
+| Ruby2.7    |             | 4.27     | 4.27        | 0.0       | 156.10     |
+| Ruby3      |             | 4.37     | 4.37        | 0.0       | 156.89     |
+| Ruby       | Topaz       | 4.44     | 4.44        | 0.0       | 815.95     |
+| Crystal    |             | 5.15     | 5.15        | 0.0       | 911.25     |
+| Ruby       | JRuby       | 6.92     | 6.92        | 0.0       | 764.96     |
+| Ruby       | JRuby_InDy  | 6.94     | 6.94        | 0.0       | 849.57     |
+| Lua        |             | 7.89     | 7.89        | 0.0       | 806.25     |
+| Javascript | GraalVM     | 8.28     | 8.28        | 0.0       | 940.21     |
+| Python3    | GraalVM     | 11.29    | 11.29       | 0.0       | 2773.11    |
+| Javascript | GraalVM_JVM | 12.90    | 12.90       | 0.0       | 914.90     |
+| Ruby       | GraalVM_JVM | 14.12    | 14.12       | 0.0       | 1473.93    |
+| Ruby       | GraalVM     | 15.88    | 15.88       | 0.0       | 1687.89    |
+| Python3    | Mypyc       | crashed  | crashed     | crashed   | 0.00       |
+| Ruby       | Rbx         | > 60     | > 60        | 0.0       | 494.32     |
+| Python3    | GraalVM_JVM | crashed  | crashed     | crashed   | 1489.10    |
+| Python2    | Jython      | crashed  | crashed     | crashed   | 1219.54    |
+
+
+## Spectralnorm (5 runs)
+| Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
+|------------|-------------|----------|-------------|-----------|------------|
+| C          | gcc         | 0.11     | 0.11        | 0.0       | 0.89       |
+| Python3    | Cython      | 0.11     | 0.11        | 0.0       | 10.44      |
+| Javascript | Node        | 0.11     | 0.13        | 0.1       | 38.93      |
+| Crystal    |             | 0.12     | 0.12        | 0.0       | 4.20       |
+| Lua        | JIT         | 0.13     | 0.13        | 0.0       | 2.36       |
+| Javascript | GraalVM     | 0.13     | 0.73        | 0.2       | 426.36     |
+| Ruby       | GraalVM     | 0.22     | 0.43        | 0.0       | 314.66     |
+| Javascript | GraalVM_JVM | 0.28     | 1.61        | 1.9       | 511.43     |
+| Ruby       | GraalVM_JVM | 0.37     | 1.19        | 1.8       | 450.49     |
+| Python2    | Pypy        | 0.68     | 0.69        | 0.0       | 67.19      |
+| Python3    | Pypy        | 0.73     | 0.77        | 0.0       | 64.39      |
+| Python3    | GraalVM_JVM | 1.17     | 7.32        | 3.2       | 540.57     |
+| Ruby       | Topaz       | 1.52     | 1.57        | 0.0       | 31.89      |
+| Python3    | GraalVM     | 1.70     | 5.41        | 0.1       | 601.62     |
+| Ruby       | JRuby_InDy  | 3.60     | 3.83        | 1.5       | 395.70     |
+| Lua        |             | 4.43     | 4.46        | 0.0       | 2.62       |
+| Ruby3      | JIT         | 9.75     | 9.79        | 0.1       | 270.93     |
+| Ruby       | JRuby       | 11.25    | 11.50       | 1.5       | 399.87     |
+| Ruby2.7    | JIT         | 13.13    | 13.50       | 0.0       | 13.67      |
+| Python3    | Mypyc       | 14.64    | 14.75       | 0.0       | 0.66       |
+| Python2    |             | 14.68    | 14.74       | 0.0       | 7.06       |
+| Ruby3      |             | 15.63    | 15.68       | 0.0       | 14.47      |
+| Ruby2.7    |             | 16.75    | 16.80       | 0.0       | 14.28      |
+| Python3    |             | 17.14    | 17.30       | 0.0       | 8.20       |
+| Python3    | Nuitka      | 20.56    | 20.65       | 0.0       | 10.52      |
+| Python2    | Jython      | 41.36    | 41.36       | 1.1       | 458.44     |
+| Ruby       | Rbx         | > 80     | > 80        | 0.1       | 614.80     |
+
+
+## Versions:
 * `Python 2.7.18`
-* `Python 3.9.2`
-* `Crystal 1.0.0 [dd40a2442] (2021-03-22)`
-* `gcc (Debian 10.2.1-6) 10.2.1 20210110`
-* `g++ (Debian 10.2.1-6) 10.2.1 20210110`
-* `Lua 5.4.2  Copyright (C) 1994-2020 Lua.org, PUC-Rio`
+* `Python 3.9.10`
+* `Crystal 1.3.2 [932f193ae] (2022-01-18)`
+* `gcc (Debian 11.2.0-16) 11.2.0`
+* `g++ (Debian 11.2.0-16) 11.2.0`
+* `Lua 5.4.4  Copyright (C) 1994-2022 Lua.org, PUC-Rio`
 * `LuaJIT 2.1.0-beta3 -- Copyright (C) 2005-2017 Mike Pall. http://luajit.org/`
-* `Nodejs v12.21.0`
-* `ruby 2.7.3p183 (2021-04-05 revision 6847ee089d) [x86_64-linux]`
+* `Nodejs v12.22.9`
+* `ruby 2.7.5p203 (2021-11-24 revision f69aeb8314) [x86_64-linux]`
 * `topaz (ruby-2.4.0p0) (git rev d9acd472) (kostya build: https://github.com/kostya/topaz) [x86_64-linux]`
-* `jruby 9.2.17.0 (2.5.8) 2021-03-29 84d363da97 OpenJDK 64-Bit Server VM 17-ea+17-Debian-1 on 17-ea+17-Debian-1 +jit [linux-x86_64]`
-* `Cython version 0.29.21`
-* `truffleruby 21.0.0.2, like ruby 2.7.2, GraalVM CE Native [x86_64-linux]`
-* `truffleruby 21.0.0.2, like ruby 2.7.2, GraalVM CE JVM [x86_64-linux]`
-* `Python 2.7.18 (63df5ef41012, Apr 04 2021, 10:19:14) [PyPy 7.3.4 with GCC 7.3.1 20180303 (Red Hat 7.3.1-5)]`
-* `Python 3.7.10 (51efa818fd9b, Apr 04 2021, 11:22:34) [PyPy 7.3.4 with GCC 7.3.1 20180303 (Red Hat 7.3.1-5)]`
-* `openjdk version "17-ea" 2021-09-14`
-* `Python 3.8.5 (GraalVM CE Native 21.0.0.2)`
-* `Python 3.8.5 (GraalVM CE JVM 21.0.0.2)`
-* `GraalNode v12.20.1`
+* `jruby 9.3.3.0 (2.6.8) 2022-01-19 b26de1f5c5 OpenJDK 64-Bit Server VM 17.0.2+8-Debian-1 on 17.0.2+8-Debian-1 +jit [linux-x86_64]`
+* `Cython version 0.29.28`
+* `truffleruby 22.0.0.2, like ruby 3.0.2, GraalVM CE Native [x86_64-linux]`
+* `truffleruby 22.0.0.2, like ruby 3.0.2, GraalVM CE JVM [x86_64-linux]`
+* `Python 2.7.18 (b89256933b0b, Oct 04 2021, 15:22:08) [PyPy 7.3.6 with GCC 7.3.1 20180303 (Red Hat 7.3.1-5)]`
+* `Python 3.8.12 (d00b0afd2a5dd3c13fcda75d738262c864c62fa7, Feb 18 2022, 09:52:33) [PyPy 7.3.8 with GCC 10.2.1 20210130 (Red Hat 10.2.1-11)]`
+* `openjdk version "17.0.2" 2022-01-18`
+* `GraalVM Python 3.8.5 (GraalVM CE Native 22.0.0.2)`
+* `GraalVM Python 3.8.5 (GraalVM CE JVM 22.0.0.2)`
+* `GraalNode v14.18.1`
 * `Jython 2.7.2`
-* `Nuitka 0.6.13`
-* `ruby 3.0.1p64 (2021-04-05 revision 0fb782ee38) [x86_64-linux]`
+* `Nuitka 0.7.3`
+* `ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]`
 * `rubinius 5.0 (10.0 a0a9ed90 2020-05-16 7.0.0) [x86_64-linux-gnu]`
+* `mypy 0.931`
 

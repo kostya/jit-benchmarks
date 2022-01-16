@@ -6,3 +6,5 @@ rm -rf .crystal
 rm -rf nimcache
 rm -rf .jython_cache
 rm -rf *.build/
+rm -rf ./build/
+rm *.so

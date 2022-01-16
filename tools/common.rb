@@ -50,6 +50,8 @@ NAMES = {
   "cython" => {name: "Python3", name2: "Cython", cmd: ["./bin_cython3"], group: "python", native: true},
   "jython" => {name: "Python2", name2: "Jython", cmd: ["jython"], group: "python"},
 
+  "mypyc" => {name: "Python3", name2: "Mypyc", cmd: ["./run_mypyc"], group: "python", native: true},
+
   "lua" => {name: "Lua", name2: "", cmd: ["lua"], group: "lua"},
   "luajit" => {name: "Lua", name2: "JIT", cmd: ["luajit"], group: "lua"},
 
@@ -58,7 +60,7 @@ NAMES = {
   "graalnode_jvm" => {name: "Javascript", name2: "GraalVM_JVM", cmd: ["graalnode", "--jvm"], group: "js"},
 }
 
-BINS = %w{crystal c cython nuitka}
+BINS = %w{crystal c cython nuitka mypyc}
 RUBIES = NAMES.select { |k, v| v[:group] == "ruby" && !v[:native] }.keys 
 LUAS = %w{lua luajit}
 PYTHONS = NAMES.select { |k, v| v[:group] == "python" && !v[:native] }.keys
