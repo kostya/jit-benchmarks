@@ -3,40 +3,57 @@ FROM debian:testing
 WORKDIR /opt
 
 RUN apt-get update \
-  && apt-get install -y wget openssl curl procps gcc patch bzip2 gawk g++ autoconf automake bison libffi-dev libsqlite3-dev libtool libyaml-dev make pkg-config sqlite3 zlib1g-dev libgmp-dev libssl-dev less openjdk-17-jre-headless git nodejs npm lua5.4 luajit clang llvm vim libpcre3-dev libevent-dev libatomic1 python2.7 python2.7-dev libpython2.7-dev python3-dev cython3
-# questions libedit-dev libgdbm-dev libncurses5-dev
+  && apt-get install -y wget openssl curl procps gcc patch bzip2 \ 
+  gawk g++ autoconf automake bison libffi-dev libsqlite3-dev libtool \
+  libyaml-dev make pkg-config sqlite3 zlib1g-dev libgmp-dev libssl-dev \
+  less openjdk-17-jre-headless git nodejs npm lua5.4 luajit clang llvm \
+  vim libpcre3-dev libevent-dev libatomic1 python2.7 python2.7-dev libpython2.7-dev \
+  python3-dev cython3 php8.1 libreadline-dev python3-pip php-gmp \
+  && rm -rf /var/lib/apt/lists/* /usr/share/man/*
+
+RUN wget --progress=dot:giga -O - \
+    https://www.openssl.org/source/openssl-1.1.1q.tar.gz \
+    | tar -xz \
+    && cd openssl-1.1.1q \
+    && ./config shared --prefix=/opt/openssl1.1.1q \
+    && make -j4 \
+    && make install_sw \
+    && rm -rf /opt/openssl-1.1.1q
 
 # https://www.ruby-lang.org/en/downloads/
-RUN export VERSION=ruby-2.7.5 \
+RUN export VERSION=ruby-2.7.6 \
     && wget --progress=dot:giga -O - \
     https://cache.ruby-lang.org/pub/ruby/2.7/$VERSION.tar.gz \
     | tar -xz \
-    && cd $VERSION \
-    && ./configure --prefix=/opt/ruby --disable-install-doc --disable-install-rdoc --disable-install-capi && make -j && make install \
+    && cd $VERSION \    
+    && ./configure --prefix=/opt/ruby --disable-install-doc --disable-install-rdoc --disable-install-capi --with-openssl-dir=/opt/openssl1.1.1q \
+    && make -j4 && make install \
     && cd .. && rm -rf $VERSION    
 ENV PATH="/opt/ruby/bin:${PATH}"
 
-RUN curl -L 'https://downloads.python.org/pypy/pypy2.7-v7.3.6-linux64.tar.bz2' > l.tar.bz2 \
+RUN export PYPY2=pypy2.7-v7.3.6 \
+  && curl -L "https://downloads.python.org/pypy/$PYPY2-linux64.tar.bz2" > l.tar.bz2 \
   && tar xjf l.tar.bz2 \
-  && curl -L 'https://downloads.python.org/pypy/pypy2.7-v7.3.6-src.tar.bz2' > s.tar.bz2 \
+  && curl -L "https://downloads.python.org/pypy/$PYPY2-src.tar.bz2" > s.tar.bz2 \
   && tar xjf s.tar.bz2 \
   && rm *.tar.bz2 \
-  && ln -sf /opt/pypy2.7-v7.3.6-linux64/bin/pypy /usr/bin/pypy2
+  && ln -sf /opt/$PYPY2-linux64/bin/pypy /usr/bin/pypy2
 
 # https://github.com/crystal-lang/crystal/releases
-ARG CRYSTAL=1.3.2
+ARG CRYSTAL=1.5.0
 RUN wget --progress=dot:giga -O - \
     https://github.com/crystal-lang/crystal/releases/download/$CRYSTAL/crystal-$CRYSTAL-1-linux-x86_64.tar.gz \
     | tar -xz
 ENV PATH="/opt/crystal-$CRYSTAL-1/bin:${PATH}"
 
-RUN curl -L 'https://downloads.python.org/pypy/pypy3.8-v7.3.8-linux64.tar.bz2' > l.tar.bz2 \
+ARG PYPY3=pypy3.9-v7.3.9
+RUN curl -L "https://downloads.python.org/pypy/$PYPY3-linux64.tar.bz2" > l.tar.bz2 \
   && tar xjf l.tar.bz2 \
   && rm *.tar.bz2 \
-  && ln -sf /opt/pypy3.8-v7.3.8-linux64/bin/pypy /usr/bin/pypy3
+  && ln -sf /opt/$PYPY3-linux64/bin/pypy /usr/bin/pypy3
 
 # https://github.com/graalvm/graalvm-ce-builds/releases
-ARG GRAALVM=22.0.0.2
+ARG GRAALVM=22.2.0
 RUN wget --progress=dot:giga -O - \
     https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-$GRAALVM/graalvm-ce-java17-linux-amd64-$GRAALVM.tar.gz \
     | tar -xz \
@@ -50,7 +67,7 @@ RUN gu install nodejs \
     && ln -s /opt/graalvm-ce-java17-$GRAALVM/bin/node /usr/bin/graalnode
 
 # https://www.jruby.org/download
-ARG JRUBY=9.3.3.0
+ARG JRUBY=9.3.7.0
 RUN wget --progress=dot:giga -O - \
     https://repo1.maven.org/maven2/org/jruby/jruby-dist/$JRUBY/jruby-dist-$JRUBY-bin.tar.gz \
     | tar -xz \
@@ -71,12 +88,12 @@ RUN set -eux && \
     ln -sfv "$JYTHON_HOME/bin/"* /usr/local/bin/ 
 
 # https://www.ruby-lang.org/en/downloads/
-RUN export VERSION=ruby-3.1.1 \
+RUN export VERSION=ruby-3.1.2 \
     && wget --progress=dot:giga -O - \
     https://cache.ruby-lang.org/pub/ruby/3.1/$VERSION.tar.gz \
     | tar -xz \
     && cd $VERSION \
-    && ./configure --prefix=/opt/ruby3 --disable-install-doc --disable-install-rdoc --disable-install-capi && make -j && make install \
+    && ./configure --prefix=/opt/ruby3 --disable-install-doc --disable-install-rdoc --disable-install-capi && make -j4 && make install \
     && cd .. && rm -rf $VERSION && ln -sf /opt/ruby3/bin/ruby /usr/local/bin/ruby3
 
 RUN npm install -g mpzjs
@@ -86,18 +103,21 @@ RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py \
   && rm get-pip.py \
   && ln -sf /opt/pypy2.7-v7.3.6-linux64/bin/pip /usr/bin/pypy2-pip
 
-RUN git clone https://github.com/kostya/topaz.git \
-  && cd topaz \
-  && pypy2-pip install -r requirements.txt \
-  && pypy2 ../pypy2.7-v7.3.6-src/rpython/bin/rpython -Ojit targettopaz.py \
-  && rm -rf /tmp/*
-ENV PATH="/opt/topaz/bin:$PATH"  
+RUN wget --progress=dot:giga -O - \
+    https://rubinius-binaries-rubinius-com.s3-us-west-2.amazonaws.com/ubuntu/16.04/x86_64/rubinius-5.0.tar.bz2 \
+    | tar -xj \
+    && ln -sf /opt/rubinius/5.0/bin/rbx /usr/bin/rbx
 
-ADD https://rubinius-binaries-rubinius-com.s3-us-west-2.amazonaws.com/ubuntu/16.04/x86_64/rubinius-5.0.tar.bz2 /tmp/rubinius.tar.bz2
-RUN cd /opt && tar xvjf /tmp/rubinius.tar.bz2 && rm /tmp/rubinius.tar.bz2 \
-   && ln -sf /opt/rubinius/5.0/bin/rbx /usr/bin/rbx
-
-RUN apt install -y python3-pip
 RUN pip3 install nuitka
 RUN python3 -m pip install -U mypy
+
+RUN git clone https://github.com/kostya/topaz.git \
+  && cd topaz \
+  && rm -rf .git \
+  && pypy2-pip install -r requirements.txt
+RUN cd topaz \ 
+  && pypy2 ../pypy2.7-v7.3.6-src/rpython/bin/rpython -Ojit targettopaz.py \
+  && rm -rf /tmp/*
+
+ENV PATH="/opt/topaz/bin:$PATH"
 

@@ -44,7 +44,7 @@ NAMES = {
   "graalpython" => {name: "Python3", name2: "GraalVM", cmd: ["graalpython"], group: "python"},
   "graalpython_jvm" => {name: "Python3", name2: "GraalVM_JVM", cmd: ["graalpython", "--jvm"], group: "python"},
   "python2" => {name: "Python2", name2: "", cmd: ["python2.7"], group: "python"},
-  "python3" => {name: "Python3", name2: "", cmd: ["python3.9"], group: "python"},
+  "python3" => {name: "Python3", name2: "", cmd: ["python3.10"], group: "python"},
   "pypy2" => {name: "Python2", name2: "Pypy", cmd: ["pypy2"], group: "python"},
   "pypy3" => {name: "Python3", name2: "Pypy", cmd: ["pypy3"], group: "python"},
   "cython" => {name: "Python3", name2: "Cython", cmd: ["./bin_cython3"], group: "python", native: true},
@@ -58,6 +58,11 @@ NAMES = {
   "node" => {name: "Javascript", name2: "Node", cmd: ["node"], group: "js"},
   "graalnode" => {name: "Javascript", name2: "GraalVM", cmd: ["graalnode"], group: "js"},
   "graalnode_jvm" => {name: "Javascript", name2: "GraalVM_JVM", cmd: ["graalnode", "--jvm"], group: "js"},
+
+  "php" => {name: "PHP", name2: "", cmd: ["php8.1"], group: "php"},
+
+  # best options by: https://stitcher.io/blog/php-8-jit-setup
+  "php_jit" => {name: "PHP", name2: "JIT", cmd: ["php8.1", "-dopcache.enable_cli=1", "-dopcache.enable=1", "-dopcache.jit_buffer_size=500M", "-dopcache.jit=1255"], group: "php"},
 }
 
 BINS = %w{crystal c cython nuitka mypyc}
@@ -65,6 +70,7 @@ RUBIES = NAMES.select { |k, v| v[:group] == "ruby" && !v[:native] }.keys
 LUAS = %w{lua luajit}
 PYTHONS = NAMES.select { |k, v| v[:group] == "python" && !v[:native] }.keys
 JAVASCRIPTS = %w{node graalnode graalnode_jvm}
+PHPS = %w{php php_jit}
 
 def name_to_path(name)
   name.gsub(%r{[\./ \-]}i, "")

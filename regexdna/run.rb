@@ -9,7 +9,8 @@ CMDS = {
 	"regexdna.rb" => RUBIES,
 	"regexdna.py" => PYTHONS,
 	"regexdna.lua" => LUAS,
-	"regexdna.js" => JAVASCRIPTS
+	"regexdna.js" => JAVASCRIPTS,
+  "regexdna.php" => PHPS
 }
 
 run_cmds(CMDS, N)

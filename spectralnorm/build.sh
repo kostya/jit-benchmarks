@@ -3,7 +3,7 @@ crystal build spectralnorm.cr --release -o bin_cr
 
 
 cython3 --embed spectralnorm.pyx -o /tmp/cython3.c
-gcc -O3 -g -o bin_cython3 /tmp/cython3.c -I/usr/include/python3.9/ -lpython3.9 -lm
+gcc -O3 -g -o bin_cython3 /tmp/cython3.c -I/usr/include/python3.10/ -lpython3.10 -lm
 
 python3 -m nuitka spectralnorm.py -o bin_nuitka
 

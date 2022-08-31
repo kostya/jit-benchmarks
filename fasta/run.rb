@@ -9,7 +9,8 @@ CMDS = {
 	"fasta.py" => PYTHONS - %w{python2 pypy2 jython},
 	"fasta2.py" => %w{python2 pypy2 jython},
 	"fasta.lua" => LUAS,
-	"fasta.js" => JAVASCRIPTS
+	"fasta.js" => JAVASCRIPTS,
+  "fasta.php" => PHPS
 }
 
 run_cmds(CMDS, N)

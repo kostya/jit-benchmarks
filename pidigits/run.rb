@@ -8,7 +8,8 @@ CMDS = {
 	"pidigits.rb" => RUBIES,
 	"pidigits.py" => PYTHONS, # - ["graalpython", "graalpython_jvm"],
 	# "pidigits.lua" => LUAS,
-	"pidigits.js" => JAVASCRIPTS
+	"pidigits.js" => JAVASCRIPTS,
+  "pidigits.php" => PHPS
 }
 
 run_cmds(CMDS, N)

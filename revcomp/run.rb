@@ -9,7 +9,8 @@ CMDS = {
 	"revcomp.py" => PYTHONS - %w{python2 pypy2 jython},
 	"revcomp2.py" => %w{python2 pypy2 jython},
 	"revcomp.lua" => LUAS,
-	"revcomp.js" => JAVASCRIPTS
+	"revcomp.js" => JAVASCRIPTS,
+  "revcomp.php" => PHPS
 }
 
 run_cmds(CMDS, "")

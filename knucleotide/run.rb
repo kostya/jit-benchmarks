@@ -9,7 +9,8 @@ CMDS = {
 	"knucleotide.rb" => RUBIES,
 	"knucleotide.py" => PYTHONS,
 	"knucleotide.lua" => LUAS,
-	"knucleotide.js" => JAVASCRIPTS
+	"knucleotide.js" => JAVASCRIPTS,
+  "knucleotide.php" => PHPS
 }
 
 run_cmds(CMDS, N)

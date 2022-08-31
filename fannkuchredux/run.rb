@@ -10,7 +10,8 @@ CMDS = {
 	"fannkuchredux.rb" => RUBIES,
 	"fannkuchredux.py" => PYTHONS,
 	"fannkuchredux.lua" => LUAS,
-	"fannkuchredux.js" => JAVASCRIPTS
+	"fannkuchredux.js" => JAVASCRIPTS,
+  "fannkuchredux.php" => PHPS
 }
 
 run_cmds(CMDS, N)

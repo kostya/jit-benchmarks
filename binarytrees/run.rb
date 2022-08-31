@@ -8,7 +8,8 @@ CMDS = {
 	"binarytrees.rb" => RUBIES,
 	"binarytrees.py" => PYTHONS,
 	"binarytrees.lua" => LUAS,
-	"binarytrees.js" => JAVASCRIPTS
+	"binarytrees.js" => JAVASCRIPTS,
+  "binarytrees.php" => PHPS
 }
 
 run_cmds(CMDS, N)

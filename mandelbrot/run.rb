@@ -8,7 +8,8 @@ CMDS = {
 	"mandelbrot.rb" => RUBIES,
 	"mandelbrot.py" => PYTHONS,
 	"mandelbrot.lua" => LUAS,
-	"mandelbrot.js" => JAVASCRIPTS
+	"mandelbrot.js" => JAVASCRIPTS,
+  "mandelbrot.php" => PHPS
 }
 
 run_cmds(CMDS, N)

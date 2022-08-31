@@ -8,7 +8,8 @@ CMDS = {
 	"nbody.rb" => RUBIES,
 	"nbody.py" => PYTHONS,
 	"nbody.lua" => LUAS,
-	"nbody.js" => JAVASCRIPTS
+	"nbody.js" => JAVASCRIPTS,
+  "nbody.php" => PHPS
 }
 
 run_cmds(CMDS, N)

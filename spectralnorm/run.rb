@@ -8,7 +8,8 @@ CMDS = {
 	"spectralnorm.rb" => RUBIES,
 	"spectralnorm.py" => PYTHONS,
 	"spectralnorm.lua" => LUAS,
-	"spectralnorm.js" => JAVASCRIPTS
+	"spectralnorm.js" => JAVASCRIPTS,
+  "spectralnorm.php" => PHPS
 }
 
 run_cmds(CMDS, N)
