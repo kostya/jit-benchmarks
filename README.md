@@ -8,8 +8,8 @@ Compare:
 		* Python (Cpython, Graal, Pypy, Cython, Jython, Nuitka, Mypyc)
 		* Lua (JIT)
 		* Javascript (Node, Graal)
-    * PHP8.1 (JIT)
-		* C, Crystal as a basis
+	  * PHP8.1 (JIT)
+	  * C, Crystal as a basis
 
 Running on AMD Ryzen 7 3800X, 16Gb DDR-4 3200 Mghz, host os Windows10, VirtualBox with Ubuntu 20.04.01, in docker with os Debian/Testing. (This looks like big overhead - vm in vm, but i also test in Docker on pure Ubuntu, and perfomance is the same, and surprisingly on Windows it sometimes even faster O_o, AMD-V is something awesome).
 
