@@ -298,7 +298,7 @@ Every test run code by 5 times, within one process, it allow to do some warnups 
 ## Nbody (5 runs)
 | Language   | Interpreter | Best T,s | Longest T,s | Start T,s | MaxMem, Mb |
 |------------|-------------|----------|-------------|-----------|------------|
-| Python3    | Mypyc       | 0.00     | 0.00        | 0.0       | 0.00       |
+| Python3    | Mypyc       | -        | -           | -         | -          |
 | C          | gcc         | 0.63     | 0.67        | 0.0       | 1.10       |
 | Python3    | Cython      | 0.69     | 0.71        | 0.0       | 7.83       |
 | Crystal    |             | 0.77     | 0.78        | 0.0       | 3.50       |
