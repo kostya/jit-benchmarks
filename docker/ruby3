@@ -1,0 +1,14 @@
+FROM jit-benchmarks:base
+
+ARG major_version
+ARG version
+ENV RUBY3_VERSION=ruby-$version
+RUN wget --progress=dot:giga -O - \
+    https://cache.ruby-lang.org/pub/ruby/$major_version/$RUBY3_VERSION.tar.gz \
+    | tar -xz
+
+RUN cd $RUBY3_VERSION && ./configure --prefix=/opt/ruby3 --disable-install-doc --disable-install-rdoc --disable-install-capi 
+RUN cd $RUBY3_VERSION && make -j4
+RUN cd $RUBY3_VERSION && make install
+RUN rm -rf $RUBY3_VERSION
+RUN ln -sf /opt/ruby3/bin/ruby /usr/local/bin/ruby3

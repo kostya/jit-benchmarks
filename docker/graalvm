@@ -1,0 +1,12 @@
+FROM jit-benchmarks:java
+
+ARG version
+ARG java_version
+ARG arch
+ENV GRAALVM=$version
+RUN if [ "$arch" = "amd64" ] || [ "$arch" = "" ]; then export ARCH="linux-amd64"; else export ARCH="linux-aarch64"; fi && \
+    wget --progress=dot:giga -O - \
+    https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-$GRAALVM/graalvm-ce-java$java_version-$ARCH-$GRAALVM.tar.gz \
+    | tar -xz \
+    && ln -s /opt/graalvm-ce-java$java_version-$GRAALVM/bin/gu /usr/bin/gu
+ENV GRAALVM_PATH=/opt/graalvm-ce-java$java_version-$GRAALVM

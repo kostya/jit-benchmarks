@@ -1,0 +1,3827 @@
+---
+binarytrees:
+  c:
+    build_time: 0.39955845999065787
+    build_ram: 2.49609375
+    status: ok
+    full_time: 4.678283825982362
+    start_time: 0.2627573369536549
+    runs: 5
+    min_run_time: 0.88
+    max_run_time: 0.92
+    start_ram: 17.484375
+    max_ram: 49.578125
+    max_run_ram_diff: 8.1171875
+  cpp:
+    build_time: 0.5477179329609498
+    build_ram: 2.46875
+    status: ok
+    full_time: 2.396892693010159
+    start_time: 0.19776875397656113
+    runs: 5
+    min_run_time: 0.44
+    max_run_time: 0.47
+    start_ram: 15.5
+    max_ram: 17.3046875
+    max_run_ram_diff: 1.8046875
+  crystal:
+    build_time: 9.663124770973809
+    build_ram: 261.828125
+    status: ok
+    full_time: 3.3557795350207016
+    start_time: 0.21028809703420848
+    runs: 5
+    min_run_time: 0.624323437
+    max_run_time: 0.641968143
+    start_ram: 22.125
+    max_ram: 22.125
+    max_run_ram_diff: 0.0
+  cython:
+    build_time: 0.910079663968645
+    build_ram: 26.1171875
+    status: ok
+    full_time: 4.342591275926679
+    start_time: 0.2389010270126164
+    runs: 5
+    min_run_time: 0.8110651969909668
+    max_run_time: 0.8820605278015137
+    start_ram: 24.203125
+    max_ram: 24.203125
+    max_run_ram_diff: 0.0
+  mypyc:
+    build_time: 2.376429056050256
+    build_ram: 17.203125
+    status: timeout
+    full_time: 110.1234517210396
+    start_time: 0.17219805903732777
+    runs: 4
+    min_run_time: 22.73352551460266
+    max_run_time: 23.020935535430908
+    start_ram: 32.92578125
+    max_ram: 53.59375
+    max_run_ram_diff: -0.03125
+  nuitka:
+    build_time: 3.6005014759721234
+    build_ram: 39.98046875
+    status: timeout
+    full_time: 110.07522392901592
+    start_time: 0.2240021990146488
+    runs: 1
+    min_run_time: 71.05165719985962
+    max_run_time: 71.05165719985962
+    start_ram: 35.08203125
+    max_ram: 97.15234375
+    max_run_ram_diff: 0.7109375
+  graalnode:
+    status: ok
+    full_time: 11.872956412960775
+    start_time: 0.5548345419811085
+    runs: 5
+    min_run_time: 2.157
+    max_run_time: 2.57
+    start_ram: 381.6796875
+    max_ram: 691.8828125
+    max_run_ram_diff: 253.65234375
+  graalnode_jvm:
+    status: ok
+    full_time: 9.559626584057696
+    start_time: 2.1229272440541536
+    runs: 5
+    min_run_time: 1.307
+    max_run_time: 1.984
+    start_ram: 797.15234375
+    max_ram: 2054.8515625
+    max_run_ram_diff: 395.87890625
+  graalpython:
+    status: ok
+    full_time: 26.059800766059197
+    start_time: 0.3225329020060599
+    runs: 5
+    min_run_time: 3.680999994277954
+    max_run_time: 9.94599986076355
+    start_ram: 382.046875
+    max_ram: 921.50390625
+    max_run_ram_diff: 489.02734375
+  graalpython_jvm:
+    status: ok
+    full_time: 15.722216447000392
+    start_time: 3.027384026092477
+    runs: 5
+    min_run_time: 1.9819998741149902
+    max_run_time: 3.674999952316284
+    start_ram: 1101.421875
+    max_ram: 3134.98046875
+    max_run_ram_diff: 1170.234375
+  jruby:
+    status: ok
+    full_time: 16.304287651902996
+    start_time: 1.6636683779070154
+    runs: 5
+    min_run_time: 2.8614940000000004
+    max_run_time: 3.096724
+    start_ram: 270.68359375
+    max_ram: 1194.80078125
+    max_run_ram_diff: 529.16015625
+  jruby_opt:
+    status: ok
+    full_time: 8.127220110036433
+    start_time: 1.6963168780785054
+    runs: 5
+    min_run_time: 1.198103
+    max_run_time: 1.594302
+    start_ram: 278.30078125
+    max_ram: 2119.09375
+    max_run_ram_diff: 587.0625
+  jython:
+    status: timeout
+    full_time: 110.11801820399705
+    start_time: 1.232144078006968
+    runs: 4
+    min_run_time: 23.5669999123
+    max_run_time: 23.9659998417
+    start_ram: 374.65625
+    max_ram: 800.4375
+    max_run_ram_diff: 410.08203125
+  lua:
+    status: timeout
+    full_time: 110.09258399403188
+    start_time: 0.19268980098422617
+    runs: 4
+    min_run_time: 23.432452
+    max_run_time: 26.69278
+    start_ram: 49.3671875
+    max_ram: 333.11328125
+    max_run_ram_diff: 198.73828125
+  luajit:
+    status: ok
+    full_time: 34.442241310025565
+    start_time: 0.7024368599522859
+    runs: 5
+    min_run_time: 6.646593
+    max_run_time: 6.960446
+    start_ram: 87.88671875
+    max_ram: 306.4453125
+    max_run_ram_diff: 218.55859375
+  nodejs:
+    status: ok
+    full_time: 6.512570410966873
+    start_time: 0.30673510499764234
+    runs: 5
+    min_run_time: 1.126
+    max_run_time: 1.477
+    start_ram: 103.66015625
+    max_ram: 154.390625
+    max_run_ram_diff: 32.140625
+  php:
+    status: ok
+    full_time: 31.51992480305489
+    start_time: 0.2541746289934963
+    runs: 5
+    min_run_time: 6.016858101
+    max_run_time: 6.48613286
+    start_ram: 71.03515625
+    max_ram: 72.953125
+    max_run_ram_diff: 1.1484375
+  php_jit:
+    status: ok
+    full_time: 16.252478418988176
+    start_time: 0.1934137379284948
+    runs: 5
+    min_run_time: 3.029154062
+    max_run_time: 3.429506063
+    start_ram: 74.30078125
+    max_ram: 76.234375
+    max_run_ram_diff: 1.1640625
+  pypy2:
+    status: ok
+    full_time: 20.027202034019865
+    start_time: 0.21490317001007497
+    runs: 5
+    min_run_time: 3.90506720543
+    max_run_time: 4.04490303993
+    start_ram: 106.42578125
+    max_ram: 141.296875
+    max_run_ram_diff: 16.2734375
+  pypy3:
+    status: ok
+    full_time: 19.49051756702829
+    start_time: 0.23068755806889385
+    runs: 5
+    min_run_time: 3.8226006031036377
+    max_run_time: 3.9022724628448486
+    start_ram: 96.49609375
+    max_ram: 124.3828125
+    max_run_ram_diff: 28.12890625
+  python2:
+    status: timeout
+    full_time: 110.0776661359705
+    start_time: 0.2557616849662736
+    runs: 1
+    min_run_time: 90.9693930149
+    max_run_time: 90.9693930149
+    start_ram: 40.41796875
+    max_ram: 205.68359375
+    max_run_ram_diff: 20.890625
+  python3:
+    status: timeout
+    full_time: 110.1024400589522
+    start_time: 0.24256472697015852
+    runs: 1
+    min_run_time: 73.13889765739441
+    max_run_time: 73.13889765739441
+    start_ram: 33.30078125
+    max_ram: 104.03125
+    max_run_ram_diff: -12.02734375
+  rbx:
+    status: ok
+    full_time: 77.73713853897061
+    start_time: 0.36366601497866213
+    runs: 5
+    min_run_time: 15.364539552
+    max_run_time: 15.66293719
+    start_ram: 68.51953125
+    max_ram: 411.28125
+    max_run_ram_diff: 139.34765625
+  ruby2:
+    status: ok
+    full_time: 33.50328050996177
+    start_time: 0.23261348193045706
+    runs: 5
+    min_run_time: 6.588802248
+    max_run_time: 6.737515341
+    start_ram: 35.02734375
+    max_ram: 44.56640625
+    max_run_ram_diff: 9.5390625
+  ruby2_jit:
+    status: ok
+    full_time: 30.09219017997384
+    start_time: 0.2372870349790901
+    runs: 5
+    min_run_time: 5.927409935
+    max_run_time: 6.041513452
+    start_ram: 35.05859375
+    max_ram: 45.0234375
+    max_run_ram_diff: 5.58203125
+  ruby3:
+    status: ok
+    full_time: 28.02722092694603
+    start_time: 0.24488371598999947
+    runs: 5
+    min_run_time: 5.530471643
+    max_run_time: 5.613728604
+    start_ram: 40.65234375
+    max_ram: 46.76171875
+    max_run_ram_diff: 4.90234375
+  ruby3_jit:
+    status: ok
+    full_time: 22.102642255020328
+    start_time: 0.4473199649946764
+    runs: 5
+    min_run_time: 4.259982779
+    max_run_time: 4.569475868
+    start_ram: 49.06640625
+    max_ram: 78.796875
+    max_run_ram_diff: 18.3515625
+  topaz:
+    status: ok
+    full_time: 10.188259897986427
+    start_time: 0.2081557110650465
+    runs: 5
+    min_run_time: 1.96404790878
+    max_run_time: 2.14497089386
+    start_ram: 47.359375
+    max_ram: 62.58203125
+    max_run_ram_diff: 8.4921875
+  truffleruby:
+    status: ok
+    full_time: 6.701245889998972
+    start_time: 0.20230507396627218
+    runs: 5
+    min_run_time: 1.099334
+    max_run_time: 1.606668
+    start_ram: 255.80859375
+    max_ram: 760.53125
+    max_run_ram_diff: 341.82421875
+  truffleruby_jvm:
+    status: ok
+    full_time: 6.333414983004332
+    start_time: 1.8603554590372369
+    runs: 5
+    min_run_time: 0.652509306
+    max_run_time: 1.375369617
+    start_ram: 661.703125
+    max_ram: 1872.1640625
+    max_run_ram_diff: 620.62109375
+brainfuck:
+  cpp:
+    build_time: 0.4086143058957532
+    build_ram: 0.9296875
+    status: ok
+    full_time: 12.050850001978688
+    start_time: 0.20290396793279797
+    runs: 5
+    min_run_time: 2.35
+    max_run_time: 2.41
+    start_ram: 1.8671875
+    max_ram: 1.8671875
+    max_run_ram_diff: 0.0
+  crystal:
+    build_time: 9.585570635972545
+    build_ram: 262.83203125
+    status: ok
+    full_time: 24.795662502059713
+    start_time: 0.20707019895780832
+    runs: 5
+    min_run_time: 4.890409955
+    max_run_time: 4.942076329
+    start_ram: 2.79296875
+    max_ram: 2.79296875
+    max_run_ram_diff: 0.0
+  cython:
+    build_time: 2.1070462309289724
+    build_ram: 29.96875
+    status: timeout
+    full_time: 190.07333216199186
+    start_time: 0.17651010502595454
+    runs: 1
+    min_run_time: 168.0713655948639
+    max_run_time: 168.0713655948639
+    start_ram: 9.91796875
+    max_ram: 9.91796875
+    max_run_ram_diff: 0.0
+  mypyc:
+    build_time: 2.519228601944633
+    build_ram: 17.20703125
+    status: timeout
+    full_time: 190.06947685603518
+    start_time: 0.26664152403827757
+    runs: 2
+    min_run_time: 89.75789952278137
+    max_run_time: 90.32405352592468
+    start_ram: 9.3046875
+    max_ram: 9.3046875
+    max_run_ram_diff: 0.0
+  nuitka:
+    build_time: 3.56220724794548
+    build_ram: 40.703125
+    status: timeout
+    full_time: 190.0721078029601
+    start_time: 0.20393544796388596
+    runs: 1
+    min_run_time: 171.20696663856506
+    max_run_time: 171.20696663856506
+    start_ram: 11.11328125
+    max_ram: 11.11328125
+    max_run_ram_diff: 0.0
+  graalnode:
+    status: timeout
+    full_time: 190.1276656970149
+    start_time: 0.5529301030328497
+    runs: 2
+    min_run_time: 72.385
+    max_run_time: 75.686
+    start_ram: 334.08984375
+    max_ram: 438.08203125
+    max_run_ram_diff: -31.1953125
+  graalnode_jvm:
+    status: timeout
+    full_time: 190.15932792902458
+    start_time: 2.6714257660787553
+    runs: 3
+    min_run_time: 47.532
+    max_run_time: 56.388
+    start_ram: 717.28125
+    max_ram: 1155.421875
+    max_run_ram_diff: 243.51171875
+  graalpython:
+    status: ok
+    full_time: 136.78729637688957
+    start_time: 0.38465883396565914
+    runs: 5
+    min_run_time: 19.192000150680542
+    max_run_time: 50.05900001525879
+    start_ram: 393.02734375
+    max_ram: 867.12890625
+    max_run_ram_diff: 253.703125
+  graalpython_jvm:
+    status: ok
+    full_time: 95.58822474593762
+    start_time: 3.579178628977388
+    runs: 5
+    min_run_time: 14.096999883651733
+    max_run_time: 25.94000005722046
+    start_ram: 1182.57421875
+    max_ram: 1620.1015625
+    max_run_ram_diff: 167.625
+  jruby:
+    status: timeout
+    full_time: 190.11944474093616
+    start_time: 1.6532875429838896
+    runs: 1
+    min_run_time: 111.873526
+    max_run_time: 111.873526
+    start_ram: 266.75
+    max_ram: 966.67578125
+    max_run_ram_diff: 699.57421875
+  jruby_opt:
+    status: timeout
+    full_time: 190.11171495902818
+    start_time: 2.2022348940372467
+    runs: 3
+    min_run_time: 53.536673
+    max_run_time: 53.863275
+    start_ram: 243.3125
+    max_ram: 805.34375
+    max_run_ram_diff: 558.1015625
+  jython:
+    status: timeout
+    full_time: 190.0896903310204
+    start_time: 1.3991741730133072
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 343.67578125
+    max_ram: 380.3046875
+    max_run_ram_diff:
+  nodejs:
+    status: ok
+    full_time: 27.71576966601424
+    start_time: 0.3022759190062061
+    runs: 5
+    min_run_time: 5.282
+    max_run_time: 5.961
+    start_ram: 47.6953125
+    max_ram: 47.9296875
+    max_run_ram_diff: 0.22265625
+  pypy2:
+    status: ok
+    full_time: 34.24808929301798
+    start_time: 0.2865088159451261
+    runs: 5
+    min_run_time: 6.57599496841
+    max_run_time: 7.51497983932
+    start_ram: 62.41796875
+    max_ram: 63.96484375
+    max_run_ram_diff: 1.546875
+  pypy3:
+    status: ok
+    full_time: 44.88164553104434
+    start_time: 0.26076515100430697
+    runs: 5
+    min_run_time: 8.73762059211731
+    max_run_time: 9.451006174087524
+    start_ram: 60.109375
+    max_ram: 61.140625
+    max_run_ram_diff: 1.03125
+  python2:
+    status: timeout
+    full_time: 190.07352370896842
+    start_time: 0.19279946491587907
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 6.3984375
+    max_ram: 6.3984375
+    max_run_ram_diff:
+  python3:
+    status: timeout
+    full_time: 190.0735105589265
+    start_time: 0.21199078194331378
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 9.453125
+    max_ram: 9.453125
+    max_run_ram_diff:
+  rbx:
+    status: timeout
+    full_time: 190.12629249400925
+    start_time: 0.353058845968917
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 73.51171875
+    max_ram: 1011.17578125
+    max_run_ram_diff:
+  ruby2:
+    status: timeout
+    full_time: 190.07067203207407
+    start_time: 0.25624696898739785
+    runs: 1
+    min_run_time: 114.789292139
+    max_run_time: 114.789292139
+    start_ram: 20.7265625
+    max_ram: 20.7265625
+    max_run_ram_diff: 0.0
+  ruby2_jit:
+    status: timeout
+    full_time: 190.12181225500535
+    start_time: 0.6689471110003069
+    runs: 1
+    min_run_time: 103.680990566
+    max_run_time: 103.680990566
+    start_ram: 20.70703125
+    max_ram: 20.91796875
+    max_run_ram_diff: 0.2109375
+  ruby3:
+    status: timeout
+    full_time: 190.071611147956
+    start_time: 0.30652321490924805
+    runs: 1
+    min_run_time: 121.945528519
+    max_run_time: 121.945528519
+    start_ram: 22.6015625
+    max_ram: 22.76171875
+    max_run_ram_diff: 0.16015625
+  ruby3_jit:
+    status: timeout
+    full_time: 190.06996460899245
+    start_time: 0.9400712969945744
+    runs: 1
+    min_run_time: 105.243032076
+    max_run_time: 105.243032076
+    start_ram: 24.76953125
+    max_ram: 24.859375
+    max_run_ram_diff: 0.08984375
+  topaz:
+    status: ok
+    full_time: 85.01777837204281
+    start_time: 0.21734665101394057
+    runs: 5
+    min_run_time: 16.8890740871
+    max_run_time: 17.0851569176
+    start_ram: 28.3359375
+    max_ram: 29.8828125
+    max_run_ram_diff: 0.7734375
+  truffleruby:
+    status: timeout
+    full_time: 190.09028459398542
+    start_time: 0.20985822600778192
+    runs: 4
+    min_run_time: 15.702102
+    max_run_time: 120.103448
+    start_ram: 290.16796875
+    max_ram: 595.83203125
+    max_run_ram_diff: 104.25
+  truffleruby_jvm:
+    status: ok
+    full_time: 152.45391785691027
+    start_time: 2.4096434719394892
+    runs: 5
+    min_run_time: 15.160863224
+    max_run_time: 78.736807435
+    start_ram: 673.421875
+    max_ram: 1352.08984375
+    max_run_ram_diff: 368.296875
+brainfuck2:
+  c:
+    build_time: 0.07106143096461892
+    build_ram: 2.73828125
+    status: ok
+    full_time: 6.51100065105129
+    start_time: 0.20163253601640463
+    runs: 5
+    min_run_time: 1.25
+    max_run_time: 1.29
+    start_ram: 0.83203125
+    max_ram: 0.83203125
+    max_run_ram_diff: 0.0
+  crystal:
+    build_time: 9.589164488017559
+    build_ram: 262.73828125
+    status: ok
+    full_time: 10.150918206083588
+    start_time: 0.15480409609153867
+    runs: 5
+    min_run_time: 1.9737037979999998
+    max_run_time: 2.028639132
+    start_ram: 2.83203125
+    max_ram: 2.83203125
+    max_run_ram_diff: 0.0
+  mypyc:
+    build_time: 2.5384214889490977
+    build_ram: 17.11328125
+    status: timeout
+    full_time: 215.06985823402647
+    start_time: 0.19335780898109078
+    runs: 2
+    min_run_time: 73.95792245864868
+    max_run_time: 74.01788544654846
+    start_ram: 9.3125
+    max_ram: 9.3125
+    max_run_ram_diff: 0.0
+  nuitka:
+    build_time: 3.5789320720359683
+    build_ram: 40.859375
+    status: timeout
+    full_time: 215.11943791201338
+    start_time: 0.23472044803202152
+    runs: 1
+    min_run_time: 131.16168117523193
+    max_run_time: 131.16168117523193
+    start_ram: 11.19921875
+    max_ram: 11.19921875
+    max_run_ram_diff: 0.0
+  graalnode:
+    status: ok
+    full_time: 59.86807863996364
+    start_time: 0.4840954990359023
+    runs: 5
+    min_run_time: 11.533
+    max_run_time: 12.392
+    start_ram: 340.02734375
+    max_ram: 560.15625
+    max_run_ram_diff: 111.1484375
+  graalnode_jvm:
+    status: ok
+    full_time: 57.70983649592381
+    start_time: 2.130028367973864
+    runs: 5
+    min_run_time: 10.476
+    max_run_time: 12.324
+    start_ram: 739.13671875
+    max_ram: 1279.40625
+    max_run_ram_diff: 407.37890625
+  graalpython:
+    status: ok
+    full_time: 80.85369702999014
+    start_time: 0.41048226202838123
+    runs: 5
+    min_run_time: 14.279000043869019
+    max_run_time: 16.918999910354614
+    start_ram: 413.34375
+    max_ram: 1119.5078125
+    max_run_ram_diff: 706.1640625
+  graalpython_jvm:
+    status: ok
+    full_time: 65.64558128395583
+    start_time: 3.5570643929531798
+    runs: 5
+    min_run_time: 11.562000036239624
+    max_run_time: 13.17300009727478
+    start_ram: 1223.7109375
+    max_ram: 1937.5390625
+    max_run_ram_diff: 407.96484375
+  jruby:
+    status: timeout
+    full_time: 215.13153129199054
+    start_time: 1.6131097730249166
+    runs: 2
+    min_run_time: 91.724592
+    max_run_time: 91.805695
+    start_ram: 266.98046875
+    max_ram: 808.9296875
+    max_run_ram_diff: 541.75
+  jruby_opt:
+    status: timeout
+    full_time: 215.10794563801028
+    start_time: 2.4029927840456367
+    runs: 3
+    min_run_time: 53.131735
+    max_run_time: 53.478061000000004
+    start_ram: 245.1640625
+    max_ram: 791.2421875
+    max_run_ram_diff: 545.54296875
+  jython:
+    status: timeout
+    full_time: 215.0846744660521
+    start_time: 1.410829356056638
+    runs: 1
+    min_run_time: 203.684000015
+    max_run_time: 203.684000015
+    start_ram: 379.02734375
+    max_ram: 381.078125
+    max_run_ram_diff: 0.265625
+  lua:
+    status: timeout
+    full_time: 215.07309528405312
+    start_time: 0.16549177595879883
+    runs: 3
+    min_run_time: 66.248178
+    max_run_time: 66.643559
+    start_ram: 2.4375
+    max_ram: 2.4375
+    max_run_ram_diff: 0.0
+  luajit:
+    status: ok
+    full_time: 48.45604313793592
+    start_time: 0.6514590479200706
+    runs: 5
+    min_run_time: 6.637043
+    max_run_time: 11.198094
+    start_ram: 2.47265625
+    max_ram: 2.76953125
+    max_run_ram_diff: 0.296875
+  nodejs:
+    status: ok
+    full_time: 25.670263582956977
+    start_time: 0.30478738399688154
+    runs: 5
+    min_run_time: 3.618
+    max_run_time: 5.461
+    start_ram: 47.0859375
+    max_ram: 47.52734375
+    max_run_ram_diff: 0.44140625
+  pypy2:
+    status: ok
+    full_time: 56.26032451109495
+    start_time: 0.24382066004909575
+    runs: 5
+    min_run_time: 11.1553001404
+    max_run_time: 11.2646000385
+    start_ram: 67.37109375
+    max_ram: 68.3671875
+    max_run_ram_diff: 0.9765625
+  pypy3:
+    status: ok
+    full_time: 56.33901042502839
+    start_time: 0.22025655093602836
+    runs: 5
+    min_run_time: 11.152571678161621
+    max_run_time: 11.469388008117676
+    start_ram: 62.453125
+    max_ram: 63.9140625
+    max_run_ram_diff: 0.94921875
+  python2:
+    status: timeout
+    full_time: 215.0705338459229
+    start_time: 0.17037271696608514
+    runs: 1
+    min_run_time: 158.223953962
+    max_run_time: 158.223953962
+    start_ram: 6.33203125
+    max_ram: 6.33203125
+    max_run_ram_diff: 0.0
+  python3:
+    status: timeout
+    full_time: 215.07479429303203
+    start_time: 0.20740325807128102
+    runs: 1
+    min_run_time: 137.40179920196533
+    max_run_time: 137.40179920196533
+    start_ram: 9.41796875
+    max_ram: 9.41796875
+    max_run_ram_diff: 0.0
+  rbx:
+    status: timeout
+    full_time: 215.10944346501492
+    start_time: 0.33524440694600344
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 69.90234375
+    max_ram: 960.64453125
+    max_run_ram_diff:
+  ruby2:
+    status: timeout
+    full_time: 215.15820081101265
+    start_time: 0.28030756500083953
+    runs: 2
+    min_run_time: 95.386276768
+    max_run_time: 95.494711889
+    start_ram: 20.74609375
+    max_ram: 20.74609375
+    max_run_ram_diff: 0.0
+  ruby2_jit:
+    status: timeout
+    full_time: 215.13360294594895
+    start_time: 0.8011259709019214
+    runs: 3
+    min_run_time: 64.138706458
+    max_run_time: 64.377793944
+    start_ram: 20.78515625
+    max_ram: 21.0
+    max_run_ram_diff: 0.21484375
+  ruby3:
+    status: timeout
+    full_time: 215.1665399670601
+    start_time: 0.3134288500295952
+    runs: 2
+    min_run_time: 91.961937832
+    max_run_time: 92.341658891
+    start_ram: 22.74609375
+    max_ram: 22.74609375
+    max_run_ram_diff: 0.0
+  ruby3_jit:
+    status: timeout
+    full_time: 215.07404109393246
+    start_time: 0.9169164448976517
+    runs: 3
+    min_run_time: 58.917069848
+    max_run_time: 59.138588267
+    start_ram: 25.12890625
+    max_ram: 25.41015625
+    max_run_ram_diff: 0.28125
+  topaz:
+    status: ok
+    full_time: 114.85214605403598
+    start_time: 0.2692656619474292
+    runs: 5
+    min_run_time: 22.8146538734
+    max_run_time: 23.1091120243
+    start_ram: 30.78125
+    max_ram: 31.80859375
+    max_run_ram_diff: 0.84375
+  truffleruby:
+    status: ok
+    full_time: 30.34788130002562
+    start_time: 0.24647507292684168
+    runs: 5
+    min_run_time: 5.5469159999999995
+    max_run_time: 7.843775
+    start_ram: 338.234375
+    max_ram: 650.89453125
+    max_run_ram_diff: 154.81640625
+  truffleruby_jvm:
+    status: ok
+    full_time: 28.2929794320371
+    start_time: 1.8610456610331312
+    runs: 5
+    min_run_time: 4.690878826
+    max_run_time: 7.574638911
+    start_ram: 686.2265625
+    max_ram: 2023.27734375
+    max_run_ram_diff: 1204.046875
+fannkuchredux:
+  c:
+    build_time: 0.07514846802223474
+    build_ram: 0.9453125
+    status: ok
+    full_time: 1.2743945750407875
+    start_time: 0.18856459495145828
+    runs: 5
+    min_run_time: 0.21
+    max_run_time: 0.22
+    start_ram: 0.87890625
+    max_ram: 0.87890625
+    max_run_ram_diff: 0.0
+  crystal:
+    build_time: 9.5793051419314
+    build_ram: 262.16015625
+    status: ok
+    full_time: 1.1307734079891816
+    start_time: 0.196340341004543
+    runs: 5
+    min_run_time: 0.190514383
+    max_run_time: 0.194401883
+    start_ram: 2.8046875
+    max_ram: 2.8046875
+    max_run_ram_diff: 0.0
+  cython:
+    build_time: 0.8178030339768156
+    build_ram: 27.83203125
+    status: ok
+    full_time: 0.8273006899980828
+    start_time: 0.16425167303532362
+    runs: 5
+    min_run_time: 0.12860751152038574
+    max_run_time: 0.13062214851379395
+    start_ram: 8.19140625
+    max_ram: 8.19140625
+    max_run_ram_diff: 0.0
+  mypyc:
+    build_time: 2.20366738201119
+    build_ram: 17.06640625
+    status: ok
+    full_time: 14.464097823947668
+    start_time: 0.224731134949252
+    runs: 5
+    min_run_time: 2.8460748195648193
+    max_run_time: 2.8679659366607666
+    start_ram: 7.53515625
+    max_ram: 7.53515625
+    max_run_ram_diff: 0.0
+  nuitka:
+    build_time: 3.602594165946357
+    build_ram: 38.69921875
+    status: ok
+    full_time: 18.560668203048408
+    start_time: 0.2388492029858753
+    runs: 5
+    min_run_time: 3.640446424484253
+    max_run_time: 3.6961467266082764
+    start_ram: 10.484375
+    max_ram: 10.484375
+    max_run_ram_diff: 0.0
+  graalnode:
+    status: ok
+    full_time: 2.0873274230398238
+    start_time: 0.5333770170109347
+    runs: 5
+    min_run_time: 0.193
+    max_run_time: 0.432
+    start_ram: 329.6484375
+    max_ram: 329.6484375
+    max_run_ram_diff: 0.4921875
+  graalnode_jvm:
+    status: ok
+    full_time: 3.830165102961473
+    start_time: 2.160118983942084
+    runs: 5
+    min_run_time: 0.19
+    max_run_time: 0.516
+    start_ram: 717.8046875
+    max_ram: 721.44140625
+    max_run_ram_diff: 8.9140625
+  graalpython:
+    status: ok
+    full_time: 5.348631102940999
+    start_time: 0.2546474429545924
+    runs: 5
+    min_run_time: 0.5959999561309814
+    max_run_time: 2.0829999446868896
+    start_ram: 371.34765625
+    max_ram: 563.04296875
+    max_run_ram_diff: 141.80078125
+  graalpython_jvm:
+    status: ok
+    full_time: 7.830162622965872
+    start_time: 3.096783214015886
+    runs: 5
+    min_run_time: 0.3529999256134033
+    max_run_time: 1.9140000343322754
+    start_ram: 995.3671875
+    max_ram: 1625.546875
+    max_run_ram_diff: 510.7890625
+  jruby:
+    status: ok
+    full_time: 12.151269525988027
+    start_time: 1.6411124810110778
+    runs: 5
+    min_run_time: 2.0656269999999997
+    max_run_time: 2.174168
+    start_ram: 236.8125
+    max_ram: 374.109375
+    max_run_ram_diff: 114.9375
+  jruby_opt:
+    status: ok
+    full_time: 8.375324958004057
+    start_time: 1.5943594059208408
+    runs: 5
+    min_run_time: 1.169402
+    max_run_time: 1.9578579999999999
+    start_ram: 236.63671875
+    max_ram: 368.2265625
+    max_run_ram_diff: 123.34375
+  jython:
+    status: ok
+    full_time: 28.30453535390552
+    start_time: 1.2736497769365087
+    runs: 5
+    min_run_time: 4.90999984741
+    max_run_time: 5.7990000248
+    start_ram: 317.0703125
+    max_ram: 379.1171875
+    max_run_ram_diff: 62.046875
+  lua:
+    status: ok
+    full_time: 14.131839105044492
+    start_time: 0.18971365899778903
+    runs: 5
+    min_run_time: 2.772091
+    max_run_time: 2.808917
+    start_ram: 2.453125
+    max_ram: 2.453125
+    max_run_ram_diff: 0.0
+  luajit:
+    status: ok
+    full_time: 1.5310592870227993
+    start_time: 0.16771101707126945
+    runs: 5
+    min_run_time: 0.269508
+    max_run_time: 0.275017
+    start_ram: 2.70703125
+    max_ram: 2.70703125
+    max_run_ram_diff: 0.0
+  nodejs:
+    status: ok
+    full_time: 1.060542216990143
+    start_time: 0.2858224139781669
+    runs: 5
+    min_run_time: 0.148
+    max_run_time: 0.183
+    start_ram: 47.62109375
+    max_ram: 47.91015625
+    max_run_ram_diff: 0.25390625
+  php:
+    status: ok
+    full_time: 13.186383499996737
+    start_time: 0.14128881506621838
+    runs: 5
+    min_run_time: 2.583462
+    max_run_time: 2.629683018
+    start_ram: 16.640625
+    max_ram: 16.640625
+    max_run_ram_diff: 0.0
+  php_jit:
+    status: ok
+    full_time: 3.867355940048583
+    start_time: 0.17436721303965896
+    runs: 5
+    min_run_time: 0.729542017
+    max_run_time: 0.737491131
+    start_ram: 20.10546875
+    max_ram: 20.10546875
+    max_run_ram_diff: 0.0
+  pypy2:
+    status: ok
+    full_time: 3.735390782938339
+    start_time: 0.1840433389879763
+    runs: 5
+    min_run_time: 0.700365066528
+    max_run_time: 0.718715906143
+    start_ram: 63.20703125
+    max_ram: 66.81640625
+    max_run_ram_diff: 1.03125
+  pypy3:
+    status: ok
+    full_time: 3.6173088429495692
+    start_time: 0.20495951792690903
+    runs: 1
+    min_run_time: 0.6771082878112793
+    max_run_time: 0.6771082878112793
+    start_ram: 54.69921875
+    max_ram: 57.53515625
+    max_run_ram_diff: -54.69921875
+  python2:
+    status: ok
+    full_time: 20.87748168199323
+    start_time: 0.164520358084701
+    runs: 5
+    min_run_time: 4.1108341217
+    max_run_time: 4.17436099052
+    start_ram: 6.43359375
+    max_ram: 6.43359375
+    max_run_ram_diff: 0.0
+  python3:
+    status: ok
+    full_time: 20.46542067907285
+    start_time: 0.1808741670101881
+    runs: 5
+    min_run_time: 4.027764558792114
+    max_run_time: 4.106988430023193
+    start_ram: 8.1953125
+    max_ram: 8.1953125
+    max_run_ram_diff: 0.0
+  rbx:
+    status: timeout
+    full_time: 60.15329821698833
+    start_time: 0.3445891159353778
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 74.140625
+    max_ram: 512.9765625
+    max_run_ram_diff:
+  ruby2:
+    status: ok
+    full_time: 22.632223022985272
+    start_time: 0.2401695860316977
+    runs: 5
+    min_run_time: 4.371102342
+    max_run_time: 4.755498889
+    start_ram: 20.8125
+    max_ram: 20.8125
+    max_run_ram_diff: 0.0
+  ruby2_jit:
+    status: ok
+    full_time: 22.02501117810607
+    start_time: 0.2852302440442145
+    runs: 5
+    min_run_time: 4.325384067
+    max_run_time: 4.3943409
+    start_ram: 20.89453125
+    max_ram: 20.89453125
+    max_run_ram_diff: 0.0
+  ruby3:
+    status: ok
+    full_time: 22.29989318398293
+    start_time: 0.22838709398638457
+    runs: 5
+    min_run_time: 4.399010933
+    max_run_time: 4.457018392
+    start_ram: 22.92578125
+    max_ram: 22.92578125
+    max_run_ram_diff: 0.0
+  ruby3_jit:
+    status: ok
+    full_time: 22.504641428939067
+    start_time: 0.5088578119175509
+    runs: 5
+    min_run_time: 4.366475704
+    max_run_time: 4.431001849
+    start_ram: 23.8203125
+    max_ram: 23.8203125
+    max_run_ram_diff: 0.0
+  topaz:
+    status: ok
+    full_time: 2.548183551058173
+    start_time: 0.22952049295417964
+    runs: 5
+    min_run_time: 0.439686059952
+    max_run_time: 0.495331048965
+    start_ram: 29.82421875
+    max_ram: 29.82421875
+    max_run_ram_diff: 0.0
+  truffleruby:
+    status: ok
+    full_time: 2.4114281160291284
+    start_time: 0.20069829502608627
+    runs: 5
+    min_run_time: 0.270254
+    max_run_time: 0.6302220000000001
+    start_ram: 252.87890625
+    max_ram: 331.73828125
+    max_run_ram_diff: 73.4453125
+  truffleruby_jvm:
+    status: ok
+    full_time: 3.919362580985762
+    start_time: 1.8212402679491788
+    runs: 5
+    min_run_time: 0.21996420800000002
+    max_run_time: 0.761452483
+    start_ram: 665.953125
+    max_ram: 725.0
+    max_run_ram_diff: 47.15625
+fasta:
+  c:
+    build_time: 0.07270887494087219
+    build_ram: 2.73828125
+    status: ok
+    full_time: 3.1106942259939387
+    start_time: 0.22031241096556187
+    runs: 5
+    min_run_time: 0.57
+    max_run_time: 0.59
+    start_ram: 0.86328125
+    max_ram: 0.86328125
+    max_run_ram_diff: 0.0
+  crystal:
+    build_time: 9.55224366101902
+    build_ram: 264.9609375
+    status: ok
+    full_time: 6.278915658011101
+    start_time: 0.20776874001603574
+    runs: 5
+    min_run_time: 1.1728801739999999
+    max_run_time: 1.273347049
+    start_ram: 3.48046875
+    max_ram: 3.84765625
+    max_run_ram_diff: 0.0
+  cython:
+    build_time: 2.183291221037507
+    build_ram: 29.734375
+    status: ok
+    full_time: 36.9673502179794
+    start_time: 0.21957641700282693
+    runs: 5
+    min_run_time: 7.329748868942261
+    max_run_time: 7.379304885864258
+    start_ram: 8.33984375
+    max_ram: 8.33984375
+    max_run_ram_diff: 0.0
+  mypyc:
+    build_time: 2.502266390947625
+    build_ram: 17.15625
+    status: ok
+    full_time: 34.599926081020385
+    start_time: 0.23298317601438612
+    runs: 5
+    min_run_time: 6.824371576309204
+    max_run_time: 6.909385681152344
+    start_ram: 7.578125
+    max_ram: 7.578125
+    max_run_ram_diff: 0.0
+  nuitka:
+    build_time: 3.4929102530004457
+    build_ram: 39.01171875
+    status: ok
+    full_time: 54.800572630017996
+    start_time: 0.2324983699945733
+    runs: 5
+    min_run_time: 10.881477355957031
+    max_run_time: 10.983708143234253
+    start_ram: 10.4921875
+    max_ram: 10.4921875
+    max_run_ram_diff: 0.0
+  graalnode:
+    status: ok
+    full_time: 60.95713132596575
+    start_time: 0.5356708470499143
+    runs: 5
+    min_run_time: 10.666
+    max_run_time: 15.589
+    start_ram: 332.19921875
+    max_ram: 918.44921875
+    max_run_ram_diff: 320.76171875
+  graalnode_jvm:
+    status: ok
+    full_time: 51.56707651889883
+    start_time: 2.218878465006128
+    runs: 5
+    min_run_time: 7.964
+    max_run_time: 14.857
+    start_ram: 743.24609375
+    max_ram: 1311.97265625
+    max_run_ram_diff: 426.92578125
+  graalpython:
+    status: ok
+    full_time: 31.104321247083135
+    start_time: 0.3453103890642524
+    runs: 5
+    min_run_time: 5.10699987411499
+    max_run_time: 7.898999929428101
+    start_ram: 389.7421875
+    max_ram: 761.78515625
+    max_run_ram_diff: 170.85546875
+  graalpython_jvm:
+    status: ok
+    full_time: 28.796330940909684
+    start_time: 3.2019555679289624
+    runs: 5
+    min_run_time: 3.6549999713897705
+    max_run_time: 7.605000019073486
+    start_ram: 1014.05859375
+    max_ram: 1183.453125
+    max_run_ram_diff: 39.09765625
+  jruby:
+    status: timeout
+    full_time: 80.16173439100385
+    start_time: 1.6835899599827826
+    runs: 2
+    min_run_time: 30.050127
+    max_run_time: 30.078946000000002
+    start_ram: 268.765625
+    max_ram: 777.2265625
+    max_run_ram_diff: 508.4296875
+  jruby_opt:
+    status: timeout
+    full_time: 80.10689293406904
+    start_time: 2.1664025019854307
+    runs: 2
+    min_run_time: 27.937265
+    max_run_time: 28.258817
+    start_ram: 272.9375
+    max_ram: 779.3046875
+    max_run_ram_diff: 506.078125
+  jython:
+    status: timeout
+    full_time: 80.1430543770548
+    start_time: 1.3200280430028215
+    runs: 2
+    min_run_time: 31.5910000801
+    max_run_time: 31.620000124
+    start_ram: 323.37890625
+    max_ram: 405.47265625
+    max_run_ram_diff: 53.34765625
+  lua:
+    status: ok
+    full_time: 22.178781242924742
+    start_time: 0.18177183391526341
+    runs: 5
+    min_run_time: 4.385853
+    max_run_time: 4.420407
+    start_ram: 2.84375
+    max_ram: 2.84375
+    max_run_ram_diff: 0.0
+  luajit:
+    status: ok
+    full_time: 8.570925516076386
+    start_time: 0.2031862490111962
+    runs: 5
+    min_run_time: 1.677441
+    max_run_time: 1.691246
+    start_ram: 2.43359375
+    max_ram: 2.84765625
+    max_run_ram_diff: 0.4140625
+  nodejs:
+    status: ok
+    full_time: 21.68065077799838
+    start_time: 0.2687745080329478
+    runs: 5
+    min_run_time: 4.15
+    max_run_time: 4.39
+    start_ram: 50.5546875
+    max_ram: 55.0390625
+    max_run_ram_diff: 4.12109375
+  php:
+    status: ok
+    full_time: 22.359813225106336
+    start_time: 0.2699356960365549
+    runs: 5
+    min_run_time: 4.403023005
+    max_run_time: 4.450971842
+    start_ram: 16.796875
+    max_ram: 16.796875
+    max_run_ram_diff: 0.0
+  php_jit:
+    status: ok
+    full_time: 12.461730238050222
+    start_time: 0.19631333404686302
+    runs: 5
+    min_run_time: 2.446264982
+    max_run_time: 2.468947887
+    start_ram: 19.703125
+    max_ram: 19.703125
+    max_run_ram_diff: 0.0
+  pypy2:
+    status: ok
+    full_time: 14.577533295960166
+    start_time: 0.2297007959568873
+    runs: 5
+    min_run_time: 2.86809396744
+    max_run_time: 2.91335201263
+    start_ram: 68.32421875
+    max_ram: 69.75390625
+    max_run_ram_diff: 1.4296875
+  pypy3:
+    status: ok
+    full_time: 16.14290054398589
+    start_time: 0.18695351295173168
+    runs: 5
+    min_run_time: 3.1595404148101807
+    max_run_time: 3.2401604652404785
+    start_ram: 61.3046875
+    max_ram: 62.796875
+    max_run_ram_diff: 0.9765625
+  python2:
+    status: ok
+    full_time: 58.47636580502149
+    start_time: 0.20837064494844526
+    runs: 5
+    min_run_time: 11.5866539478
+    max_run_time: 11.7119479179
+    start_ram: 14.4609375
+    max_ram: 19.61328125
+    max_run_ram_diff: 3.86328125
+  python3:
+    status: ok
+    full_time: 43.97081252199132
+    start_time: 0.28978536499198526
+    runs: 5
+    min_run_time: 8.709186553955078
+    max_run_time: 8.797689437866211
+    start_ram: 8.03515625
+    max_ram: 8.03515625
+    max_run_ram_diff: 0.0
+  rbx:
+    status: timeout
+    full_time: 80.09397345094476
+    start_time: 0.3478107749251649
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 85.2109375
+    max_ram: 540.078125
+    max_run_ram_diff:
+  ruby2:
+    status: timeout
+    full_time: 80.1227744120406
+    start_time: 0.22980405401904136
+    runs: 4
+    min_run_time: 18.189596875
+    max_run_time: 18.428447546
+    start_ram: 40.0546875
+    max_ram: 75.28515625
+    max_run_ram_diff: 19.12890625
+  ruby2_jit:
+    status: timeout
+    full_time: 80.07168441999238
+    start_time: 0.7611757250269875
+    runs: 4
+    min_run_time: 17.274441005
+    max_run_time: 17.401023853
+    start_ram: 40.03125
+    max_ram: 59.48828125
+    max_run_ram_diff: 19.38671875
+  ruby3:
+    status: timeout
+    full_time: 80.07393727393355
+    start_time: 0.28885614091996104
+    runs: 4
+    min_run_time: 16.757502421
+    max_run_time: 16.918312211
+    start_ram: 33.984375
+    max_ram: 53.17578125
+    max_run_ram_diff: 9.53515625
+  ruby3_jit:
+    status: ok
+    full_time: 78.68475993000902
+    start_time: 1.013630572007969
+    runs: 5
+    min_run_time: 15.470223276
+    max_run_time: 15.587774193
+    start_ram: 35.5546875
+    max_ram: 55.27734375
+    max_run_ram_diff: 9.59765625
+  topaz:
+    status: ok
+    full_time: 26.947099513956346
+    start_time: 0.2472519219154492
+    runs: 5
+    min_run_time: 5.2391769886
+    max_run_time: 5.53131699562
+    start_ram: 30.88671875
+    max_ram: 40.93359375
+    max_run_ram_diff: 9.53125
+  truffleruby:
+    status: ok
+    full_time: 20.576440855977125
+    start_time: 0.3041654459666461
+    runs: 5
+    min_run_time: 3.693713
+    max_run_time: 4.926396
+    start_ram: 333.76953125
+    max_ram: 429.76171875
+    max_run_ram_diff: 36.3671875
+  truffleruby_jvm:
+    status: ok
+    full_time: 20.878644894924946
+    start_time: 1.901497058919631
+    runs: 5
+    min_run_time: 3.3918567729999998
+    max_run_time: 5.110508651
+    start_ram: 678.7890625
+    max_ram: 1310.99609375
+    max_run_ram_diff: 540.421875
+knucleotide:
+  cpp:
+    build_time: 0.643819821998477
+    build_ram: 0.8984375
+    status: ok
+    full_time: 2.2784539769636467
+    start_time: 0.3613415559520945
+    runs: 1
+    min_run_time: 1.94
+    max_run_time: 1.94
+    start_ram: 16.859375
+    max_ram: 30.89453125
+    max_run_ram_diff: -16.859375
+  crystal:
+    build_time: 11.25909289799165
+    build_ram: 282.8125
+    status: ok
+    full_time: 2.463801758014597
+    start_time: 0.22065066697541624
+    runs: 1
+    min_run_time: 2.316621013
+    max_run_time: 2.316621013
+    start_ram: 28.70703125
+    max_ram: 45.72265625
+    max_run_ram_diff: -28.70703125
+  cython:
+    build_time: 2.3441224170383066
+    build_ram: 27.7265625
+    status: ok
+    full_time: 8.907385915983468
+    start_time: 0.23924546397756785
+    runs: 1
+    min_run_time: 8.69158148765564
+    max_run_time: 8.69158148765564
+    start_ram: 29.25390625
+    max_ram: 49.8515625
+    max_run_ram_diff: -29.25390625
+  mypyc:
+    build_time: 1.057197896996513
+    build_ram: 17.11328125
+    status: ok
+    full_time: 0.07478429598268121
+    start_time:
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram:
+    max_ram:
+    max_run_ram_diff:
+  nuitka:
+    build_time: 3.4910724229412153
+    build_ram: 38.7890625
+    status: ok
+    full_time: 8.759070527972654
+    start_time: 0.2856904648942873
+    runs: 1
+    min_run_time: 8.509998083114624
+    max_run_time: 8.509998083114624
+    start_ram: 31.11328125
+    max_ram: 51.46875
+    max_run_ram_diff: -31.11328125
+  graalnode:
+    status: ok
+    full_time: 15.331188956974074
+    start_time: 1.838075951905921
+    runs: 1
+    min_run_time: 13.534
+    max_run_time: 13.534
+    start_ram: 516.32421875
+    max_ram: 563.07421875
+    max_run_ram_diff: -516.32421875
+  graalnode_jvm:
+    status: ok
+    full_time: 12.997731211944483
+    start_time: 3.7776049479143694
+    runs: 1
+    min_run_time: 9.24
+    max_run_time: 9.24
+    start_ram: 992.80859375
+    max_ram: 1426.38671875
+    max_run_ram_diff: -992.80859375
+  graalpython:
+    status: ok
+    full_time: 6.3473231580574065
+    start_time: 0.7806686640251428
+    runs: 1
+    min_run_time: 5.586999893188477
+    max_run_time: 5.586999893188477
+    start_ram: 488.75
+    max_ram: 784.08984375
+    max_run_ram_diff: -488.75
+  graalpython_jvm:
+    status: ok
+    full_time: 9.3604544919217
+    start_time: 4.42511576495599
+    runs: 1
+    min_run_time: 4.918999910354614
+    max_run_time: 4.918999910354614
+    start_ram: 1081.78125
+    max_ram: 1379.8984375
+    max_run_ram_diff: -1081.78125
+  jruby:
+    status: ok
+    full_time: 11.260998153942637
+    start_time: 1.796887188917026
+    runs: 1
+    min_run_time: 9.47648
+    max_run_time: 9.47648
+    start_ram: 368.8203125
+    max_ram: 1017.671875
+    max_run_ram_diff: -368.8203125
+  jruby_opt:
+    status: ok
+    full_time: 10.973758097039536
+    start_time: 1.81370447401423
+    runs: 1
+    min_run_time: 9.196292
+    max_run_time: 9.196292
+    start_ram: 354.2265625
+    max_ram: 845.4609375
+    max_run_ram_diff: -354.2265625
+  jython:
+    status: ok
+    full_time: 10.710731255006976
+    start_time: 1.5299616070697084
+    runs: 1
+    min_run_time: 9.2380001545
+    max_run_time: 9.2380001545
+    start_ram: 508.015625
+    max_ram: 835.83984375
+    max_run_ram_diff: -508.015625
+  lua:
+    status: ok
+    full_time: 4.1239662889856845
+    start_time: 0.32023572304751724
+    runs: 1
+    min_run_time: 3.838445
+    max_run_time: 3.838445
+    start_ram: 35.1484375
+    max_ram: 68.34375
+    max_run_ram_diff: -35.1484375
+  luajit:
+    status: ok
+    full_time: 0.9695556169608608
+    start_time: 0.22397021495271474
+    runs: 1
+    min_run_time: 0.76656
+    max_run_time: 0.76656
+    start_ram: 21.1484375
+    max_ram: 24.84765625
+    max_run_ram_diff: -21.1484375
+  nodejs:
+    status: ok
+    full_time: 5.2809743280522525
+    start_time: 0.33080247207544744
+    runs: 1
+    min_run_time: 4.958
+    max_run_time: 4.958
+    start_ram: 89.71875
+    max_ram: 123.21484375
+    max_run_ram_diff: -89.71875
+  php:
+    status: ok
+    full_time: 3.3271793730091304
+    start_time: 0.2221436620457098
+    runs: 1
+    min_run_time: 3.096663952
+    max_run_time: 3.096663952
+    start_ram: 27.34765625
+    max_ram: 42.0078125
+    max_run_ram_diff: -27.34765625
+  php_jit:
+    status: ok
+    full_time: 2.344476056052372
+    start_time: 0.2178098380099982
+    runs: 1
+    min_run_time: 2.071570158
+    max_run_time: 2.071570158
+    start_ram: 30.63671875
+    max_ram: 45.2578125
+    max_run_ram_diff: -30.63671875
+  pypy2:
+    status: ok
+    full_time: 2.223565016989596
+    start_time: 0.239277038956061
+    runs: 1
+    min_run_time: 1.98690915108
+    max_run_time: 1.98690915108
+    start_ram: 81.171875
+    max_ram: 136.3984375
+    max_run_ram_diff: -81.171875
+  pypy3:
+    status: ok
+    full_time: 4.222980953054503
+    start_time: 0.2490436730440706
+    runs: 1
+    min_run_time: 3.9554004669189453
+    max_run_time: 3.9554004669189453
+    start_ram: 75.3828125
+    max_ram: 142.30859375
+    max_run_ram_diff: -75.3828125
+  python2:
+    status: ok
+    full_time: 6.832971891039051
+    start_time: 0.33729664399288595
+    runs: 1
+    min_run_time: 6.55015397072
+    max_run_time: 6.55015397072
+    start_ram: 244.0
+    max_ram: 262.92578125
+    max_run_ram_diff: -244.0
+  python3:
+    status: ok
+    full_time: 8.51112161099445
+    start_time: 0.32487987296190113
+    runs: 1
+    min_run_time: 8.19541597366333
+    max_run_time: 8.19541597366333
+    start_ram: 28.48046875
+    max_ram: 48.88671875
+    max_run_ram_diff: -28.48046875
+  rbx:
+    status: timeout
+    full_time: 60.09477021708153
+    start_time:
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram:
+    max_ram:
+    max_run_ram_diff:
+  ruby2:
+    status: ok
+    full_time: 11.124582876916975
+    start_time: 0.35884718399029225
+    runs: 1
+    min_run_time: 10.792809195
+    max_run_time: 10.792809195
+    start_ram: 28.04296875
+    max_ram: 55.87890625
+    max_run_ram_diff: -28.04296875
+  ruby2_jit:
+    status: ok
+    full_time: 9.932166947983205
+    start_time: 0.3333955790149048
+    runs: 1
+    min_run_time: 9.625764173
+    max_run_time: 9.625764173
+    start_ram: 28.28515625
+    max_ram: 55.77734375
+    max_run_ram_diff: -28.28515625
+  ruby3:
+    status: ok
+    full_time: 11.93542360200081
+    start_time: 0.3341635529650375
+    runs: 1
+    min_run_time: 11.627427217
+    max_run_time: 11.627427217
+    start_ram: 31.27734375
+    max_ram: 84.546875
+    max_run_ram_diff: -31.27734375
+  ruby3_jit:
+    status: ok
+    full_time: 10.57616513199173
+    start_time: 0.5178684240672737
+    runs: 1
+    min_run_time: 10.102848618
+    max_run_time: 10.102848618
+    start_ram: 32.828125
+    max_ram: 83.875
+    max_run_ram_diff: -32.828125
+  topaz:
+    status: ok
+    full_time: 5.438616706058383
+    start_time: 0.3931837909622118
+    runs: 1
+    min_run_time: 5.08459806442
+    max_run_time: 5.08459806442
+    start_ram: 44.1328125
+    max_ram: 117.234375
+    max_run_ram_diff: -44.1328125
+  truffleruby:
+    status: ok
+    full_time: 8.36609182099346
+    start_time: 0.8007415509782732
+    runs: 1
+    min_run_time: 7.6048919999999995
+    max_run_time: 7.6048919999999995
+    start_ram: 351.48046875
+    max_ram: 444.44140625
+    max_run_ram_diff: -351.48046875
+  truffleruby_jvm:
+    status: ok
+    full_time: 7.884007378015667
+    start_time: 2.546424183063209
+    runs: 1
+    min_run_time: 5.40258383
+    max_run_time: 5.40258383
+    start_ram: 887.953125
+    max_ram: 1626.76953125
+    max_run_ram_diff: -887.953125
+mandelbrot:
+  c:
+    build_time: 0.11048299609683454
+    build_ram: 0
+    status: ok
+    full_time: 2.443944940925576
+    start_time: 0.2098623289493844
+    runs: 5
+    min_run_time: 0.45
+    max_run_time: 0.45
+    start_ram: 0.87890625
+    max_ram: 0.87890625
+    max_run_ram_diff: 0.0
+  crystal:
+    build_time: 9.499079364934005
+    build_ram: 263.4921875
+    status: ok
+    full_time: 2.4438551479252055
+    start_time: 0.19898273691069335
+    runs: 5
+    min_run_time: 0.452926722
+    max_run_time: 0.454723463
+    start_ram: 2.74609375
+    max_ram: 2.74609375
+    max_run_ram_diff: 0.0
+  cython:
+    build_time: 0.919533908017911
+    build_ram: 30.13671875
+    status: ok
+    full_time: 2.3244639959884807
+    start_time: 0.22181368502788246
+    runs: 5
+    min_run_time: 0.4290454387664795
+    max_run_time: 0.4304006099700928
+    start_ram: 8.15234375
+    max_ram: 8.15234375
+    max_run_ram_diff: 0.0
+  mypyc:
+    build_time: 2.301369745982811
+    build_ram: 17.140625
+    status: ok
+    full_time: 113.77933458297048
+    start_time: 0.16859830904286355
+    runs: 5
+    min_run_time: 22.689438104629517
+    max_run_time: 22.741702556610107
+    start_ram: 8.16796875
+    max_ram: 16.6875
+    max_run_ram_diff: 8.421875
+  nuitka:
+    build_time: 3.6517397010466084
+    build_ram: 38.82421875
+    status: timeout
+    full_time: 120.07569059706293
+    start_time: 0.2626511229900643
+    runs: 4
+    min_run_time: 29.64075016975403
+    max_run_time: 29.89564323425293
+    start_ram: 10.9296875
+    max_ram: 19.2421875
+    max_run_ram_diff: 8.24609375
+  graalnode:
+    status: ok
+    full_time: 6.714623822947033
+    start_time: 0.4863021979108453
+    runs: 5
+    min_run_time: 0.508
+    max_run_time: 1.775
+    start_ram: 347.40625
+    max_ram: 715.41796875
+    max_run_ram_diff: 129.21875
+  graalnode_jvm:
+    status: ok
+    full_time: 7.178237327025272
+    start_time: 2.2259112159954384
+    runs: 5
+    min_run_time: 0.48
+    max_run_time: 1.797
+    start_ram: 733.07421875
+    max_ram: 1313.68359375
+    max_run_ram_diff: 496.15234375
+  graalpython:
+    status: timeout
+    full_time: 120.0991669211071
+    start_time: 0.30355967208743095
+    runs: 4
+    min_run_time: 1.1420001983642578
+    max_run_time: 2.453000068664551
+    start_ram: 377.234375
+    max_ram: 669.77734375
+    max_run_ram_diff: 156.50390625
+  graalpython_jvm:
+    status: ok
+    full_time: 11.449739513918757
+    start_time: 3.481956294970587
+    runs: 5
+    min_run_time: 0.8349997997283936
+    max_run_time: 2.11899995803833
+    start_ram: 994.91015625
+    max_ram: 1035.03515625
+    max_run_ram_diff: 22.15625
+  jruby:
+    status: ok
+    full_time: 78.14748367504217
+    start_time: 1.6616722560720518
+    runs: 5
+    min_run_time: 14.973215000000001
+    max_run_time: 15.883398999999999
+    start_ram: 318.73828125
+    max_ram: 1228.57421875
+    max_run_ram_diff: 907.34375
+  jruby_opt:
+    status: ok
+    full_time: 42.72400008502882
+    start_time: 1.622000502073206
+    runs: 5
+    min_run_time: 6.929142000000001
+    max_run_time: 12.825496000000001
+    start_ram: 245.640625
+    max_ram: 942.56640625
+    max_run_ram_diff: 696.92578125
+  jython:
+    status: ok
+    full_time: 85.79681548289955
+    start_time: 1.3928757179528475
+    runs: 5
+    min_run_time: 13.6410000324
+    max_run_time: 29.3199999332
+    start_ram: 558.265625
+    max_ram: 592.2890625
+    max_run_ram_diff: 2.48046875
+  lua:
+    status: ok
+    full_time: 33.8324326290749
+    start_time: 0.19649824406951666
+    runs: 5
+    min_run_time: 6.566853
+    max_run_time: 6.988554
+    start_ram: 2.62109375
+    max_ram: 2.62109375
+    max_run_ram_diff: 0.0
+  luajit:
+    status: ok
+    full_time: 2.68451701302547
+    start_time: 0.2003646841039881
+    runs: 5
+    min_run_time: 0.497308
+    max_run_time: 0.501821
+    start_ram: 2.41015625
+    max_ram: 2.41015625
+    max_run_ram_diff: 0.0
+  nodejs:
+    status: ok
+    full_time: 2.605347660020925
+    start_time: 0.2837829489726573
+    runs: 5
+    min_run_time: 0.455
+    max_run_time: 0.483
+    start_ram: 48.54296875
+    max_ram: 111.0625
+    max_run_ram_diff: 22.078125
+  php:
+    status: ok
+    full_time: 28.346255471929908
+    start_time: 0.20379962294828147
+    runs: 5
+    min_run_time: 5.598044872
+    max_run_time: 5.652689934
+    start_ram: 17.0
+    max_ram: 17.0
+    max_run_ram_diff: 0.0
+  php_jit:
+    status: ok
+    full_time: 3.065009712940082
+    start_time: 0.20932832604739815
+    runs: 5
+    min_run_time: 0.571415901
+    max_run_time: 0.577736855
+    start_ram: 19.71484375
+    max_ram: 19.71484375
+    max_run_ram_diff: 0.0
+  pypy2:
+    status: ok
+    full_time: 4.361572945024818
+    start_time: 0.2777463690144941
+    runs: 5
+    min_run_time: 0.565901994705
+    max_run_time: 1.76310110092
+    start_ram: 66.59765625
+    max_ram: 83.57421875
+    max_run_ram_diff: 3.3125
+  pypy3:
+    status: ok
+    full_time: 4.0216891299933195
+    start_time: 0.21350246493238956
+    runs: 5
+    min_run_time: 0.5382626056671143
+    max_run_time: 1.67149019241333
+    start_ram: 59.48046875
+    max_ram: 75.59375
+    max_run_ram_diff: 3.0859375
+  python2:
+    status: timeout
+    full_time: 120.1234937660629
+    start_time: 0.1926683000056073
+    runs: 3
+    min_run_time: 32.407752037
+    max_run_time: 32.7302901745
+    start_ram: 6.5
+    max_ram: 14.890625
+    max_run_ram_diff: 8.24609375
+  python3:
+    status: timeout
+    full_time: 120.1245995570207
+    start_time: 0.19094414997380227
+    runs: 3
+    min_run_time: 31.437853813171387
+    max_run_time: 31.6475248336792
+    start_ram: 8.0625
+    max_ram: 16.7421875
+    max_run_ram_diff: 8.24609375
+  rbx:
+    status: timeout
+    full_time: 120.1444698930718
+    start_time: 0.38297253905329853
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 82.5625
+    max_ram: 797.734375
+    max_run_ram_diff:
+  ruby2:
+    status: ok
+    full_time: 84.18567314406391
+    start_time: 0.2833677770104259
+    runs: 5
+    min_run_time: 16.738524508
+    max_run_time: 16.84345836
+    start_ram: 20.8203125
+    max_ram: 20.8203125
+    max_run_ram_diff: 0.0
+  ruby2_jit:
+    status: ok
+    full_time: 83.95709626900498
+    start_time: 0.2484256710158661
+    runs: 5
+    min_run_time: 16.697232349
+    max_run_time: 16.759404066
+    start_ram: 21.09375
+    max_ram: 21.09375
+    max_run_ram_diff: 0.0
+  ruby3:
+    status: ok
+    full_time: 92.58644222805742
+    start_time: 0.2310816190438345
+    runs: 5
+    min_run_time: 18.437842502
+    max_run_time: 18.500298573
+    start_ram: 22.9140625
+    max_ram: 22.9140625
+    max_run_ram_diff: 0.0
+  ruby3_jit:
+    status: ok
+    full_time: 93.21328738692682
+    start_time: 0.4576379999052733
+    runs: 5
+    min_run_time: 18.515792591
+    max_run_time: 18.636010241
+    start_ram: 24.015625
+    max_ram: 24.015625
+    max_run_ram_diff: 0.0
+  topaz:
+    status: ok
+    full_time: 7.714244610979222
+    start_time: 0.24524427391588688
+    runs: 5
+    min_run_time: 1.43809294701
+    max_run_time: 1.57505893707
+    start_ram: 26.51171875
+    max_ram: 26.76953125
+    max_run_ram_diff: 0.2578125
+  truffleruby:
+    status: ok
+    full_time: 9.347695739939809
+    start_time: 0.26401536096818745
+    runs: 5
+    min_run_time: 1.4061789999999998
+    max_run_time: 2.696189
+    start_ram: 327.8359375
+    max_ram: 400.84375
+    max_run_ram_diff: 27.3359375
+  truffleruby_jvm:
+    status: ok
+    full_time: 11.681182653061114
+    start_time: 1.8948400130029768
+    runs: 5
+    min_run_time: 1.4655852189999998
+    max_run_time: 3.02043293
+    start_ram: 649.640625
+    max_ram: 1185.11328125
+    max_run_ram_diff: 354.2421875
+matmul:
+  c:
+    build_time: 0.10777929297182709
+    build_ram: 0.9453125
+    status: ok
+    full_time: 1.3732741369167343
+    start_time: 0.17168117896653712
+    runs: 5
+    min_run_time: 0.24
+    max_run_time: 0.24
+    start_ram: 16.41796875
+    max_ram: 16.52734375
+    max_run_ram_diff: 0.10546875
+  crystal:
+    build_time: 10.487411187961698
+    build_ram: 289.84375
+    status: ok
+    full_time: 1.4254764009965584
+    start_time: 0.2100420839851722
+    runs: 5
+    min_run_time: 0.251859544
+    max_run_time: 0.256160257
+    start_ram: 21.62890625
+    max_ram: 28.07421875
+    max_run_ram_diff: 6.4453125
+  cython:
+    build_time: 0.9322581820888445
+    build_ram: 26.41015625
+    status: ok
+    full_time: 2.2166405299212784
+    start_time: 0.2135773099726066
+    runs: 5
+    min_run_time: 0.39210033416748047
+    max_run_time: 0.42039060592651367
+    start_ram: 15.87890625
+    max_ram: 84.71484375
+    max_run_ram_diff: 14.953125
+  mypyc:
+    build_time: 2.460080521996133
+    build_ram: 17.1796875
+    status: timeout
+    full_time: 80.07236761099193
+    start_time: 0.1941232009558007
+    runs: 3
+    min_run_time: 24.98034167289734
+    max_run_time: 25.0988826751709
+    start_ram: 17.65234375
+    max_ram: 25.12890625
+    max_run_ram_diff: 3.8671875
+  nuitka:
+    build_time: 3.490350946900435
+    build_ram: 39.140625
+    status: timeout
+    full_time: 80.07391961792018
+    start_time: 0.17928097094409168
+    runs: 3
+    min_run_time: 23.50052046775818
+    max_run_time: 23.577769994735718
+    start_ram: 17.05078125
+    max_ram: 26.62109375
+    max_run_ram_diff: 2.08203125
+  graalnode:
+    status: ok
+    full_time: 12.728168882080354
+    start_time: 0.4964585619745776
+    runs: 5
+    min_run_time: 0.508
+    max_run_time: 3.968
+    start_ram: 348.66015625
+    max_ram: 399.29296875
+    max_run_ram_diff: 15.6796875
+  graalnode_jvm:
+    status: ok
+    full_time: 13.698739556013606
+    start_time: 2.1198848760686815
+    runs: 5
+    min_run_time: 0.296
+    max_run_time: 4.059
+    start_ram: 721.91796875
+    max_ram: 759.3359375
+    max_run_ram_diff: 37.39453125
+  graalpython:
+    status: ok
+    full_time: 13.312496035010554
+    start_time: 0.3831643960438669
+    runs: 5
+    min_run_time: 2.2980000972747803
+    max_run_time: 3.6029999256134033
+    start_ram: 422.76953125
+    max_ram: 1066.046875
+    max_run_ram_diff: 565.29296875
+  graalpython_jvm:
+    status: ok
+    full_time: 11.759201977052726
+    start_time: 3.561175435082987
+    runs: 5
+    min_run_time: 1.3550000190734863
+    max_run_time: 2.7109999656677246
+    start_ram: 1196.4609375
+    max_ram: 1308.72265625
+    max_run_ram_diff: -1.4296875
+  jruby:
+    status: timeout
+    full_time: 80.10932473000139
+    start_time: 1.717809941037558
+    runs: 2
+    min_run_time: 27.204091000000002
+    max_run_time: 33.107105
+    start_ram: 327.9296875
+    max_ram: 874.98828125
+    max_run_ram_diff: 499.1953125
+  jruby_opt:
+    status: timeout
+    full_time: 80.126273636939
+    start_time: 2.1388310809852555
+    runs: 2
+    min_run_time: 26.745335999999998
+    max_run_time: 28.998276999999998
+    start_ram: 258.16796875
+    max_ram: 871.58984375
+    max_run_ram_diff: 559.79296875
+  jython:
+    status: timeout
+    full_time: 80.14914395206142
+    start_time: 1.3850590270012617
+    runs: 2
+    min_run_time: 27.7079999447
+    max_run_time: 28.2460000515
+    start_ram: 380.07421875
+    max_ram: 580.421875
+    max_run_ram_diff: 185.01953125
+  lua:
+    status: ok
+    full_time: 39.40823107690085
+    start_time: 0.24183428997639567
+    runs: 5
+    min_run_time: 7.795634
+    max_run_time: 7.937062
+    start_ram: 35.97265625
+    max_ram: 167.3828125
+    max_run_ram_diff: 44.29296875
+  luajit:
+    status: ok
+    full_time: 1.5305064240237698
+    start_time: 0.20764873398002237
+    runs: 5
+    min_run_time: 0.270994
+    max_run_time: 0.277094
+    start_ram: 22.4375
+    max_ram: 57.48828125
+    max_run_ram_diff: 23.19140625
+  nodejs:
+    status: ok
+    full_time: 1.7181572900153697
+    start_time: 0.260251751053147
+    runs: 5
+    min_run_time: 0.258
+    max_run_time: 0.356
+    start_ram: 65.6875
+    max_ram: 98.43359375
+    max_run_ram_diff: 15.21484375
+  pypy2:
+    status: ok
+    full_time: 1.9990964588942006
+    start_time: 0.19760008994489908
+    runs: 5
+    min_run_time: 0.348620176315
+    max_run_time: 0.368750095367
+    start_ram: 76.92578125
+    max_ram: 85.69921875
+    max_run_ram_diff: 8.2578125
+  pypy3:
+    status: ok
+    full_time: 2.0717112889979035
+    start_time: 0.2904115500859916
+    runs: 5
+    min_run_time: 0.3467440605163574
+    max_run_time: 0.37122559547424316
+    start_ram: 73.98828125
+    max_ram: 82.23828125
+    max_run_ram_diff: 8.25
+  python2:
+    status: timeout
+    full_time: 80.12578207696788
+    start_time: 0.1679202220402658
+    runs: 3
+    min_run_time: 21.9045360088
+    max_run_time: 22.0534610748
+    start_ram: 14.2734375
+    max_ram: 21.890625
+    max_run_ram_diff: 7.18359375
+  python3:
+    status: timeout
+    full_time: 80.11245595093351
+    start_time: 0.18866430700290948
+    runs: 3
+    min_run_time: 22.201813220977783
+    max_run_time: 22.28606915473938
+    start_ram: 17.40625
+    max_ram: 25.19921875
+    max_run_ram_diff: 0.31640625
+  rbx:
+    status: timeout
+    full_time: 80.10986124200281
+    start_time: 0.32495012099388987
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 66.796875
+    max_ram: 729.890625
+    max_run_ram_diff:
+  ruby2:
+    status: timeout
+    full_time: 80.0759864419233
+    start_time: 0.23702378291636705
+    runs: 4
+    min_run_time: 18.207104112
+    max_run_time: 18.386282537
+    start_ram: 28.14453125
+    max_ram: 66.04296875
+    max_run_ram_diff: 15.2109375
+  ruby2_jit:
+    status: timeout
+    full_time: 80.07650151802227
+    start_time: 0.6679894690169021
+    runs: 3
+    min_run_time: 20.685897945
+    max_run_time: 20.799312968
+    start_ram: 24.51171875
+    max_ram: 66.4921875
+    max_run_ram_diff: 19.29296875
+  ruby3:
+    status: timeout
+    full_time: 80.07704223098699
+    start_time: 0.24454320303630084
+    runs: 4
+    min_run_time: 18.002225387
+    max_run_time: 18.279638562
+    start_ram: 30.8515625
+    max_ram: 68.25
+    max_run_ram_diff: 14.71484375
+  ruby3_jit:
+    status: ok
+    full_time: 57.865301458048634
+    start_time: 1.0007262950530276
+    runs: 5
+    min_run_time: 11.298113762
+    max_run_time: 11.496656528
+    start_ram: 31.76171875
+    max_ram: 70.69921875
+    max_run_ram_diff: 19.89453125
+  topaz:
+    status: ok
+    full_time: 9.223336872993968
+    start_time: 0.22464143298566341
+    runs: 5
+    min_run_time: 1.7646150589
+    max_run_time: 1.86851811409
+    start_ram: 58.3515625
+    max_ram: 89.109375
+    max_run_ram_diff: 14.1796875
+  truffleruby:
+    status: ok
+    full_time: 9.920956524903886
+    start_time: 0.29013181990012527
+    runs: 5
+    min_run_time: 1.797222
+    max_run_time: 2.185925
+    start_ram: 325.86328125
+    max_ram: 1152.23046875
+    max_run_ram_diff: 312.85546875
+  truffleruby_jvm:
+    status: ok
+    full_time: 10.673763312050141
+    start_time: 1.9171476910123602
+    runs: 5
+    min_run_time: 1.405796419
+    max_run_time: 2.118165903
+    start_ram: 713.74609375
+    max_ram: 3029.4765625
+    max_run_ram_diff: 1022.6171875
+nbody:
+  c:
+    build_time: 0.09418648190330714
+    build_ram: 0.98828125
+    status: ok
+    full_time: 3.0235605359775946
+    start_time: 0.21297677792608738
+    runs: 5
+    min_run_time: 0.56
+    max_run_time: 0.56
+    start_ram: 1.08984375
+    max_ram: 1.08984375
+    max_run_ram_diff: 0.0
+  crystal:
+    build_time: 10.611170609015971
+    build_ram: 273.69921875
+    status: ok
+    full_time: 3.999798891018145
+    start_time: 0.18496360804419965
+    runs: 5
+    min_run_time: 0.763446014
+    max_run_time: 0.767057117
+    start_ram: 2.7890625
+    max_ram: 2.7890625
+    max_run_ram_diff: 0.0
+  cython:
+    build_time: 0.631249864003621
+    build_ram: 29.72265625
+    status: ok
+    full_time: 3.0206140709342435
+    start_time: 0.20244863000698388
+    runs: 5
+    min_run_time: 0.5563101768493652
+    max_run_time: 0.558906078338623
+    start_ram: 8.11328125
+    max_ram: 8.11328125
+    max_run_ram_diff: 0.0
+  mypyc:
+    build_time: 2.9448738150531426
+    build_ram: 17.23046875
+    status: ok
+    full_time: 0.3497122219996527
+    start_time: 0.2128138820407912
+    runs: 1
+    min_run_time: 0.0010335445404052734
+    max_run_time: 0.0010335445404052734
+    start_ram: 0.0
+    max_ram: 0
+    max_run_ram_diff: 0.0
+  nuitka:
+    build_time: 3.8938339200103655
+    build_ram: 40.33203125
+    status: timeout
+    full_time: 80.07261420902796
+    start_time: 0.21051234600599855
+    runs: 1
+    min_run_time: 63.31923198699951
+    max_run_time: 63.31923198699951
+    start_ram: 11.0625
+    max_ram: 11.0625
+    max_run_ram_diff: 0.0
+  graalnode:
+    status: ok
+    full_time: 26.3084564069286
+    start_time: 0.5271257079439238
+    runs: 5
+    min_run_time: 4.845
+    max_run_time: 5.99
+    start_ram: 325.36328125
+    max_ram: 505.5390625
+    max_run_ram_diff: 138.0
+  graalnode_jvm:
+    status: ok
+    full_time: 31.08057261898648
+    start_time: 2.110874267993495
+    runs: 5
+    min_run_time: 5.656
+    max_run_time: 5.898
+    start_ram: 740.35546875
+    max_ram: 1129.97265625
+    max_run_ram_diff: 378.0
+  graalpython:
+    status: ok
+    full_time: 20.257028992054984
+    start_time: 0.3145160189596936
+    runs: 5
+    min_run_time: 3.8320000171661377
+    max_run_time: 4.5269999504089355
+    start_ram: 370.00390625
+    max_ram: 593.09765625
+    max_run_ram_diff: 163.671875
+  graalpython_jvm:
+    status: ok
+    full_time: 20.129645800916478
+    start_time: 2.939028286957182
+    runs: 5
+    min_run_time: 3.074000120162964
+    max_run_time: 4.187000036239624
+    start_ram: 1088.10546875
+    max_ram: 1235.65234375
+    max_run_ram_diff: 69.37890625
+  jruby:
+    status: timeout
+    full_time: 80.18929472507443
+    start_time: 1.641507082968019
+    runs: 1
+    min_run_time: 51.187507000000004
+    max_run_time: 51.187507000000004
+    start_ram: 306.51953125
+    max_ram: 940.82421875
+    max_run_ram_diff: 634.24609375
+  jruby_opt:
+    status: ok
+    full_time: 77.22711363795679
+    start_time: 2.203546422999352
+    runs: 5
+    min_run_time: 14.833646
+    max_run_time: 15.537299
+    start_ram: 252.94921875
+    max_ram: 789.78125
+    max_run_ram_diff: 536.66796875
+  jython:
+    status: timeout
+    full_time: 80.10895995202009
+    start_time: 1.2838646040763706
+    runs: 1
+    min_run_time: 63.628000021
+    max_run_time: 63.628000021
+    start_ram: 419.515625
+    max_ram: 804.05078125
+    max_run_ram_diff: 347.3515625
+  lua:
+    status: timeout
+    full_time: 80.1193255300168
+    start_time: 0.2467975269537419
+    runs: 3
+    min_run_time: 20.062418
+    max_run_time: 60.764486
+    start_ram: 2.6640625
+    max_ram: 2.6640625
+    max_run_ram_diff: 0.0
+  luajit:
+    status: ok
+    full_time: 6.792348686954938
+    start_time: 0.6653844119282439
+    runs: 5
+    min_run_time: 1.226191
+    max_run_time: 6.109374
+    start_ram: 2.50390625
+    max_ram: 2.50390625
+    max_run_ram_diff: 0.0
+  nodejs:
+    status: ok
+    full_time: 4.423139050952159
+    start_time: 0.3270266599720344
+    runs: 5
+    min_run_time: 0.815
+    max_run_time: 0.829
+    start_ram: 49.43359375
+    max_ram: 49.64453125
+    max_run_ram_diff: 0.1640625
+  php:
+    status: timeout
+    full_time: 80.07055034500081
+    start_time: 0.18360319698695093
+    runs: 3
+    min_run_time: 23.842575073
+    max_run_time: 23.946571827
+    start_ram: 17.0390625
+    max_ram: 17.0390625
+    max_run_ram_diff: 0.0
+  php_jit:
+    status: ok
+    full_time: 35.78089075104799
+    start_time: 0.6804037149995565
+    runs: 5
+    min_run_time: 7.004147053
+    max_run_time: 7.043160915
+    start_ram: 19.66015625
+    max_ram: 19.66015625
+    max_run_ram_diff: 0.0
+  pypy2:
+    status: ok
+    full_time: 30.364170155953616
+    start_time: 0.22681471600662917
+    runs: 5
+    min_run_time: 5.98938703537
+    max_run_time: 6.09106016159
+    start_ram: 63.43359375
+    max_ram: 68.234375
+    max_run_ram_diff: 4.80078125
+  pypy3:
+    status: ok
+    full_time: 22.05267052608542
+    start_time: 0.26152658206410706
+    runs: 1
+    min_run_time: 4.351740837097168
+    max_run_time: 4.351740837097168
+    start_ram: 55.66015625
+    max_ram: 59.78515625
+    max_run_ram_diff: -55.66015625
+  python2:
+    status: timeout
+    full_time: 80.1085988630075
+    start_time: 0.19582342403009534
+    runs: 1
+    min_run_time: 56.164026022
+    max_run_time: 56.164026022
+    start_ram: 199.7578125
+    max_ram: 286.50390625
+    max_run_ram_diff: 86.74609375
+  python3:
+    status: timeout
+    full_time: 80.07433381001465
+    start_time: 0.16147045302204788
+    runs: 1
+    min_run_time: 53.34191060066223
+    max_run_time: 53.34191060066223
+    start_ram: 8.59765625
+    max_ram: 8.59765625
+    max_run_ram_diff: 0.0
+  rbx:
+    status: timeout
+    full_time: 80.09829101199284
+    start_time: 0.39633322204463184
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 84.2890625
+    max_ram: 615.125
+    max_run_ram_diff:
+  ruby2:
+    status: timeout
+    full_time: 80.12539816694334
+    start_time: 0.2618975299410522
+    runs: 1
+    min_run_time: 43.128275757
+    max_run_time: 43.128275757
+    start_ram: 20.8984375
+    max_ram: 20.8984375
+    max_run_ram_diff: 0.0
+  ruby2_jit:
+    status: timeout
+    full_time: 80.12436815700494
+    start_time: 0.7377511820523068
+    runs: 2
+    min_run_time: 37.037537105
+    max_run_time: 37.061088099
+    start_ram: 20.78515625
+    max_ram: 20.95703125
+    max_run_ram_diff: 0.171875
+  ruby3:
+    status: timeout
+    full_time: 80.1260935489554
+    start_time: 0.2552937689470127
+    runs: 1
+    min_run_time: 47.811553355
+    max_run_time: 47.811553355
+    start_ram: 22.90234375
+    max_ram: 22.90234375
+    max_run_ram_diff: 0.0
+  ruby3_jit:
+    status: timeout
+    full_time: 80.11811204801779
+    start_time: 0.9063579300418496
+    runs: 2
+    min_run_time: 33.478010955
+    max_run_time: 33.779142347
+    start_ram: 26.13671875
+    max_ram: 26.39453125
+    max_run_ram_diff: 0.2578125
+  topaz:
+    status: ok
+    full_time: 36.90459316899069
+    start_time: 0.19319420703686774
+    runs: 5
+    min_run_time: 5.3992960453
+    max_run_time: 9.21254301071
+    start_ram: 30.49609375
+    max_ram: 33.66015625
+    max_run_ram_diff: 1.54296875
+  truffleruby:
+    status: ok
+    full_time: 5.169004677911289
+    start_time: 0.2690386889735237
+    runs: 5
+    min_run_time: 0.864431
+    max_run_time: 1.109269
+    start_ram: 301.85546875
+    max_ram: 402.12109375
+    max_run_ram_diff: 42.60546875
+  truffleruby_jvm:
+    status: ok
+    full_time: 6.803446844918653
+    start_time: 1.9300663479370996
+    runs: 5
+    min_run_time: 0.841501335
+    max_run_time: 1.173239092
+    start_ram: 686.3984375
+    max_ram: 967.21484375
+    max_run_ram_diff: 304.83984375
+pidigits:
+  c:
+    build_time: 0.12893348094075918
+    build_ram: 0
+    status: ok
+    full_time: 8.265887271962129
+    start_time: 0.21553355199284852
+    runs: 5
+    min_run_time: 1.61
+    max_run_time: 1.63
+    start_ram: 2.3984375
+    max_ram: 5.5546875
+    max_run_ram_diff: 0.76171875
+  crystal:
+    build_time: 10.711621263064444
+    build_ram: 286.64453125
+    status: ok
+    full_time: 25.696474177064374
+    start_time: 0.19404546602163464
+    runs: 5
+    min_run_time: 4.7078264
+    max_run_time: 5.201789119
+    start_ram: 4.63671875
+    max_ram: 8.046875
+    max_run_ram_diff: 3.40234375
+  cython:
+    build_time: 0.8081562420120463
+    build_ram: 28.6015625
+    status: ok
+    full_time: 8.842915839981288
+    start_time: 0.22043922205921263
+    runs: 5
+    min_run_time: 1.7251648902893066
+    max_run_time: 1.7420876026153564
+    start_ram: 8.9609375
+    max_ram: 11.89453125
+    max_run_ram_diff: 0.94140625
+  mypyc:
+    build_time: 2.270271601038985
+    build_ram: 17.21875
+    status: ok
+    full_time: 30.830987871973775
+    start_time: 0.20720571593847126
+    runs: 5
+    min_run_time: 6.114078521728516
+    max_run_time: 6.13882040977478
+    start_ram: 8.37890625
+    max_ram: 9.1171875
+    max_run_ram_diff: 0.21875
+  nuitka:
+    build_time: 3.4614459549775347
+    build_ram: 38.109375
+    status: ok
+    full_time: 34.22741213103291
+    start_time: 0.17542429303284734
+    runs: 5
+    min_run_time: 6.784075975418091
+    max_run_time: 6.838107347488403
+    start_ram: 11.02734375
+    max_ram: 12.14453125
+    max_run_ram_diff: 0.140625
+  graalnode:
+    status: ok
+    full_time: 16.176868412992917
+    start_time: 0.4988076920853928
+    runs: 5
+    min_run_time: 3.034
+    max_run_time: 3.342
+    start_ram: 326.56640625
+    max_ram: 346.0703125
+    max_run_ram_diff: 16.16796875
+  graalnode_jvm:
+    status: ok
+    full_time: 21.18703851394821
+    start_time: 2.3878385010175407
+    runs: 5
+    min_run_time: 3.67
+    max_run_time: 3.984
+    start_ram: 768.01953125
+    max_ram: 768.01953125
+    max_run_ram_diff: -5.09375
+  graalpython:
+    status: timeout
+    full_time: 70.08723701396957
+    start_time: 0.26895687100477517
+    runs: 4
+    min_run_time: 15.289999961853027
+    max_run_time: 15.509000062942505
+    start_ram: 393.45703125
+    max_ram: 737.52734375
+    max_run_ram_diff: 41.88671875
+  graalpython_jvm:
+    status: ok
+    full_time: 53.138606391032226
+    start_time: 3.534676783019677
+    runs: 5
+    min_run_time: 9.772000074386597
+    max_run_time: 10.329999923706055
+    start_ram: 980.78515625
+    max_ram: 1528.8046875
+    max_run_ram_diff: 400.140625
+  jruby:
+    status: ok
+    full_time: 42.167408684967086
+    start_time: 1.6554682550486177
+    runs: 5
+    min_run_time: 7.89298
+    max_run_time: 8.551232
+    start_ram: 365.8359375
+    max_ram: 1617.79296875
+    max_run_ram_diff: 1241.66796875
+  jruby_opt:
+    status: ok
+    full_time: 42.451930899056606
+    start_time: 1.6734483999898657
+    runs: 5
+    min_run_time: 7.983258999999999
+    max_run_time: 8.735498999999999
+    start_ram: 340.32421875
+    max_ram: 1565.02734375
+    max_run_ram_diff: 1208.37109375
+  jython:
+    status: ok
+    full_time: 46.76697855896782
+    start_time: 1.2987730659078807
+    runs: 5
+    min_run_time: 8.97399997711
+    max_run_time: 9.43400001526
+    start_ram: 481.84765625
+    max_ram: 582.4609375
+    max_run_ram_diff: 75.42578125
+  nodejs:
+    status: ok
+    full_time: 11.011804547975771
+    start_time: 0.29804768098983914
+    runs: 5
+    min_run_time: 2.125
+    max_run_time: 2.185
+    start_ram: 49.54296875
+    max_ram: 52.1640625
+    max_run_ram_diff: 0.90234375
+  php:
+    status: ok
+    full_time: 8.847818586975336
+    start_time: 0.21569945802912116
+    runs: 5
+    min_run_time: 1.718160868
+    max_run_time: 1.724697828
+    start_ram: 17.62890625
+    max_ram: 18.453125
+    max_run_ram_diff: 0.1875
+  php_jit:
+    status: ok
+    full_time: 8.769290530006401
+    start_time: 0.21199677791446447
+    runs: 5
+    min_run_time: 1.70320797
+    max_run_time: 1.711401939
+    start_ram: 21.42578125
+    max_ram: 22.03515625
+    max_run_ram_diff: 0.0
+  pypy2:
+    status: ok
+    full_time: 39.81090984295588
+    start_time: 0.22114086896181107
+    runs: 5
+    min_run_time: 7.89370107651
+    max_run_time: 7.96751689911
+    start_ram: 67.44921875
+    max_ram: 71.59375
+    max_run_ram_diff: 0.77734375
+  pypy3:
+    status: ok
+    full_time: 40.83465981693007
+    start_time: 0.22489850199781358
+    runs: 5
+    min_run_time: 8.118730306625366
+    max_run_time: 8.153335571289062
+    start_ram: 59.98828125
+    max_ram: 63.5703125
+    max_run_ram_diff: 0.484375
+  python2:
+    status: ok
+    full_time: 33.027984117972665
+    start_time: 0.21578580292407423
+    runs: 5
+    min_run_time: 6.51413297653
+    max_run_time: 6.59142613411
+    start_ram: 6.76953125
+    max_ram: 7.765625
+    max_run_ram_diff: 0.08203125
+  python3:
+    status: ok
+    full_time: 31.373344426974654
+    start_time: 0.17076816293410957
+    runs: 5
+    min_run_time: 6.199810981750488
+    max_run_time: 6.295565366744995
+    start_ram: 8.5859375
+    max_ram: 9.6796875
+    max_run_ram_diff: 0.453125
+  rbx:
+    status: timeout
+    full_time: 70.0735102139879
+    start_time: 0.3604194639483467
+    runs: 3
+    min_run_time: 22.600350805
+    max_run_time: 23.306180645
+    start_ram: 83.71875
+    max_ram: 89.47265625
+    max_run_ram_diff: 3.3046875
+  ruby2:
+    status: ok
+    full_time: 57.06236843694933
+    start_time: 0.25575705303344876
+    runs: 5
+    min_run_time: 11.250842305
+    max_run_time: 11.566448563
+    start_ram: 67.5078125
+    max_ram: 171.8125
+    max_run_ram_diff: 17.296875
+  ruby2_jit:
+    status: ok
+    full_time: 57.22196394903585
+    start_time: 0.3179691730765626
+    runs: 5
+    min_run_time: 11.328790163
+    max_run_time: 11.439827254
+    start_ram: 67.52734375
+    max_ram: 163.37890625
+    max_run_ram_diff: 6.16015625
+  ruby3:
+    status: ok
+    full_time: 52.96209736599121
+    start_time: 0.3136188529897481
+    runs: 5
+    min_run_time: 10.509434936
+    max_run_time: 10.598045287
+    start_ram: 69.73828125
+    max_ram: 119.58203125
+    max_run_ram_diff: 7.94921875
+  ruby3_jit:
+    status: ok
+    full_time: 54.09079554199707
+    start_time: 0.4075613220920786
+    runs: 5
+    min_run_time: 10.558769034
+    max_run_time: 11.384227162
+    start_ram: 72.390625
+    max_ram: 148.4453125
+    max_run_ram_diff: 10.2421875
+  topaz:
+    status: ok
+    full_time: 37.619549612980336
+    start_time: 0.20939259906299412
+    runs: 5
+    min_run_time: 7.45988583565
+    max_run_time: 7.51510977745
+    start_ram: 31.81640625
+    max_ram: 34.96484375
+    max_run_ram_diff: 0.0078125
+  truffleruby:
+    status: ok
+    full_time: 53.8561553300824
+    start_time: 0.2417006860487163
+    runs: 5
+    min_run_time: 10.634437
+    max_run_time: 10.812086
+    start_ram: 334.76953125
+    max_ram: 479.98046875
+    max_run_ram_diff: 67.51171875
+  truffleruby_jvm:
+    status: ok
+    full_time: 40.3939307150431
+    start_time: 1.836448221001774
+    runs: 5
+    min_run_time: 7.617573361
+    max_run_time: 7.951042565
+    start_ram: 662.23046875
+    max_ram: 1636.49609375
+    max_run_ram_diff: 862.20703125
+regexdna:
+  c:
+    build_time: 0.11502856598235667
+    build_ram: 0.91015625
+    status: ok
+    full_time: 5.844641992938705
+    start_time: 0.29457600601017475
+    runs: 1
+    min_run_time: 5.54
+    max_run_time: 5.54
+    start_ram: 69.05859375
+    max_ram: 88.8203125
+    max_run_ram_diff: -69.05859375
+  crystal:
+    build_time: 10.409403622034006
+    build_ram: 266.1171875
+    status: ok
+    full_time: 1.9249617940513417
+    start_time: 0.45687064703088254
+    runs: 1
+    min_run_time: 0.45230684
+    max_run_time: 0.45230684
+    start_ram: 112.30859375
+    max_ram: 152.34375
+    max_run_ram_diff: -112.30859375
+  cython:
+    build_time: 1.2228398500010371
+    build_ram: 26.01171875
+    status: ok
+    full_time: 7.172824622015469
+    start_time: 0.6151156040141359
+    runs: 1
+    min_run_time: 6.576131343841553
+    max_run_time: 6.576131343841553
+    start_ram: 44.30078125
+    max_ram: 197.65234375
+    max_run_ram_diff: -44.30078125
+  mypyc:
+    build_time: 2.240927117993124
+    build_ram: 17.1484375
+    status: ok
+    full_time: 6.288596541038714
+    start_time: 1.0519426669925451
+    runs: 1
+    min_run_time: 5.232319355010986
+    max_run_time: 5.232319355010986
+    start_ram: 43.9375
+    max_ram: 141.98046875
+    max_run_ram_diff: -43.9375
+  nuitka:
+    build_time: 3.3269596530590206
+    build_ram: 37.95703125
+    status: ok
+    full_time: 7.166179218911566
+    start_time: 1.239392252988182
+    runs: 1
+    min_run_time: 5.96569037437439
+    max_run_time: 5.96569037437439
+    start_ram: 44.80078125
+    max_ram: 163.765625
+    max_run_ram_diff: -44.80078125
+  graalnode:
+    status: ok
+    full_time: 15.122501707985066
+    start_time: 4.044041703920811
+    runs: 1
+    min_run_time: 10.943
+    max_run_time: 10.943
+    start_ram: 565.8515625
+    max_ram: 763.30078125
+    max_run_ram_diff: -565.8515625
+  graalnode_jvm:
+    status: ok
+    full_time: 13.493550859973766
+    start_time: 5.758541699964553
+    runs: 1
+    min_run_time: 7.738
+    max_run_time: 7.738
+    start_ram: 1522.3671875
+    max_ram: 1914.48828125
+    max_run_ram_diff: -1522.3671875
+  graalpython:
+    status: ok
+    full_time: 18.20571035600733
+    start_time: 4.883312894962728
+    runs: 1
+    min_run_time: 13.282000064849854
+    max_run_time: 13.282000064849854
+    start_ram: 875.54296875
+    max_ram: 1130.90625
+    max_run_ram_diff: -875.54296875
+  graalpython_jvm:
+    status: ok
+    full_time: 17.73786008695606
+    start_time: 8.543856144999154
+    runs: 1
+    min_run_time: 9.21399998664856
+    max_run_time: 9.21399998664856
+    start_ram: 2166.8203125
+    max_ram: 2334.73828125
+    max_run_ram_diff: -2166.8203125
+  jruby:
+    status: ok
+    full_time: 13.261383134056814
+    start_time: 1.8508499140152708
+    runs: 1
+    min_run_time: 11.385843
+    max_run_time: 11.385843
+    start_ram: 335.91796875
+    max_ram: 558.51171875
+    max_run_ram_diff: -335.91796875
+  jruby_opt:
+    status: ok
+    full_time: 12.889824348967522
+    start_time: 2.17549844190944
+    runs: 1
+    min_run_time: 10.673238
+    max_run_time: 10.673238
+    start_ram: 377.18359375
+    max_ram: 588.953125
+    max_run_ram_diff: -377.18359375
+  jython:
+    status: ok
+    full_time: 11.99926183000207
+    start_time: 3.079282794962637
+    runs: 1
+    min_run_time: 9.02999997139
+    max_run_time: 9.02999997139
+    start_ram: 493.6875
+    max_ram: 738.44921875
+    max_run_ram_diff: -493.6875
+  lua:
+    status: ok
+    full_time: 10.9814012410352
+    start_time: 0.845373543095775
+    runs: 1
+    min_run_time: 10.152733
+    max_run_time: 10.152733
+    start_ram: 103.6484375
+    max_ram: 414.69921875
+    max_run_ram_diff: -103.6484375
+  luajit:
+    status: ok
+    full_time: 11.7786862939829
+    start_time: 1.0298057579202577
+    runs: 1
+    min_run_time: 10.812508
+    max_run_time: 10.812508
+    start_ram: 84.71875
+    max_ram: 209.95703125
+    max_run_ram_diff: -84.71875
+  nodejs:
+    status: ok
+    full_time: 1.8091132650151849
+    start_time: 0.7093986619729549
+    runs: 1
+    min_run_time: 1.114
+    max_run_time: 1.114
+    start_ram: 257.046875
+    max_ram: 384.09765625
+    max_run_ram_diff: -257.046875
+  php:
+    status: ok
+    full_time: 1.6772273840615526
+    start_time: 0.23830299207475036
+    runs: 1
+    min_run_time: 1.418434143
+    max_run_time: 1.418434143
+    start_ram: 54.03515625
+    max_ram: 101.765625
+    max_run_ram_diff: -54.03515625
+  php_jit:
+    status: ok
+    full_time: 1.738717989064753
+    start_time: 0.2628229820402339
+    runs: 1
+    min_run_time: 1.415616035
+    max_run_time: 1.415616035
+    start_ram: 56.91796875
+    max_ram: 83.49609375
+    max_run_ram_diff: -56.91796875
+  pypy2:
+    status: ok
+    full_time: 2.8497801379999146
+    start_time: 0.3946213230956346
+    runs: 1
+    min_run_time: 2.55869007111
+    max_run_time: 2.55869007111
+    start_ram: 187.95703125
+    max_ram: 281.47265625
+    max_run_ram_diff: -187.95703125
+  pypy3:
+    status: ok
+    full_time: 3.0651463830145076
+    start_time: 0.5237983000697568
+    runs: 1
+    min_run_time: 2.6575076580047607
+    max_run_time: 2.6575076580047607
+    start_ram: 157.984375
+    max_ram: 307.3828125
+    max_run_ram_diff: -157.984375
+  python2:
+    status: ok
+    full_time: 7.183342947042547
+    start_time: 1.2584012619918212
+    runs: 1
+    min_run_time: 5.95564484596
+    max_run_time: 5.95564484596
+    start_ram: 40.15625
+    max_ram: 118.2734375
+    max_run_ram_diff: -40.15625
+  python3:
+    status: ok
+    full_time: 6.945293324999511
+    start_time: 1.2025307340081781
+    runs: 1
+    min_run_time: 5.7532665729522705
+    max_run_time: 5.7532665729522705
+    start_ram: 43.92578125
+    max_ram: 143.09765625
+    max_run_ram_diff: -43.92578125
+  rbx:
+    status: ok
+    full_time: 15.283725755987689
+    start_time: 2.11117655003909
+    runs: 1
+    min_run_time: 13.191490334
+    max_run_time: 13.191490334
+    start_ram: 274.16015625
+    max_ram: 395.97265625
+    max_run_ram_diff: -274.16015625
+  ruby2:
+    status: ok
+    full_time: 7.245559144066647
+    start_time: 0.37429723399691284
+    runs: 1
+    min_run_time: 6.868353398
+    max_run_time: 6.868353398
+    start_ram: 88.3828125
+    max_ram: 112.9140625
+    max_run_ram_diff: -88.3828125
+  ruby2_jit:
+    status: ok
+    full_time: 7.341837959014811
+    start_time: 0.478604129049927
+    runs: 1
+    min_run_time: 6.897100898
+    max_run_time: 6.897100898
+    start_ram: 88.33984375
+    max_ram: 114.8203125
+    max_run_ram_diff: -88.33984375
+  ruby3:
+    status: ok
+    full_time: 8.478681051987223
+    start_time: 0.6458662569057196
+    runs: 1
+    min_run_time: 7.861524857
+    max_run_time: 7.861524857
+    start_ram: 91.2421875
+    max_ram: 114.7578125
+    max_run_ram_diff: -91.2421875
+  ruby3_jit:
+    status: ok
+    full_time: 8.224254466011189
+    start_time: 0.6559296819614246
+    runs: 1
+    min_run_time: 7.555090869
+    max_run_time: 7.555090869
+    start_ram: 92.609375
+    max_ram: 116.8046875
+    max_run_ram_diff: -92.609375
+  topaz:
+    status: ok
+    full_time: 3.707652683951892
+    start_time: 0.6317390389740467
+    runs: 1
+    min_run_time: 3.10651183128
+    max_run_time: 3.10651183128
+    start_ram: 298.95703125
+    max_ram: 323.046875
+    max_run_ram_diff: -298.95703125
+  truffleruby:
+    status: ok
+    full_time: 11.578912817989476
+    start_time: 1.4768257120158523
+    runs: 1
+    min_run_time: 10.121110999999999
+    max_run_time: 10.121110999999999
+    start_ram: 732.54296875
+    max_ram: 2439.53515625
+    max_run_ram_diff: -732.54296875
+  truffleruby_jvm:
+    status: ok
+    full_time: 8.293225255911238
+    start_time: 2.7813503539655358
+    runs: 1
+    min_run_time: 5.483155047
+    max_run_time: 5.483155047
+    start_ram: 1103.953125
+    max_ram: 2049.0234375
+    max_run_ram_diff: -1103.953125
+revcomp:
+  c:
+    build_time: 0.06758302205707878
+    build_ram: 0
+    status: ok
+    full_time: 0.8146864509908482
+    start_time: 0.23007500101812184
+    runs: 1
+    min_run_time: 0.54
+    max_run_time: 0.54
+    start_ram: 62.5
+    max_ram: 147.78515625
+    max_run_ram_diff: -62.5
+  crystal:
+    build_time: 10.44720791594591
+    build_ram: 274.53515625
+    status: ok
+    full_time: 5.571557177929208
+    start_time: 0.1395941039081663
+    runs: 1
+    min_run_time: 5.40317705
+    max_run_time: 5.40317705
+    start_ram: 72.8828125
+    max_ram: 916.33984375
+    max_run_ram_diff: -72.8828125
+  mypyc:
+    build_time: 2.175655266037211
+    build_ram: 17.25
+    status: fail(status=1)
+    full_time: 0.24439507292117923
+    start_time: 0.24433606292586774
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 0.0
+    max_ram: 0
+    max_run_ram_diff:
+  nuitka:
+    build_time: 3.3392648559529334
+    build_ram: 37.94140625
+    status: ok
+    full_time: 2.847976090037264
+    start_time: 0.17222564399708062
+    runs: 1
+    min_run_time: 2.694373607635498
+    max_run_time: 2.694373607635498
+    start_ram: 116.76171875
+    max_ram: 868.44140625
+    max_run_ram_diff: -116.76171875
+  graalnode:
+    status: ok
+    full_time: 9.042527025914751
+    start_time: 0.48509654495865107
+    runs: 1
+    min_run_time: 8.35
+    max_run_time: 8.35
+    start_ram: 403.05859375
+    max_ram: 1729.1640625
+    max_run_ram_diff: 1326.10546875
+  graalnode_jvm:
+    status: ok
+    full_time: 11.882313502021134
+    start_time: 2.2605742589803413
+    runs: 1
+    min_run_time: 9.284
+    max_run_time: 9.284
+    start_ram: 723.3828125
+    max_ram: 2105.4375
+    max_run_ram_diff: 1382.0546875
+  graalpython:
+    status: ok
+    full_time: 11.542972158058546
+    start_time: 0.3266115930164233
+    runs: 1
+    min_run_time: 11.229000091552734
+    max_run_time: 11.229000091552734
+    start_ram: 394.0546875
+    max_ram: 3012.6328125
+    max_run_ram_diff: -394.0546875
+  graalpython_jvm:
+    status: ok
+    full_time: 7.781733933021314
+    start_time: 2.9469017250230536
+    runs: 1
+    min_run_time: 4.740000009536743
+    max_run_time: 4.740000009536743
+    start_ram: 1177.3359375
+    max_ram: 4273.47265625
+    max_run_ram_diff: -1177.3359375
+  jruby:
+    status: ok
+    full_time: 10.938023836934008
+    start_time: 1.6588109870208427
+    runs: 1
+    min_run_time: 9.316533000000002
+    max_run_time: 9.316533000000002
+    start_ram: 336.5234375
+    max_ram: 835.1328125
+    max_run_ram_diff: -336.5234375
+  jruby_opt:
+    status: ok
+    full_time: 11.104937347001396
+    start_time: 1.580674584954977
+    runs: 1
+    min_run_time: 9.537138
+    max_run_time: 9.537138
+    start_ram: 285.59765625
+    max_ram: 841.62890625
+    max_run_ram_diff: -285.59765625
+  jython:
+    status: fail(status=134)
+    full_time: 5.933437521918677
+    start_time: 1.2555968699743971
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 557.17578125
+    max_ram: 800.68359375
+    max_run_ram_diff:
+  lua:
+    status: ok
+    full_time: 8.843406972009689
+    start_time: 0.2204251999501139
+    runs: 1
+    min_run_time: 8.569627
+    max_run_time: 8.569627
+    start_ram: 45.484375
+    max_ram: 840.6484375
+    max_run_ram_diff: -45.484375
+  luajit:
+    status: ok
+    full_time: 3.4013837669044733
+    start_time: 0.25365407299250364
+    runs: 1
+    min_run_time: 3.158711
+    max_run_time: 3.158711
+    start_ram: 101.73828125
+    max_ram: 309.609375
+    max_run_ram_diff: -101.73828125
+  nodejs:
+    status: ok
+    full_time: 3.4469129249919206
+    start_time: 0.3052942049689591
+    runs: 1
+    min_run_time: 3.19
+    max_run_time: 3.19
+    start_ram: 128.0859375
+    max_ram: 245.57421875
+    max_run_ram_diff: -128.0859375
+  php:
+    status: ok
+    full_time: 2.672056987066753
+    start_time: 0.21691613201983273
+    runs: 1
+    min_run_time: 2.455162764
+    max_run_time: 2.455162764
+    start_ram: 51.59765625
+    max_ram: 384.53515625
+    max_run_ram_diff: -51.59765625
+  php_jit:
+    status: ok
+    full_time: 2.4727814979851246
+    start_time: 0.21341147203929722
+    runs: 1
+    min_run_time: 2.243546963
+    max_run_time: 2.243546963
+    start_ram: 75.1953125
+    max_ram: 368.9453125
+    max_run_ram_diff: -75.1953125
+  pypy2:
+    status: ok
+    full_time: 2.9999227320076898
+    start_time: 0.28276586905121803
+    runs: 1
+    min_run_time: 2.72495007515
+    max_run_time: 2.72495007515
+    start_ram: 131.9921875
+    max_ram: 1304.88671875
+    max_run_ram_diff: -131.9921875
+  pypy3:
+    status: ok
+    full_time: 4.208619421930052
+    start_time: 0.2349070420023054
+    runs: 1
+    min_run_time: 4.002451181411743
+    max_run_time: 4.002451181411743
+    start_ram: 127.6953125
+    max_ram: 1297.3515625
+    max_run_ram_diff: -127.6953125
+  python2:
+    status: ok
+    full_time: 2.5776711070211604
+    start_time: 0.20743076701182872
+    runs: 1
+    min_run_time: 2.3790910244
+    max_run_time: 2.3790910244
+    start_ram: 207.42578125
+    max_ram: 867.56640625
+    max_run_ram_diff: -207.42578125
+  python3:
+    status: ok
+    full_time: 2.5556614990346134
+    start_time: 0.168304348946549
+    runs: 1
+    min_run_time: 2.374025583267212
+    max_run_time: 2.374025583267212
+    start_ram: 131.828125
+    max_ram: 921.15625
+    max_run_ram_diff: -131.828125
+  rbx:
+    status: timeout
+    full_time: 60.09682889690157
+    start_time: 0.33260678697843105
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 74.33203125
+    max_ram: 504.6328125
+    max_run_ram_diff:
+  ruby2:
+    status: ok
+    full_time: 4.459506148006767
+    start_time: 0.19867092499043792
+    runs: 1
+    min_run_time: 4.233089738
+    max_run_time: 4.233089738
+    start_ram: 34.359375
+    max_ram: 164.62890625
+    max_run_ram_diff: -34.359375
+  ruby2_jit:
+    status: ok
+    full_time: 4.379428591928445
+    start_time: 0.23631639801897109
+    runs: 1
+    min_run_time: 4.159665823
+    max_run_time: 4.159665823
+    start_ram: 39.765625
+    max_ram: 164.5546875
+    max_run_ram_diff: -39.765625
+  ruby3:
+    status: ok
+    full_time: 4.012526215985417
+    start_time: 0.32739853498060256
+    runs: 1
+    min_run_time: 3.657380074
+    max_run_time: 3.657380074
+    start_ram: 47.77734375
+    max_ram: 167.7890625
+    max_run_ram_diff: -47.77734375
+  ruby3_jit:
+    status: ok
+    full_time: 3.9795527840033174
+    start_time: 0.4511122559197247
+    runs: 1
+    min_run_time: 3.533869007
+    max_run_time: 3.533869007
+    start_ram: 46.171875
+    max_ram: 169.14453125
+    max_run_ram_diff: -46.171875
+  topaz:
+    status: ok
+    full_time: 7.3924858450191095
+    start_time: 0.2479073799913749
+    runs: 1
+    min_run_time: 7.22904491425
+    max_run_time: 7.22904491425
+    start_ram: 50.4765625
+    max_ram: 787.390625
+    max_run_ram_diff: -50.4765625
+  truffleruby:
+    status: ok
+    full_time: 15.968452648958191
+    start_time: 0.25308059505186975
+    runs: 1
+    min_run_time: 15.710418
+    max_run_time: 15.710418
+    start_ram: 321.7890625
+    max_ram: 1315.34765625
+    max_run_ram_diff: -321.7890625
+  truffleruby_jvm:
+    status: ok
+    full_time: 16.95732756203506
+    start_time: 1.853819460957311
+    runs: 1
+    min_run_time: 15.095498255
+    max_run_time: 15.095498255
+    start_ram: 667.859375
+    max_ram: 2272.2734375
+    max_run_ram_diff: -667.859375
+spectralnorm:
+  c:
+    build_time: 0.1053301029605791
+    build_ram: 0.953125
+    status: ok
+    full_time: 0.7603588650235906
+    start_time: 0.20386662404052913
+    runs: 5
+    min_run_time: 0.11
+    max_run_time: 0.11
+    start_ram: 1.1875
+    max_ram: 1.1875
+    max_run_ram_diff: 0.0
+  crystal:
+    build_time: 10.380573165020905
+    build_ram: 271.55078125
+    status: ok
+    full_time: 0.7721086930250749
+    start_time: 0.19917542801704258
+    runs: 5
+    min_run_time: 0.114767698
+    max_run_time: 0.123362521
+    start_ram: 3.2578125
+    max_ram: 3.515625
+    max_run_ram_diff: 0.2578125
+  cython:
+    build_time: 0.8705670859199017
+    build_ram: 28.19921875
+    status: ok
+    full_time: 0.6718905529705808
+    start_time: 0.18618209706619382
+    runs: 5
+    min_run_time: 0.10623836517333984
+    max_run_time: 0.10667729377746582
+    start_ram: 8.54296875
+    max_ram: 10.34765625
+    max_run_ram_diff: 0.515625
+  mypyc:
+    build_time: 2.423314996995032
+    build_ram: 17.11328125
+    status: ok
+    full_time: 65.38037452299614
+    start_time: 0.1827761799795553
+    runs: 5
+    min_run_time: 12.935960531234741
+    max_run_time: 13.18449354171753
+    start_ram: 7.63671875
+    max_ram: 8.48828125
+    max_run_ram_diff: 0.8515625
+  nuitka:
+    build_time: 3.3587215329753235
+    build_ram: 38.84375
+    status: timeout
+    full_time: 80.12126026395708
+    start_time: 0.21158508595544845
+    runs: 3
+    min_run_time: 21.080161571502686
+    max_run_time: 21.190888166427612
+    start_ram: 10.83203125
+    max_ram: 11.19140625
+    max_run_ram_diff: 0.359375
+  graalnode:
+    status: ok
+    full_time: 2.0095338590908796
+    start_time: 0.6221256090793759
+    runs: 5
+    min_run_time: 0.128
+    max_run_time: 0.643
+    start_ram: 335.09375
+    max_ram: 439.0859375
+    max_run_ram_diff: 63.3828125
+  graalnode_jvm:
+    status: ok
+    full_time: 3.9469115580432117
+    start_time: 2.152501260046847
+    runs: 5
+    min_run_time: 0.124
+    max_run_time: 0.918
+    start_ram: 707.78125
+    max_ram: 1133.37890625
+    max_run_ram_diff: 414.421875
+  graalpython:
+    status: ok
+    full_time: 4.987038563005626
+    start_time: 0.27335578098427504
+    runs: 5
+    min_run_time: 0.7470002174377441
+    max_run_time: 1.6640000343322754
+    start_ram: 392.7265625
+    max_ram: 800.05078125
+    max_run_ram_diff: 289.65234375
+  graalpython_jvm:
+    status: ok
+    full_time: 6.977549648028798
+    start_time: 2.9379637490492314
+    runs: 5
+    min_run_time: 0.6230001449584961
+    max_run_time: 1.4879999160766602
+    start_ram: 990.42578125
+    max_ram: 1722.0078125
+    max_run_ram_diff: 731.58203125
+  jruby:
+    status: ok
+    full_time: 54.276938281953335
+    start_time: 1.6029188520042226
+    runs: 5
+    min_run_time: 10.425652
+    max_run_time: 10.856044
+    start_ram: 362.3203125
+    max_ram: 1329.69140625
+    max_run_ram_diff: 966.26171875
+  jruby_opt:
+    status: ok
+    full_time: 22.97817141597625
+    start_time: 1.6848464129725471
+    runs: 5
+    min_run_time: 4.154014
+    max_run_time: 4.562793
+    start_ram: 296.984375
+    max_ram: 1237.4921875
+    max_run_ram_diff: 936.3984375
+  jython:
+    status: timeout
+    full_time: 80.13941826310474
+    start_time: 1.320307312067598
+    runs: 1
+    min_run_time: 40.9559998512
+    max_run_time: 40.9559998512
+    start_ram: 370.09765625
+    max_ram: 374.0234375
+    max_run_ram_diff: -13.15625
+  lua:
+    status: ok
+    full_time: 27.878693607985042
+    start_time: 0.18420464801602066
+    runs: 5
+    min_run_time: 5.497228
+    max_run_time: 5.582537
+    start_ram: 2.6796875
+    max_ram: 3.30078125
+    max_run_ram_diff: 0.3984375
+  luajit:
+    status: ok
+    full_time: 0.7698252580594271
+    start_time: 0.19262335204984993
+    runs: 5
+    min_run_time: 0.123747
+    max_run_time: 0.12912
+    start_ram: 2.55859375
+    max_ram: 2.9453125
+    max_run_ram_diff: 0.38671875
+  nodejs:
+    status: ok
+    full_time: 0.8703715830342844
+    start_time: 0.32633584504947066
+    runs: 5
+    min_run_time: 0.111
+    max_run_time: 0.119
+    start_ram: 48.73046875
+    max_ram: 49.26953125
+    max_run_ram_diff: 0.2578125
+  php:
+    status: ok
+    full_time: 33.8218616140075
+    start_time: 0.16127370100002736
+    runs: 5
+    min_run_time: 6.676130056
+    max_run_time: 6.781491995
+    start_ram: 16.890625
+    max_ram: 17.32421875
+    max_run_ram_diff: 0.43359375
+  php_jit:
+    status: ok
+    full_time: 13.288038266939111
+    start_time: 0.26609335897956043
+    runs: 5
+    min_run_time: 2.585103035
+    max_run_time: 2.643100977
+    start_ram: 20.4765625
+    max_ram: 20.4765625
+    max_run_ram_diff: 0.0
+  pypy2:
+    status: ok
+    full_time: 3.4353118949802592
+    start_time: 0.22353545704390854
+    runs: 5
+    min_run_time: 0.641444921494
+    max_run_time: 0.659775018692
+    start_ram: 68.23046875
+    max_ram: 68.23046875
+    max_run_ram_diff: 0.0
+  pypy3:
+    status: ok
+    full_time: 3.8363708440447226
+    start_time: 0.18755470192991197
+    runs: 5
+    min_run_time: 0.7031676769256592
+    max_run_time: 0.753619909286499
+    start_ram: 61.03515625
+    max_ram: 61.66796875
+    max_run_ram_diff: 0.6328125
+  python2:
+    status: ok
+    full_time: 78.71526710793842
+    start_time: 0.22410518093965948
+    runs: 5
+    min_run_time: 15.6577849388
+    max_run_time: 15.7578909397
+    start_ram: 6.41015625
+    max_ram: 6.7890625
+    max_run_ram_diff: 0.24609375
+  python3:
+    status: timeout
+    full_time: 80.06941749097314
+    start_time: 0.21084107796195894
+    runs: 3
+    min_run_time: 20.267775297164917
+    max_run_time: 20.291271209716797
+    start_ram: 8.25
+    max_ram: 8.796875
+    max_run_ram_diff: 0.546875
+  rbx:
+    status: timeout
+    full_time: 80.15958021604456
+    start_time: 0.3646298940293491
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram: 68.95703125
+    max_ram: 624.54296875
+    max_run_ram_diff:
+  ruby2:
+    status: timeout
+    full_time: 80.07587597810198
+    start_time: 0.22775053710211068
+    runs: 4
+    min_run_time: 17.292800413
+    max_run_time: 17.353904705
+    start_ram: 20.9140625
+    max_ram: 21.1640625
+    max_run_ram_diff: 0.25
+  ruby2_jit:
+    status: ok
+    full_time: 66.27323088096455
+    start_time: 0.7381502540083602
+    runs: 5
+    min_run_time: 13.067613754
+    max_run_time: 13.196820365
+    start_ram: 20.80859375
+    max_ram: 21.26953125
+    max_run_ram_diff: 0.4609375
+  ruby3:
+    status: ok
+    full_time: 74.80073557398282
+    start_time: 0.28567144193220884
+    runs: 5
+    min_run_time: 14.867710968
+    max_run_time: 14.952205288
+    start_ram: 22.84765625
+    max_ram: 23.06640625
+    max_run_ram_diff: 0.21875
+  ruby3_jit:
+    status: ok
+    full_time: 54.564213188015856
+    start_time: 0.48610315297264606
+    runs: 5
+    min_run_time: 10.787390295
+    max_run_time: 10.866724132
+    start_ram: 24.6875
+    max_ram: 25.0703125
+    max_run_ram_diff: 0.3828125
+  topaz:
+    status: ok
+    full_time: 7.502099668956362
+    start_time: 0.2013094200519845
+    runs: 5
+    min_run_time: 1.44927310944
+    max_run_time: 1.50512599945
+    start_ram: 30.19921875
+    max_ram: 32.00390625
+    max_run_ram_diff: 1.42578125
+  truffleruby:
+    status: ok
+    full_time: 1.525030201068148
+    start_time: 0.21074557804968208
+    runs: 5
+    min_run_time: 0.21445899999999996
+    max_run_time: 0.34639299999999995
+    start_ram: 269.29296875
+    max_ram: 367.00390625
+    max_run_ram_diff: 44.9765625
+  truffleruby_jvm:
+    status: ok
+    full_time: 3.129363219020888
+    start_time: 1.9184695580042899
+    runs: 5
+    min_run_time: 0.21302354999999995
+    max_run_time: 0.413371655
+    start_ram: 712.17578125
+    max_ram: 713.0234375
+    max_run_ram_diff: 20.62890625
+date: '2023-01-22'
+versions:
+  c: 12.2.0
+  crystal: 1.7.1
+  cython: 0.29.30
+  graalnode: '22.3.0 (node: 16.17.1)'
+  graalpython: '22.3.0 (python: 3.8.5)'
+  java: openjdk 19.0.1
+  jruby: 9.4.0.0
+  jython: 2.7.3
+  lua: 5.3.6
+  luajit: 2.1.0-beta3
+  mypyc: '0.991'
+  nodejs: 18.7.0
+  nuitka: '1.3.8 (python: 3.10.7, gcc: 12.2.0)'
+  php: 8.1.7
+  pypy2: '7.3.6 (python: 2.7.18, gcc: 7.3.1)'
+  pypy3: '7.3.11 (python: 3.9.16, gcc: 10.2.1)'
+  python2: 2.7.18
+  python3: 3.10.7
+  rbx: '5.0'
+  ruby2: 2.7.7p221
+  ruby3: 3.2.0p0
+  topaz: https://github.com/kostya/topaz
+  truffleruby: '22.3.0 (ruby: 3.0.3)'

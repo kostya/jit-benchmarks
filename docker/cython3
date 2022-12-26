@@ -1,0 +1,3 @@
+FROM jit-benchmarks:python3
+
+RUN apt install -y cython3

@@ -1,0 +1,4 @@
+FROM jit-benchmarks:base
+
+ARG version
+RUN apt install -y "php$version" php-gmp

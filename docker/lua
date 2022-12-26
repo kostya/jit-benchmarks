@@ -1,0 +1,6 @@
+FROM jit-benchmarks:base
+
+ARG version
+RUN apt install -y "lua$version"
+RUN apt install -y luajit
+RUN apt install -y lua-posix lua-posix-dev

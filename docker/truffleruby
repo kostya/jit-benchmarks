@@ -1,0 +1,5 @@
+FROM jit-benchmarks:graalvm
+
+RUN gu install ruby
+RUN $GRAALVM_PATH/languages/ruby/lib/truffle/post_install_hook.sh
+RUN ln -s $GRAALVM_PATH/bin/truffleruby /usr/bin/truffleruby

@@ -1,0 +1,7 @@
+FROM jit-benchmarks:graalvm
+
+RUN gu install nodejs
+RUN ln -s $GRAALVM_PATH/bin/node /usr/bin/graalnode
+RUN apt install -y npm
+RUN npm install -g mpzjs
+ENV NODE_PATH=/usr/local/lib/node_modules

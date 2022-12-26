@@ -1,0 +1,10 @@
+FROM jit-benchmarks:base
+
+RUN apt install -y libpcre3-dev libevent-dev
+ARG version
+ARG arch
+RUN if [ "$arch" = "amd64" ] || [ "$arch" = "" ]; then export ARCH="linux-x86_64"; else export ARCH="linux-aarch64"; fi && \
+    wget --progress=dot:giga -O - \
+    https://github.com/crystal-lang/crystal/releases/download/$version/crystal-$version-1-$ARCH.tar.gz \
+    | tar -xz
+ENV PATH="/opt/crystal-$version-1/bin:${PATH}"

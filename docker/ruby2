@@ -1,0 +1,23 @@
+FROM jit-benchmarks:base
+
+RUN wget --progress=dot:giga -O - \
+    https://www.openssl.org/source/openssl-1.1.1q.tar.gz \
+    | tar -xz \
+    && cd openssl-1.1.1q \
+    && ./config shared --prefix=/opt/openssl1.1.1q \
+    && make -j4 \
+    && make install_sw \
+    && rm -rf /opt/openssl-1.1.1q
+
+ARG version
+ARG major_version
+
+# https://www.ruby-lang.org/en/downloads/
+RUN wget --progress=dot:giga -O - \
+    https://cache.ruby-lang.org/pub/ruby/$major_version/ruby-$version.tar.gz \
+    | tar -xz \
+    && cd ruby-$version \    
+    && ./configure --prefix=/opt/ruby --disable-install-doc --disable-install-rdoc --disable-install-capi --with-openssl-dir=/opt/openssl1.1.1q \
+    && make -j4 && make install \
+    && cd .. && rm -rf ruby-$version    
+ENV PATH="/opt/ruby/bin:${PATH}"

@@ -1,0 +1,6 @@
+FROM jit-benchmarks:base
+
+RUN wget --progress=dot:giga -O - \
+    https://rubinius-binaries-rubinius-com.s3-us-west-2.amazonaws.com/ubuntu/16.04/x86_64/rubinius-5.0.tar.bz2 \
+    | tar -xj \
+    && ln -sf /opt/rubinius/5.0/bin/rbx /usr/bin/rbx

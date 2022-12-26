@@ -1,0 +1,5 @@
+FROM jit-benchmarks:base
+
+ARG version
+ENV JAVA_VERSION=$version
+RUN apt install -y openjdk-$version-jre-headless

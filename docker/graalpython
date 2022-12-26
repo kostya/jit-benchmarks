@@ -1,0 +1,4 @@
+FROM jit-benchmarks:graalvm
+
+RUN gu install python
+RUN ln -s $GRAALVM_PATH/bin/graalpy /usr/bin/graalpython

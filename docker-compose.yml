@@ -1,0 +1,205 @@
+version: '3.8'
+
+x-shared: &shared
+  tty: true
+  volumes:
+    - .:/src
+  working_dir: /src
+  build: 
+    context: .
+  #pid: "host"
+
+x-round: 0
+
+services:
+  base:
+    <<: *shared
+    image: jit-benchmarks:base
+    build: 
+      dockerfile: docker/base
+  ruby2:
+    <<: *shared
+    image: jit-benchmarks:ruby2
+    build: 
+      dockerfile: docker/ruby2
+      args: 
+        # https://www.ruby-lang.org/en/downloads/
+        version: 2.7.7
+        major_version: 2.7
+    depends_on:
+      - base
+  ruby3:
+    <<: *shared
+    image: jit-benchmarks:ruby3
+    build: 
+      dockerfile: docker/ruby3
+      args:
+        # https://www.ruby-lang.org/en/downloads/
+        major_version: 3.2
+        version: 3.2.0
+    depends_on:
+      - base
+  java:
+    <<: *shared
+    image: jit-benchmarks:java
+    build: 
+      dockerfile: docker/java
+      args:
+        version: 19
+    depends_on:
+      - base
+  graalvm:
+    <<: *shared
+    image: jit-benchmarks:graalvm
+    build: 
+      dockerfile: docker/graalvm
+      args:
+        # https://github.com/graalvm/graalvm-ce-builds/releases
+        version: 22.3.0
+        java_version: 19
+    depends_on:
+      - java
+  truffleruby:
+    <<: *shared
+    image: jit-benchmarks:truffleruby
+    build: 
+      dockerfile: docker/truffleruby
+    depends_on:
+      - graalvm
+  graalpython:
+    <<: *shared
+    image: jit-benchmarks:graalpython
+    build: 
+      dockerfile: docker/graalpython
+    depends_on:
+      - graalvm
+  graalnode:
+    <<: *shared
+    image: jit-benchmarks:graalnode
+    build: 
+      dockerfile: docker/graalnode
+    depends_on:
+      - graalvm
+  crystal:
+    <<: *shared
+    image: jit-benchmarks:crystal
+    build: 
+      dockerfile: docker/crystal
+      args:
+        # https://github.com/crystal-lang/crystal/releases
+        version: 1.7.1
+    depends_on:
+      - base
+  jruby:
+    <<: *shared
+    image: jit-benchmarks:jruby
+    build: 
+      dockerfile: docker/jruby
+      args:
+        # https://www.jruby.org/download
+        version: 9.4.0.0
+    depends_on:
+      - java
+  pypy2:
+    <<: *shared
+    image: jit-benchmarks:pypy2
+    build: 
+      dockerfile: docker/pypy2
+      args:
+        python: 2.7
+        version: 7.3.6
+    depends_on:
+      - base
+  pypy3:
+    <<: *shared    
+    image: jit-benchmarks:pypy3
+    build: 
+      dockerfile: docker/pypy3
+      args:
+        python: 3.9
+        version: 7.3.11
+    depends_on:
+      - base
+  topaz:
+    <<: *shared    
+    image: jit-benchmarks:topaz
+    build: 
+      dockerfile: docker/topaz
+    depends_on:
+      - pypy2
+  rbx:
+    <<: *shared
+    image: jit-benchmarks:rbx
+    build: 
+      dockerfile: docker/rbx
+    depends_on:
+      - base
+  jython:
+    <<: *shared
+    image: jit-benchmarks:jython
+    build: 
+      dockerfile: docker/jython
+      args:
+        version: 2.7.3
+    depends_on:
+      - java
+  python2:
+    <<: *shared
+    image: jit-benchmarks:python2
+    build: 
+      dockerfile: docker/python2
+    depends_on:
+      - base
+  python3:
+    <<: *shared
+    image: jit-benchmarks:python3
+    build: 
+      dockerfile: docker/python3
+    depends_on:
+      - base
+  mypy:
+    <<: *shared
+    image: jit-benchmarks:mypy
+    build: 
+      dockerfile: docker/mypy
+    depends_on:
+      - python3
+  cython3:
+    <<: *shared    
+    image: jit-benchmarks:cython3
+    build: 
+      dockerfile: docker/cython3
+    depends_on:
+      - python3
+  php8:
+    <<: *shared
+    image: jit-benchmarks:php8
+    build: 
+      dockerfile: docker/php8
+      args:
+        version: 8.1
+    depends_on:
+      - base
+  nodejs:
+    <<: *shared
+    image: jit-benchmarks:nodejs
+    build: 
+      dockerfile: docker/nodejs
+    depends_on:
+      - base
+  lua:
+    <<: *shared
+    image: jit-benchmarks:lua
+    build: 
+      dockerfile: docker/lua
+      args:
+        version: 5.3
+    depends_on:
+      - base
+  nuitka:
+    <<: *shared
+    image: jit-benchmarks:nuitka
+    build: 
+      dockerfile: docker/nuitka
+    depends_on:
+      - python3

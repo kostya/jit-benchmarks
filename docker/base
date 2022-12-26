@@ -1,0 +1,12 @@
+FROM ubuntu:22.10
+
+WORKDIR /opt
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+RUN apt update
+RUN apt install -y wget git curl build-essential
+RUN apt install -y zlib1g-dev libffi-dev libssl-dev libyaml-dev libgmp-dev libpcre3-dev
+RUN apt install -y vim mc # for debug
+RUN apt install -y ruby # needs for wrapper
+
+COPY docker/wrapper /usr/bin/wrapper

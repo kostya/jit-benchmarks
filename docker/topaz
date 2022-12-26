@@ -1,0 +1,15 @@
+FROM jit-benchmarks:pypy2
+
+RUN apt install -y pkg-config
+
+RUN git clone https://github.com/kostya/topaz.git \
+  && cd topaz \
+  && rm -rf .git
+
+RUN cd topaz && pypy2-pip install -r requirements.txt
+
+RUN cd topaz \ 
+  && pypy2 /opt/pypy2-src/rpython/bin/rpython -Ojit targettopaz.py \
+  && rm -rf /tmp/*
+
+ENV PATH="/opt/topaz/bin:$PATH"

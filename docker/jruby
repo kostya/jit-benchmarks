@@ -1,0 +1,7 @@
+FROM jit-benchmarks:java
+
+ARG version
+RUN wget --progress=dot:giga -O - \
+    https://repo1.maven.org/maven2/org/jruby/jruby-dist/$version/jruby-dist-$version-bin.tar.gz \
+    | tar -xz \
+    && ln -s /opt/jruby-$version/bin/jruby /usr/bin/jruby

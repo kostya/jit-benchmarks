@@ -1,0 +1,3 @@
+FROM jit-benchmarks:base
+
+RUN apt install -y python2.7
