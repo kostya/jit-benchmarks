@@ -39,53 +39,53 @@ DC_COUNT=3      # set runs count, default: 5
 Q
 
 case cmd = ARGV.shift
-when "init"
+when "init", "i", "in"
   # Build docker containers
   # ./dc init
   # ./dc init all
   # ./dc init crystal,ruby
   CLI.new.init(ARGV[0])  
-when "up"
+when "up", "u"
   # ./dc up
   # ./dc up all
   # ./dc up crystal,ruby
   CLI.new.up(ARGV[0])
-when "down"
+when "down", "d"
   CLI.new.down
 when "ps"
   puts `docker compose ps`
-when "build"
+when "build", "b", "bu", "bui"
   # ./dc build
   # ./dc build all all
   # ./dc build binarytrees,fasta crystal,ruby
   CLI.new.build(ARGV[0], ARGV[1])
-when "check"
+when "check", "c", "ch", "che"
   # ./dc check
   # ./dc check all all
   # ./dc check binarytrees,fasta crystal,ruby
   CLI.new.check(ARGV[0], ARGV[1])
-when "run"
+when "run", "r", "ru"
   # ./dc run
   # ./dc run all all
   # ./dc run binarytrees,fasta crystal,ruby
   CLI.new.run(ARGV[0], ARGV[1])
-when "clean"
+when "clean", "cl", "cle"
   # Remove target folders
   # sudo needed because target folder have subfolders with root rights, because created in docker
   # sudo ./dc clean
   # sudo ./dc clean all
   # sudo ./dc clean binarytrees
   CLI.new.clean(ARGV[0])
-when "versions"
+when "versions", "v", "ver", "vers"
   # ./dc versions
   # ./dc versions all
   # ./dc versions ruby,crystal
   CLI.new.versions(ARGV[0])
-when "readme"
+when "readme", "re", "rea"
   CLI.new.readme(ARGV[0], ARGV[1])
-when "new"
+when "new", "n"
   CLI.new.new_round
-when "round"
+when "round", "ro", "rou"
   CLI.new.round(ARGV[0], ARGV[1])
 when "languages_list"
   puts CLI.new.send(:langs_from_str, ARGV[0]).join(' ')
@@ -93,6 +93,8 @@ when "containers_list"
   puts CLI.new.send(:build_containers, ARGV[0]).join(' ')
 when "benchmarks_list"
   puts CLI.new.send(:benchmarks_from_str, ARGV[0]).join(' ')
+when "h", "help", "-h", "--help"
+  puts README
 else
   puts README
 end
