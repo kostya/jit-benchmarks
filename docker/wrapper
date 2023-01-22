@@ -3,6 +3,10 @@
 t0 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 pid = Process.spawn(*ARGV.to_a)
 STDERR.puts("started\t#{pid}")
-Process.waitall
+res = Process.waitall
+STDERR.puts res
 t1 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 STDERR.puts("time(#{t1 - t0})")
+
+exitstatus = res[0][1].exitstatus
+exit exitstatus

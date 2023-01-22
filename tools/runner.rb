@@ -48,7 +48,7 @@ class Runner
 
     if @exitstatus != 0 && ENV['DC_DEBUG'] != '1'
       puts stdout_content if @stdout == :text
-      puts stderr_content if @stderr == :text
+      puts stderr_content if @stderr == :text || @stderr == :measure
     end
 
     if ENV['DC_DEBUG'] == '1'
@@ -264,6 +264,8 @@ private
           ts = TS.new(@memory_profile.current_or_last, timestamp, $1.to_f)
           @results_ts << ts
         end
+      else
+        @stderr_content += msg
       end      
     end
   end  

@@ -44,7 +44,7 @@ when "init", "i", "in"
   # ./dc init
   # ./dc init all
   # ./dc init crystal,ruby
-  CLI.new.init(ARGV[0])  
+  CLI.new.init(ARGV[0], ARGV[1] == "--force-rebuild")
 when "up", "u"
   # ./dc up
   # ./dc up all

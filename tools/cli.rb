@@ -48,8 +48,8 @@ class CLI
     `sed -i -E "s/x-round: ([0-9]+)/x-round: #{@round}/" #{COMPOSE_CONFIG_PATH}`
   end
 
-  def init(langs_str)
-    system("docker compose build #{build_containers(langs_str).join(' ')} --build-arg arch=#{@arch}")
+  def init(langs_str, force_rebuild = false)
+    system("docker compose build #{build_containers(langs_str).join(' ')} --build-arg arch=#{@arch} #{force_rebuild ? "--no-cache" : ""}")
   end
 
   def up(langs_str)
