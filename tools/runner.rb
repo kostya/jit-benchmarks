@@ -251,6 +251,7 @@ private
 
   def record_timings!
     @threads << capture_io!(@err_read_io) do |msg|
+      @stderr_content += msg
       if msg =~ /started\t([\d]+)/
         v = $1
         @monitor_pid = v.to_i
@@ -264,8 +265,6 @@ private
           ts = TS.new(@memory_profile.current_or_last, timestamp, $1.to_f)
           @results_ts << ts
         end
-      else
-        @stderr_content += msg
       end      
     end
   end  
