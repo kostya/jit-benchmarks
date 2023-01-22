@@ -480,9 +480,11 @@ Currently possible to run on x86_64 and aarch64. Tested Ubuntu x86_64 and Apple 
 Install [docker-compose-plugin v2](https://docs.docker.com/engine/install/ubuntu/#set-up-the-repository) and Ruby, on your local machine.
 
 Run control script for more info:
+
 		./dc
 
 Example build and run binarytrees benchmark for ruby and crystal:
+
 		./dc init crystal,ruby
 		./dc up crystal,ruby
 		./dc versions crystal,ruby
