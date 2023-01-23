@@ -1,4 +1,17 @@
 FROM jit-benchmarks:base
 
 ARG version
-RUN apt install -y "php$version" php-gmp
+RUN apt install -y pkg-config libxml2-dev libsqlite3-dev
+
+RUN mkdir /opt/php8-src && \
+    wget --progress=dot:giga -O - \
+    https://www.php.net/distributions/php-$version.tar.bz2 \
+    | tar -xj -C /opt/php8-src --strip-components=1
+
+RUN cd /opt/php8-src && \
+	./configure --prefix /opt/php8 --with-gmp && \
+	make -j4 && \
+	make install && \
+	rm -rf /opt/php8-src
+
+RUN ln -sf /opt/php8/bin/php /usr/bin/php

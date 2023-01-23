@@ -1,6 +1,15 @@
 FROM jit-benchmarks:base
 
-RUN apt install -y nodejs 
-RUN apt install -y npm
+ARG version
+ARG arch
+RUN mkdir /opt/nodejs && \
+	if [ "$arch" = "amd64" ] || [ "$arch" = "" ]; then export ARCH="linux-x64"; else export ARCH="linux-arm64"; fi && \
+    wget --progress=dot:giga -O - \
+    https://nodejs.org/dist/v$version/node-v$version-$ARCH.tar.xz \
+    | tar -xJ -C /opt/nodejs --strip-components=1
+
+ENV PATH=$PATH:/opt/nodejs/bin
+
 RUN npm install -g mpzjs
-ENV NODE_PATH=/usr/local/lib/node_modules
+
+ENV NODE_PATH=/opt/nodejs/lib/node_modules

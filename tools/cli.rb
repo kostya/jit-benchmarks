@@ -49,6 +49,10 @@ class CLI
   end
 
   def init(langs_str, force_rebuild = false)
+    cmd = "docker compose build #{build_containers(langs_str).join(' ')} --build-arg arch=#{@arch} #{force_rebuild ? "--no-cache" : ""}"   
+    if ENV['DC_DEBUG'] == '1'
+      puts cmd
+    end
     system("docker compose build #{build_containers(langs_str).join(' ')} --build-arg arch=#{@arch} #{force_rebuild ? "--no-cache" : ""}")
   end
 
@@ -153,13 +157,20 @@ class CLI
   def round(benchmarks_str, langs_str)
     new_round
     init(langs_str)
-    versions(langs_str)
     up(langs_str)
+    versions(langs_str)    
     build(benchmarks_str, langs_str)
     check(benchmarks_str, langs_str)
     run(benchmarks_str, langs_str)
     down
     readme(benchmarks_str, langs_str)
+  end
+
+  def shell(langs_str)
+    lang = langs_from_str(langs_str)[0]
+    container = LANGUAGES[lang][:container]
+
+    system("docker compose run #{container}")
   end
 
 private
@@ -169,13 +180,29 @@ private
     str.to_s.split(",").each do |name|
       name = name[0..-2] if name.end_with?('/')
       if name == "all" || name == "" || name == "-"
-        res += COMPOSE_CONFIG["services"].keys
+        containers = LANGUAGES.map { |_, l| l.container }
+        containers.each do |c|
+          if COMPOSE_CONFIG["services"][c]
+            res << c
+          end
+        end
       else
+        finded = false
         if COMPOSE_CONFIG["services"].has_key?(name)
+          finded = true
           res << name 
         else
-          COMPOSE_CONFIG["services"].each_key { |key| res << key if key.start_with?(name) }
+          COMPOSE_CONFIG["services"].each_key do |key|
+            if key.start_with?(name)              
+              finded = true
+              res << key 
+            end
+          end
         end
+        unless finded
+          puts "Container: #{name.colorize(:red)} Not found! Available names: (#{COMPOSE_CONFIG['services'].keys.join(', ')})"
+          exit 1
+        end        
       end
     end
     res.reject! { |ln| l = LANGUAGES[ln]; l ? (l.skip_arch || []).include?(@arch) : nil }
@@ -211,11 +238,22 @@ private
       if name == "all" || name == "" || name == "-"
         res += BENCHMARKS.keys
       else
+        finded = false
         if BENCHMARKS.has_key?(name)
+          finded = true
           res << name 
         else
-          BENCHMARKS.each_key { |key| res << key if key.start_with?(name) }
+          BENCHMARKS.each_key do |key|
+            if key.start_with?(name)
+              finded = true
+              res << key 
+            end
+          end
         end
+        unless finded
+          puts "Benchmark: #{name.colorize(:red)} Not found! Available names: (#{BENCHMARKS.keys.join(', ')})"
+          exit 1
+        end        
       end
     end
     res.uniq.sort
@@ -229,10 +267,28 @@ private
       if name == "all" || name == "" || name == "-"
         res += LANGUAGES.keys
       else
+        finded = false
         if LANGUAGES.has_key?(name)
+          finded = true
           res << name 
         else
-          LANGUAGES.each_key { |key| res << key if key.start_with?(name) }
+          LANGUAGES.each_key do |key| 
+            if key.start_with?(name)
+              res << key 
+              finded = true
+            end
+          end
+        end
+        # try find by extension
+        LANGUAGES.each do |_, l| 
+          if l.ext == name
+            res << l.name
+            finded = true
+          end
+        end
+        unless finded
+          puts "Language: #{name.colorize(:red)} Not found! Available names: (#{LANGUAGES.keys.join(', ')})"
+          exit 1
         end
       end
     end
@@ -263,100 +319,105 @@ private
     l = LANGUAGES[language_name]
     return unless l.build_cmd
 
-    source = l.sources.find do |s|
-      File.exists?(File.join(File.dirname(__FILE__), '..', benchmark_name, s))
+    check_dir = File.join(File.dirname(__FILE__), '..', benchmark_name)
+    l.each_source(check_dir) do |source| # usual use case, just one element, rare 2 elements
+      cmd = l.build_cmd.call("../" + source, l.out(source), b.build_flags ? b.build_flags[language_name] : nil)
+      cmd = "wrapper #{cmd}" # to catch time and memory
+      r = Runner.new(container: l.container, cmd: cmd, remote_chdir: "#{benchmark_name}/target", stderr: :measure, stdout: :text)
+
+      print "#{"Run"} [#{language_name.colorize(:yellow)}] #{benchmark_name}/#{source} "
+      r.run
+
+      ss = r.short_stats
+      stat_name = language_name
+      if source.include?('-')
+        stat_name = stat_name + "-" + source.split('.')[0].split('-')[1]
+      end
+      set_result(benchmark_name, stat_name, "build_time", ss['time'])
+      set_result(benchmark_name, stat_name, "build_ram", ss['ram'])
+
+      print(r.status.colorize(r.status == "ok" ? :green : :red))
+      puts " -> #{benchmark_name}/target/#{l.out(source)} (in #{r.full_time.round(2)}s)"
     end
-    return unless source
-
-    cmd = l.build_cmd.call("../" + source, l.out, b.build_flags ? b.build_flags[language_name] : nil)
-    cmd = "wrapper #{cmd}" # to catch time and memory
-    r = Runner.new(container: l.container, cmd: cmd, remote_chdir: "#{benchmark_name}/target", stderr: :measure, stdout: :text)
-
-    print "#{"Run"} [#{language_name.colorize(:yellow)}] #{benchmark_name}/#{source} "
-    r.run
-
-    ss = r.short_stats
-    set_result(benchmark_name, language_name, "build_time", ss['time'])
-    set_result(benchmark_name, language_name, "build_ram", ss['ram'])
-
-    print(r.status.colorize(r.status == "ok" ? :green : :red))
-    puts " -> #{benchmark_name}/target/#{l.out} (in #{r.full_time.round(2)}s)"
   end
 
-  def create_runner(benchmark_name, language_name, debug = false)
+  def create_runners(benchmark_name, language_name, debug = false)
     l = LANGUAGES[language_name]
     b = BENCHMARKS[benchmark_name]
 
-    source = l.sources.find do |s|
-      File.exists?(File.join(File.dirname(__FILE__), '..', benchmark_name, s))
-    end
-    return unless source
+    res = []
 
-    cmd = Array(l.run_cmd.call("../" + source, l.out))
-    if debug
-      cmd += Array(b.debug_args) if b.debug_args
-    else
-      cmd += Array(b.args) if b.args
+    check_dir = File.join(File.dirname(__FILE__), '..', benchmark_name)
+    l.each_source(check_dir) do |source| # usual use case, just one element, rare 2 elements
+      cmd = Array(l.run_cmd.call("../" + source, l.out(source)))
+      if debug
+        cmd += Array(b.debug_args) if b.debug_args
+      else
+        cmd += Array(b.args) if b.args
+      end
+
+      res << Runner.new(container: l.container, cmd: cmd, remote_chdir: "#{benchmark_name}/target", stdout: debug ? :text : :skip, stderr: debug ? :text : :measure, timeout: b.get_timeout, stdin: debug ? b.debug_stdin : b.stdin, name: source)
     end
 
-    Runner.new(container: l.container, cmd: cmd, remote_chdir: "#{benchmark_name}/target", stdout: debug ? :text : :skip, stderr: debug ? :text : :measure, timeout: b.get_timeout, stdin: debug ? b.debug_stdin : b.stdin)
+    res # usual use case, just one element, rare 2 elements
   end
 
   def run_exact(benchmark_name, language_name)
-    r = create_runner(benchmark_name, language_name)
-    return unless r
+    create_runners(benchmark_name, language_name).each do |r| # usual use case, just one element, rare 2 elements
+      print "#{"Run"} [#{language_name.colorize(:yellow)}] #{r.cmd} in #{"#{benchmark_name}/target"} "
 
-    print "#{"Run"} [#{language_name.colorize(:yellow)}] #{r.cmd} in #{"#{benchmark_name}/target"} "
+      r.run
 
-    r.run
+      print(r.status.colorize(r.status == 'ok' ? :green : (r.status == 'timeout' ? :yellow : :red)))
 
-    print(r.status.colorize(r.status == 'ok' ? :green : (r.status == 'timeout' ? :yellow : :red)))
+      s = r.stats
+      s.each do |k, v|
+        stat_name = language_name
+        source = r.name
+        if source.include?('-')
+          stat_name = stat_name + "-" + source.split('.')[0].split('-')[1]
+        end
+        set_result(benchmark_name, stat_name, k, v)
+      end
 
-    s = r.stats
-    s.each { |k, v| set_result(benchmark_name, language_name, k, v) }
-
-    puts " (in #{(s['full_time'].to_f.round(2).to_s + "s").colorize(r.status == 'timeout' ? :red : :cyan)}, runs: #{s['runs']}, best_run_time: #{(s['min_run_time'].to_f.round(2).to_s + "s").colorize(color: :black, background: :green)}, max_ram: #{s['max_ram'].to_f.round(1)}Mb)"
-
-    r
+      puts " (in #{(s['full_time'].to_f.round(2).to_s + "s").colorize(r.status == 'timeout' ? :red : :cyan)}, runs: #{s['runs']}, best_run_time: #{(s['min_run_time'].to_f.round(2).to_s + "s").colorize(color: :black, background: :green)}, max_ram: #{s['max_ram'].to_f.round(1)}Mb)"
+    end
   end
 
   def check_exact(benchmark_name, language_name)
     b = BENCHMARKS[benchmark_name]
-    r = create_runner(benchmark_name, language_name, true)
-    return unless r
+    create_runners(benchmark_name, language_name, true).each do |r| # usual use case, just one element, rare 2 elements
+      print "#{"Check"} [#{language_name.colorize(:yellow)}] #{r.cmd} in #{"#{benchmark_name}/target"} "
+      r.run
 
-    print "#{"Check"} [#{language_name.colorize(:yellow)}] #{r.cmd} in #{"#{benchmark_name}/target"} "
-    r.run
-
-    if r.status == "ok"
-      s1 = r.stdout_content
-      s2 = b.debug_output
-      unless s2
-        s2 = b.debug_output_md5
-        require 'digest'
-        s1 = Digest::MD5.hexdigest s1
-      end
-      if compare_strings(s1, s2)
-        print("ok".colorize(:green))
-      elsif b.expected_check_failed && b.expected_check_failed.include?(language_name)
-        print("skip".colorize(:yellow))
+      if r.status == "ok"
+        s1 = r.stdout_content
+        s2 = b.debug_output
+        unless s2
+          s2 = b.debug_output_md5
+          require 'digest'
+          s1 = Digest::MD5.hexdigest s1
+        end
+        if compare_strings(s1, s2)
+          print("ok".colorize(:green))
+        elsif b.expected_check_failed && b.expected_check_failed.include?(language_name)
+          print("skip".colorize(:yellow))
+        else
+          print("Unexp".colorize(:red))
+          puts
+          puts("BadOutput".colorize(:red))
+          puts "============ Expected =============="
+          puts s2
+          puts "============ Got ==================="
+          puts s1
+          puts "===================================="
+        end
       else
-        print("Unexp".colorize(:red))
-        puts
-        puts("BadOutput".colorize(:red))
-        puts "============ Expected =============="
-        puts s2
-        puts "============ Got ==================="
-        puts s1
-        puts "===================================="
+        print(r.status.colorize(:red))
       end
-    else
-      print(r.status.colorize(:red))
+
+      puts
     end
-
-    puts
-
-    r
   end
 
   def compare_strings(s1, s2)
@@ -431,5 +492,60 @@ private
     end
 
     rows
+  end
+end
+
+# ext language class
+class Language
+  # find source files in dir by masks in order:
+  # test-*.LANG.EXT
+  # test.LANG.EXT
+  # test-*.EXT  
+  # test.EXT  
+
+  # example:
+  # test.pypy3.py # executed only when :name == "pypy3" and :ext == "py"
+  # test.py # executed when :name != "pypy3" and :ext == "py"
+  def each_source(dir)    
+    if File.exists?(File.join(dir, "test.#{name}.#{ext}")) # look for "test.pypy3.py"
+      yield "test.#{name}.#{ext}"
+    else # look for "test.py"
+      yield "test.#{ext}" if File.exists?(File.join(dir, "test.#{ext}"))
+    end
+
+    # look for additional sources test-*
+
+    paths1, paths2 = {}, {}
+
+    Dir.glob(File.join(dir, "test-*.#{ext}")).each do |path|
+      n = File.basename(path, ".#{ext}")
+      if n.include?('.')
+        parts = n.split('.')
+        raise "not allowed name #{path}" if parts.size > 2
+        paths1[parts[0]] ||= {}
+        paths1[parts[0]][parts[1]] = 1
+      else
+        paths2[n] = 1
+      end
+    end
+
+    return if paths1.empty? && paths2.empty?
+
+    paths1.each do |test_name, h|
+      if h[name]
+        yield "#{test_name}.#{name}.#{ext}"
+      end
+    end
+
+    paths2.each_key do |test_name|
+      finded = false
+      if p1 = paths1[test_name]
+        finded = true if p1[name]
+      end
+
+      unless finded
+        yield "#{test_name}.#{ext}"
+      end
+    end
   end
 end

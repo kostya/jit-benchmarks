@@ -1,10 +1,6 @@
 class Language < Struct.new(:name, :container, :print_name, :print_name2, :ext, :build_cmd, :run_cmd, :version_cmd, :skip_arch, :parse_version, keyword_init: true)
-  def sources
-    ["test.#{name}.#{ext}", "test.#{ext}"]
-  end
-
-  def out
-    "test_#{name}"
+  def out(source)
+    "#{source.split('.')[0]}_#{name}"
   end
 end
 
@@ -68,7 +64,7 @@ LANGUAGES_LIST = [
 
   Language.new(
     name: "luajit",
-    container: "lua",
+    container: "luajit",
     print_name: "Lua",
     print_name2: "JIT",
     ext: "lua",
@@ -114,7 +110,7 @@ LANGUAGES_LIST = [
     print_name: "PHP",
     print_name2: "",
     ext: "php",
-    run_cmd: ->(source, out) { "php8.1 #{source}" },
+    run_cmd: ->(source, out) { "php -dmemory_limit=512M #{source}" },
     version_cmd: -> { 'php -r "echo phpversion();"' },
     parse_version: ->(v) { v.split('-')[0] }
   ),
@@ -126,7 +122,7 @@ LANGUAGES_LIST = [
     print_name2: "JIT",
     ext: "php",
     # best options by: https://stitcher.io/blog/php-8-jit-setup
-    run_cmd: ->(source, out) { "php8.1 -dopcache.enable_cli=1 -dopcache.enable=1 -dopcache.jit_buffer_size=500M -dopcache.jit=1255 #{source}" },    
+    run_cmd: ->(source, out) { "php -dmemory_limit=512M -dzend_extension=opcache.so -dopcache.enable_cli=1 -dopcache.enable=1 -dopcache.jit_buffer_size=500M -dopcache.jit=1255 #{source}" },    
   ),
 
   Language.new(

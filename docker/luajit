@@ -1,0 +1,28 @@
+FROM jit-benchmarks:base
+
+ARG version
+
+RUN mkdir /opt/luajit-src && \ 
+    wget --progress=dot:giga -O - \
+    https://github.com/openresty/luajit2/archive/refs/tags/v${version}.tar.gz \
+    | tar -xz -C /opt/luajit-src --strip-components=1
+
+RUN cd /opt/luajit-src && \
+    make -j4 && \
+    make install && \
+    rm -rf /opt/luajit-src
+
+ARG rocks_version
+RUN mkdir /opt/rocks-src && \
+    wget --progress=dot:giga -O - \
+    https://luarocks.org/releases/luarocks-$rocks_version.tar.gz \
+    | tar -xz -C /opt/rocks-src --strip-components=1
+
+RUN cd /opt/rocks-src && \
+    ./configure && \
+    make -j4 && \
+    make install && \
+    rm -rf /opt/rocks-src
+
+RUN luarocks install luaposix
+

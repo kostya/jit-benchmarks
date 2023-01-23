@@ -16,6 +16,7 @@ README = <<-Q
 ./dc run [BENCH, ] [LANG, ]    # run benchmaks (require up)
 ./dc down                      # down docker containers
 ./dc readme [BENCH, ] [LANG, ] # generate readme
+./dc shell LANG                # enter into shell
 
 # aggregate command:
 ./dc round [BENCH, ] [LANG, ]  # execute commands in order (new, init, versions, up, build, check, run, down, readme)
@@ -93,6 +94,8 @@ when "containers_list"
   puts CLI.new.send(:build_containers, ARGV[0]).join(' ')
 when "benchmarks_list"
   puts CLI.new.send(:benchmarks_from_str, ARGV[0]).join(' ')
+when "shell"
+  `docker compose run #{CLI.new.shell(ARGV[0])}`
 when "h", "help", "-h", "--help"
   puts README
 else

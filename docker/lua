@@ -1,6 +1,27 @@
 FROM jit-benchmarks:base
 
 ARG version
-RUN apt install -y "lua$version"
-RUN apt install -y luajit
-RUN apt install -y lua-posix lua-posix-dev
+
+RUN mkdir /opt/lua5-src && \
+    wget --progress=dot:giga -O - \
+    https://www.lua.org/ftp/lua-$version.tar.gz \
+    | tar -xz -C /opt/lua5-src --strip-components=1
+
+RUN cd /opt/lua5-src && \
+	make -j4 && \
+	make install && \
+	rm -rf /opt/lua5-src
+
+ARG rocks_version
+RUN mkdir /opt/rocks-src && \
+	wget --progress=dot:giga -O - \
+	https://luarocks.org/releases/luarocks-$rocks_version.tar.gz \
+	| tar -xz -C /opt/rocks-src --strip-components=1
+
+RUN cd /opt/rocks-src && \
+	./configure && \
+	make -j4 && \
+	make install && \
+	rm -rf /opt/rocks-src
+
+RUN luarocks install luaposix

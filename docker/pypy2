@@ -12,14 +12,4 @@ RUN if [ "$arch" = "amd64" ] || [ "$arch" = "" ]; then export ARCH="linux64"; el
     https://downloads.python.org/pypy/$PYPY2-$ARCH.tar.bz2 \
     | tar -xj -C /opt/pypy2 --strip-components=1
 
-RUN mkdir /opt/pypy2-src && \
-    wget --progress=dot:giga -O - \
-    https://downloads.python.org/pypy/$PYPY2-src.tar.bz2 \
-    | tar -xj -C /opt/pypy2-src --strip-components=1
-
 RUN ln -sf /opt/pypy2/bin/pypy /usr/bin/pypy2
-
-RUN wget --progress=dot:giga https://bootstrap.pypa.io/pip/2.7/get-pip.py \
-  && pypy2 get-pip.py \
-  && rm get-pip.py \
-  && ln -sf /opt/pypy2/bin/pip /usr/bin/pypy2-pip

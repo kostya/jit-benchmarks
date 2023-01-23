@@ -4,9 +4,10 @@ require "fileutils"
 class Runner
   TS = Struct.new(:ram, :timestamp, :external_duration)
 
-  attr_reader :timeouted, :start_ts, :started, :finished, :exitstatus, :cmd, :results_ts
+  attr_reader :timeouted, :start_ts, :started, :finished, :exitstatus, :cmd, :results_ts, :name
 
-  def initialize(container:, cmd:, local_chdir: nil, remote_chdir: nil, stdout: :out, stderr: :out, timeout: nil, stdin: nil)
+  def initialize(container:, cmd:, local_chdir: nil, remote_chdir: nil, stdout: :out, stderr: :out, timeout: nil, stdin: nil, name: '')
+    @name = name
     @container = container
     @cmd = cmd
     @stdout = stdout # :skip, :out, :text
@@ -46,7 +47,7 @@ class Runner
 
     @threads.each { |t| t.join(10) }
 
-    if @exitstatus != 0 && ENV['DC_DEBUG'] != '1'
+    if @exitstatus != 0 && !@timeouted && ENV['DC_DEBUG'] != '1'
       puts stdout_content if @stdout == :text
       puts stderr_content if @stderr == :text || @stderr == :measure
     end
@@ -265,7 +266,7 @@ private
         else
           ts = TS.new(@memory_profile.current_or_last, timestamp, $1.to_f)
           @results_ts << ts
-        end
+        end        
       end      
     end
   end  
