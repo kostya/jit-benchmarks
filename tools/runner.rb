@@ -241,6 +241,7 @@ private
             yield v
           end
         rescue EOFError
+          io.close
           break
         end
       end
