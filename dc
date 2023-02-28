@@ -4,7 +4,9 @@ require File.join(File.dirname(__FILE__), "tools", "cli")
 
 README = <<-Q
 # DockerCompose benchmark tool
-# require install docker-compose-plugin v2 (https://docs.docker.com/engine/install/ubuntu/#set-up-the-repository)
+# Require docker-compose-plugin v2, check if it installed: run `docker compose version`, version should be v2.xxx
+# Else install it from here: https://docs.docker.com/engine/install/ubuntu/#set-up-the-repository
+
 
 # commands:
 ./dc new                       # create new round of testing
@@ -19,16 +21,22 @@ README = <<-Q
 ./dc shell LANG                # enter into shell
 
 # aggregate command:
-./dc round [BENCH, ] [LANG, ]  # execute commands in order (new, init, versions, up, build, check, run, down, readme)
+./dc round [BENCH, ] [LANG, ]  # execute commands in order (new, init, up, versions, build, check, run, down, readme)
 
 --------------------------------------------------------------
-# Example run all:
+# Example build all docker containers:
+./dc init
+
+# Example enter shell crystal lang
+./dc shell crystal
+
+# Example run full round of testing:
 ./dc round
 
-# Example run 2 benchmarks, all languages:
+# Example run 2 benchmarks for all languages:
 ./dc round binarytrees,fasta
 
-# Example run 2 languages through all benchmaks (build only needed containers, useful because not spend much time):
+# Example run 2 languages through all benchmarks (build only needed containers, useful because not spend much time):
 ./dc round all ruby,crystal
 
 --------------------------------------------------------------
