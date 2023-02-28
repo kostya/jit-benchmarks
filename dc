@@ -103,7 +103,7 @@ when "containers_list"
 when "benchmarks_list"
   puts CLI.new.send(:benchmarks_from_str, ARGV[0]).join(' ')
 when "shell"
-  `docker compose run #{CLI.new.shell(ARGV[0])}`
+  CLI.new.shell(ARGV[0])
 when "h", "help", "-h", "--help"
   puts README
 else
