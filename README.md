@@ -507,6 +507,7 @@ Check that it worked.
 ```
 ./dc up XXX
 ./dc versions XXX
+./dc shell XXX
 ./dc build BENCH XXX
 ./dc check BENCH XXX
 ./dc run BENCH XXX
