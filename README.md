@@ -500,8 +500,8 @@ Add language XXX into `tools/languages.rb`.
 Create benchmark file: `BENCH/test.EXT` (BENCH is specific benchmark name, EXT language extension)
 
 To work in benchmark suite, required some special marks in the benchmark file:
-* at the start of benchmark write to stderr: "started\t#{PID}\n" (PID current process pid)
-* at the end of benchmark write to stderr: "time(#{TIME})\n" (TIME time spended by benchmark in seconds, measure in language itself).
+* at the start of benchmark write to stderr: `started\tPID\n` (PID current process pid)
+* at the end of benchmark write to stderr: `time(TIME)\n` (TIME time spended by benchmark in seconds, measure in language itself).
 
 Check that it worked.
 ```
