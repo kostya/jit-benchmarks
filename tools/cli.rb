@@ -321,7 +321,7 @@ private
 
     check_dir = File.join(File.dirname(__FILE__), '..', benchmark_name)
     l.each_source(check_dir) do |source| # usual use case, just one element, rare 2 elements
-      cmd = l.build_cmd.call("../" + source, l.out(source), b.build_flags ? b.build_flags[language_name] : nil)
+      cmd = l.build_cmd.call("../" + source, l.out(source), b.build_flags ? b.build_flags[source] : nil)
       cmd = "wrapper #{cmd}" # to catch time and memory
       r = Runner.new(container: l.container, cmd: cmd, remote_chdir: "#{benchmark_name}/target", stderr: :measure, stdout: :text)
 
