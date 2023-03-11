@@ -494,8 +494,8 @@ Example build and run binarytrees benchmark for ruby and crystal:
 		./dc readme binarytrees crystal,ruby
 
 ## Add new language XXX
-Create file `docker/XXX` and add it to docker-compose.yml. Check that its intalled ok `./dc init XXX`.
-Add language XXX into `tools/languages.rb`.
+Create file `docker/XXX` and add it to docker-compose.yml. Add language XXX into `tools/languages.rb`.
+Check that its intalled ok `./dc init XXX`.
 
 Create benchmark file: `BENCH/test.EXT` (BENCH is specific benchmark name, EXT language extension)
 
