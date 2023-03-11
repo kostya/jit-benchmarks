@@ -505,6 +505,8 @@ To work in benchmark suite, required some special marks in the benchmark file:
 
 Check that it worked.
 ```
+./dc up XXX
+./dc versions XXX
 ./dc build BENCH XXX
 ./dc check BENCH XXX
 ./dc run BENCH XXX
