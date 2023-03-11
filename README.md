@@ -492,3 +492,20 @@ Example build and run binarytrees benchmark for ruby and crystal:
 		./dc run binarytrees crystal,ruby
 		./dc down
 		./dc readme binarytrees crystal,ruby
+
+## Add new language XXX
+Create file docker/XXX and add it to docker-compose.yml. Check that its intalled ok `./dc init XXX`.
+Add language XXX into tools/languages.rb.
+
+Create benchmark file: `BENCH/test.EXT` (BENCH is specific benchmark name, EXT language extension)
+
+To work in benchmark suite, required some special marks in the benchmark file:
+at the start of benchmark write to stderr: "started\t#{PID}\n" (PID current process pid)
+at the end of benchmark write to stderr: "time(#{TIME})\n" (TIME time spended by benchmark, measure in language itself).
+
+Check that it worked.
+```
+./dc build BENCH XXX
+./dc check BENCH XXX
+./dc run BENCH XXX
+```
