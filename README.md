@@ -5,7 +5,7 @@ Most programs from [benchmarks game](https://benchmarksgame-team.pages.debian.ne
 Compare:
 		
 		* Ruby (Ruby2.7, Ruby3, Graal, Topaz, JRuby, Rbx)
-		* Python (Cpython, Graal, Pypy, Cython, Jython, Nuitka, Mypyc)
+		* Python (Cpython, Graal, Pypy, Cython, Jython, Nuitka, Mypyc, Codon)
 		* Lua (JIT)
 		* Javascript (Node, Graal)
 		* PHP8.1 (JIT)
@@ -13,30 +13,31 @@ Compare:
 
 Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 
-## Update: 2023-02-28 (round 1)                                                                                                                                                              
-                                                                                                                                                                                             
-## binarytrees                                                                                                                                                                               
-| Language   | Interpreter | Best T,s | Runs | Compile T,s | MaxMem, Mb |                                                                                                                    
-|------------|-------------|----------|------|-------------|------------|                                                                                                                    
-| C++        |             | 0.44     | 5    | 0.76        | 17.3       |                                                                                                                    
-| Crystal    |             | 0.6      | 5    | 9.45        | 22.2       |                                                                                                                    
-| Ruby2      | GraalVM_JVM | 0.69     | 5    | 1.86        | 2200.7     |                                                                                                                    
-| Python3    | Cython      | 0.81     | 5    | 1.01        | 24.3       |                                                                                                                    
-| C          |             | 0.87     | 5    | 0.58        | 49.6       |                                                                                                                    
-| Javascript | Node        | 1.08     | 5    | 0.19        | 141.3      |                                                                                                                    
-| Ruby2      | GraalVM     | 1.08     | 5    | 0.21        | 693.9      |                                                                                                                    
-| Ruby2      | JRuby_InDy  | 1.24     | 5    | 1.64        | 2110.1     |                                                                                                                    
-| Javascript | GraalVM_JVM | 1.39     | 5    | 1.99        | 2302.4     |                                                                                                                    
-| Ruby2      | Topaz       | 1.97     | 5    | 0.22        | 63.1       |                                                                                                                    
-| Python3    | GraalVM_JVM | 2.02     | 5    | 2.79        | 3265.2     |                                                                                                                    
-| Javascript | GraalVM     | 2.16     | 5    | 0.5         | 656.9      |                                                                                                                    
-| Ruby2      | JRuby       | 2.83     | 5    | 1.64        | 1224.6     |                                                                                                                    
-| PHP        | JIT         | 2.93     | 5    | 0.16        | 71.8       |                                                                                                                    
-| Python3    | GraalVM     | 3.41     | 5    | 0.32        | 1362.1     |                                                                                                                    
-| Python3    | PYPY        | 3.84     | 5    | 0.21        | 123.8      |                                                                                                                    
-| Python2    | PYPY        | 3.9      | 5    | 0.22        | 136.6      |                                                                                                                    
-| Ruby3      | JIT         | 4.61     | 5    | 0.47        | 80.9       |                                                                                                                    
-| PHP        |             | 5.84     | 5    | 0.18        | 68.0       |                                                                                                                    
+## Update: 2023-02-28 (round 1)
+
+## binarytrees
+| Language   | Interpreter | Best T,s | Runs | Compile T,s | MaxMem, Mb |
+|------------|-------------|----------|------|-------------|------------|
+| C++        |             | 0.44     | 5    | 0.76        | 17.3       |
+| Crystal    |             | 0.6      | 5    | 9.45        | 22.2       |
+| Ruby2      | GraalVM_JVM | 0.69     | 5    | 1.86        | 2200.7     |
+| Python3    | Cython      | 0.81     | 5    | 1.01        | 24.3       |
+| C          |             | 0.87     | 5    | 0.58        | 49.6       |
+| Python3    | Codon       | 1.0      | 5    | 4.28        | 58.2       |
+| Javascript | Node        | 1.08     | 5    | 0.19        | 141.3      |
+| Ruby2      | GraalVM     | 1.08     | 5    | 0.21        | 693.9      |
+| Ruby2      | JRuby_InDy  | 1.24     | 5    | 1.64        | 2110.1     |
+| Javascript | GraalVM_JVM | 1.39     | 5    | 1.99        | 2302.4     |
+| Ruby2      | Topaz       | 1.97     | 5    | 0.22        | 63.1       |
+| Python3    | GraalVM_JVM | 2.02     | 5    | 2.79        | 3265.2     |
+| Javascript | GraalVM     | 2.16     | 5    | 0.5         | 656.9      |
+| Ruby2      | JRuby       | 2.83     | 5    | 1.64        | 1224.6     |
+| PHP        | JIT         | 2.93     | 5    | 0.16        | 71.8       |
+| Python3    | GraalVM     | 3.41     | 5    | 0.32        | 1362.1     |
+| Python3    | PYPY        | 3.84     | 5    | 0.21        | 123.8      |
+| Python2    | PYPY        | 3.9      | 5    | 0.22        | 136.6      |
+| Ruby3      | JIT         | 4.61     | 5    | 0.47        | 80.9       |
+| PHP        |             | 5.84     | 5    | 0.18        | 68.0       |
 | Ruby2      | JIT         | 6.06     | 5    | 0.23        | 45.1       |
 | Ruby3      |             | 6.16     | 5    | 0.26        | 57.2       |
 | Lua        | JIT         | 6.73     | 5    | 0.16        | 307.5      |
@@ -53,6 +54,7 @@ Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 ## brainfuck
 | Language   | Interpreter | Best T,s | Runs | Compile T,s | MaxMem, Mb |
 |------------|-------------|----------|------|-------------|------------|
+| Python3    | Codon       | 2.05     | 5    | 4.6         | 12.2       |
 | C++        |             | 2.4      | 5    | 0.65        | 1.8        |
 | Crystal    |             | 4.87     | 5    | 9.67        | 2.8        |
 | Javascript | Node        | 5.88     | 5    | 0.24        | 46.9       |
@@ -84,6 +86,7 @@ Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 | Language   | Interpreter | Best T,s | Runs | Compile T,s | MaxMem, Mb |
 |------------|-------------|----------|------|-------------|------------|
 | C          |             | 1.25     | 5    | 0.23        | 0.9        |
+| Python3    | Codon       | 1.91     | 5    | 4.88        | 12.7       |
 | Crystal    |             | 1.96     | 5    | 9.87        | 2.7        |
 | Javascript | Node        | 3.65     | 5    | 0.17        | 46.0       |
 | Ruby2      | GraalVM_JVM | 4.68     | 5    | 1.84        | 2015.0     |
@@ -131,6 +134,7 @@ Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 | PHP        | JIT         | 0.77     | 5    | 0.13        | 16.3       |
 | Ruby2      | JRuby_InDy  | 1.19     | 5    | 1.61        | 374.1      |
 | Lua        |             | 1.62     | 5    | 0.19        | 2.1        |
+| Python3    | Codon       | 1.82     | 5    | 4.79        | 13.5       |
 | Ruby2      | JRuby       | 2.0      | 5    | 1.59        | 362.1      |
 | PHP        |             | 2.54     | 5    | 0.19        | 12.0       |
 | Python3    | MYPYC       | 2.74     | 5    | 2.49        | 7.6        |
@@ -150,6 +154,7 @@ Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 |------------|-------------|----------|------|-------------|------------|
 | C          |             | 0.57     | 5    | 0.32        | 0.9        |
 | Crystal    |             | 1.1      | 5    | 10.92       | 3.4        |
+| Python3    | Codon       | 1.66     | 5    | 5.09        | 13.5       |
 | Lua        | JIT         | 1.71     | 5    | 0.16        | 2.9        |
 | PHP        | JIT         | 2.46     | 5    | 0.18        | 15.8       |
 | Python2    | PYPY        | 2.89     | 5    | 0.21        | 63.9       |
@@ -187,6 +192,7 @@ Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 | Python2    | PYPY        | 2.08     | 1    | 0.25        | 132.0      |
 | C++        |             | 2.09     | 1    | 1.05        | 30.9       |
 | Crystal    |             | 2.35     | 1    | 11.87       | 45.8       |
+| Python3    | Codon       | 2.69     | 1    | 6.42        | 45.3       |
 | PHP        |             | 2.87     | 1    | 0.2         | 37.2       |
 | Python3    | PYPY        | 3.7      | 1    | 0.27        | 142.1      |
 | Lua        |             | 4.01     | 1    | 0.27        | 51.4       |
@@ -226,6 +232,7 @@ Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 | Python3    | PYPY        | 0.54     | 5    | 0.22        | 75.6       |
 | Python2    | PYPY        | 0.56     | 5    | 0.22        | 73.7       |
 | PHP        | JIT         | 0.58     | 5    | 0.22        | 16.2       |
+| Python3    | Codon       | 0.65     | 5    | 4.49        | 51.6       |
 | Python3    | GraalVM_JVM | 0.84     | 5    | 3.45        | 1099.8     |
 | Python3    | GraalVM     | 1.19     | 4    | 0.31        | 687.9      |
 | Ruby2      | GraalVM_JVM | 1.34     | 5    | 1.85        | 1137.6     |
@@ -251,6 +258,7 @@ Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 | Language   | Interpreter | Best T,s | Runs | Compile T,s | MaxMem, Mb |
 |------------|-------------|----------|------|-------------|------------|
 | C          |             | 0.23     | 5    | 0.28        | 16.6       |
+| Python3    | Codon       | 0.25     | 5    | 4.61        | 57.1       |
 | Crystal    |             | 0.25     | 5    | 10.42       | 28.2       |
 | Javascript | Node        | 0.26     | 5    | 0.2         | 98.4       |
 | Lua        | JIT         | 0.27     | 5    | 0.18        | 56.9       |
@@ -290,6 +298,7 @@ Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 | Ruby2      | GraalVM_JVM | 0.85     | 5    | 1.79        | 886.7      |
 | Ruby2      | GraalVM     | 0.87     | 5    | 0.18        | 425.0      |
 | Lua        | JIT         | 1.44     | 5    | 0.23        | 2.4        |
+| Python3    | Codon       | 2.23     | 5    | 5.67        | 12.3       |
 | Python3    | GraalVM_JVM | 3.19     | 5    | 3.05        | 1112.5     |
 | Python3    | GraalVM     | 3.85     | 5    | 0.32        | 594.2      |
 | Python2    | PYPY        | 4.39     | 5    | 0.25        | 62.4       |
@@ -343,6 +352,7 @@ Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 | Ruby2      |             | 11.42    | 5    | 0.29        | 168.6      |
 | Python3    | GraalVM     | 15.05    | 4    | 0.32        | 694.0      |
 | Ruby2      | Rbx         | 22.81    | 3    | 0.34        | 88.8       |
+| Python3    | Codon       | -        | 0    | 0.1         | -          |
 
 
 ## regexdna
@@ -377,6 +387,7 @@ Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 | Javascript | GraalVM     | 10.0     | 1    | 3.27        | 711.6      |
 | Ruby2      | Rbx         | 11.69    | 1    | 1.87        | 396.0      |
 | Python3    | GraalVM     | 12.84    | 1    | 4.27        | 988.1      |
+| Python3    | Codon       | -        | 0    | 1.07        | -          |
 
 
 ## revcomp
@@ -410,6 +421,7 @@ Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 | Python3    | MYPYC       | -        | 0    | 2.39        | -          |
 | Python2    | Jython      | > 60     | 0    | 1.27        | 818.0      |
 | Ruby2      | Rbx         | > 60     | 0    | 0.32        | 504.7      |
+| Python3    | Codon       | -        | 0    | 1.03        | -          |
 
 
 ## spectralnorm
@@ -424,6 +436,7 @@ Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 | Javascript | GraalVM     | 0.13     | 5    | 0.48        | 338.9      |
 | Ruby2      | GraalVM_JVM | 0.21     | 5    | 1.75        | 704.6      |
 | Ruby2      | GraalVM     | 0.23     | 5    | 0.22        | 362.2      |
+| Python3    | Codon       | 0.53     | 5    | 4.63        | 14.7       |
 | Python2    | PYPY        | 0.61     | 5    | 0.17        | 62.9       |
 | Python3    | GraalVM_JVM | 0.62     | 5    | 2.89        | 1475.4     |
 | Python3    | PYPY        | 0.71     | 5    | 0.21        | 60.8       |
@@ -472,6 +485,8 @@ Running on AMD Ryzen 7 3800X, 80Gb DDR-4 3200 Mghz, docker on Ubuntu 22.10.
 | ruby3       | 3.2.1p31                             |
 | topaz       | https://github.com/kostya/topaz      |
 | truffleruby | 22.3.1 (ruby: 3.0.3)                 |
+| codon       | 0.15.5                               |
+
 
 ## Run
 Currently possible to run on x86_64 and aarch64. Tested Ubuntu x86_64 and Apple M1.

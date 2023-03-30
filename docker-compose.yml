@@ -222,3 +222,10 @@ services:
       dockerfile: docker/nuitka
     depends_on:
       - python3
+  codon:
+    <<: *shared
+    image: jit-benchmarks:codon
+    build: 
+      dockerfile: docker/codon
+    depends_on:
+      - python3

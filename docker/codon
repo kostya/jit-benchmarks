@@ -1,0 +1,6 @@
+FROM jit-benchmarks:python3
+
+RUN apt install -y libpython3-dev
+RUN /bin/bash -c "$(curl -fsSL https://exaloop.io/install.sh)"
+ENV PATH=/root/.codon/bin:$PATH
+ENV CODON_PYTHON=/usr/lib/x86_64-linux-gnu/libpython3.10.so

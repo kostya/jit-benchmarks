@@ -334,6 +334,17 @@ LANGUAGES_LIST = [
     version_cmd: -> { 'java --version' },
     parse_version: ->(v) { v.split("\n")[0].split(' ')[0..-2].join(' ') }
   ),
+  
+  Language.new(
+    name: "codon",
+    container: "codon",
+    print_name: "Python3",
+    print_name2: "Codon",
+    ext: "py",
+    version_cmd: -> { 'codon --version' },
+    build_cmd: ->(source, out, flags) { %Q|codon build --release -o #{out} #{source}| },
+    run_cmd: ->(source, out) { "./#{out}" },
+  ),
 
 ]
 

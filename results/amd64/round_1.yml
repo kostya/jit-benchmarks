@@ -23,6 +23,7 @@ versions:
   ruby3: 3.2.1p31
   topaz: https://github.com/kostya/topaz
   truffleruby: '22.3.1 (ruby: 3.0.3)'
+  codon: 0.15.5
 binarytrees:
   c:
     build_time: 0.3711492360162083
@@ -336,6 +337,18 @@ binarytrees:
     start_ram: 703.921875
     max_ram: 2200.74609375
     max_run_ram_diff: 599.86328125
+  codon:
+    build_time: 4.010390354997071
+    build_ram: 171.87890625
+    status: ok
+    full_time: 5.46483707200241
+    start_time: 0.2659394010042888
+    runs: 5
+    min_run_time: 1.00306
+    max_run_time: 1.12764
+    start_ram: 31.3359375
+    max_ram: 58.20703125
+    max_run_ram_diff: 15.26953125
 brainfuck:
   cpp:
     build_time: 0.5000511230027769
@@ -597,6 +610,18 @@ brainfuck:
     start_ram: 669.8359375
     max_ram: 1368.921875
     max_run_ram_diff: 371.8984375
+  codon:
+    build_time: 4.38103251800203
+    build_ram: 175.8203125
+    status: ok
+    full_time: 10.590219398996851
+    start_time: 0.2154542569987825
+    runs: 5
+    min_run_time: 2.05352
+    max_run_time: 2.08593
+    start_ram: 12.24609375
+    max_ram: 12.24609375
+    max_run_ram_diff: 0.0
 brainfuck2:
   c:
     build_time: 0.0739588400174398
@@ -866,6 +891,18 @@ brainfuck2:
     start_ram: 675.234375
     max_ram: 2015.0078125
     max_run_ram_diff: 1075.1953125
+  codon:
+    build_time: 4.674096537004516
+    build_ram: 175.92578125
+    status: ok
+    full_time: 9.929756088000431
+    start_time: 0.20881457300129114
+    runs: 5
+    min_run_time: 1.90755
+    max_run_time: 2.00481
+    start_ram: 12.26171875
+    max_ram: 12.70703125
+    max_run_ram_diff: 0.4453125
 fannkuchredux:
   c:
     build_time: 0.11201912100659683
@@ -1167,6 +1204,18 @@ fannkuchredux:
     start_ram: 674.08203125
     max_ram: 784.6328125
     max_run_ram_diff: 104.17578125
+  codon:
+    build_time: 4.546784689002379
+    build_ram: 186.2109375
+    status: ok
+    full_time: 9.714940165998996
+    start_time: 0.2462109159969259
+    runs: 5
+    min_run_time: 1.81955
+    max_run_time: 1.96532
+    start_ram: 13.54296875
+    max_ram: 13.54296875
+    max_run_ram_diff: 0.0
 fasta:
   c:
     build_time: 0.10469667197321542
@@ -1468,6 +1517,18 @@ fasta:
     start_ram: 677.9765625
     max_ram: 1289.078125
     max_run_ram_diff: 553.734375
+  codon:
+    build_time: 4.834437015000731
+    build_ram: 190.28515625
+    status: ok
+    full_time: 8.701874746999238
+    start_time: 0.2584463919993141
+    runs: 5
+    min_run_time: 1.66351
+    max_run_time: 1.71568
+    start_ram: 13.5078125
+    max_ram: 13.5078125
+    max_run_ram_diff: 0.0
 knucleotide:
   cpp:
     build_time: 0.6540267370000947
@@ -1769,6 +1830,18 @@ knucleotide:
     start_ram: 870.109375
     max_ram: 1590.74609375
     max_run_ram_diff: -870.109375
+  codon:
+    build_time: 6.095031688004383
+    build_ram: 214.46484375
+    status: ok
+    full_time: 3.014057877997402
+    start_time: 0.32297404800192453
+    runs: 1
+    min_run_time: 2.69362
+    max_run_time: 2.69362
+    start_ram: 36.453125
+    max_ram: 45.3125
+    max_run_ram_diff: -36.453125
 mandelbrot:
   c:
     build_time: 0.10750327698769979
@@ -2070,6 +2143,18 @@ mandelbrot:
     start_ram: 680.51953125
     max_ram: 1137.55859375
     max_run_ram_diff: 398.58203125
+  codon:
+    build_time: 4.2317368799995165
+    build_ram: 180.8828125
+    status: ok
+    full_time: 3.576528708996193
+    start_time: 0.2550662379944697
+    runs: 5
+    min_run_time: 0.645019
+    max_run_time: 0.685211
+    start_ram: 18.31640625
+    max_ram: 51.6328125
+    max_run_ram_diff: 18.8203125
 matmul:
   c:
     build_time: 0.10484574298607185
@@ -2351,6 +2436,18 @@ matmul:
     start_ram: 720.4296875
     max_ram: 3035.5
     max_run_ram_diff: 1118.62890625
+  codon:
+    build_time: 4.357321217998106
+    build_ram: 179.72265625
+    status: ok
+    full_time: 1.537261765995936
+    start_time: 0.25206825100030983
+    runs: 5
+    min_run_time: 0.250027
+    max_run_time: 0.265898
+    start_ram: 34.90234375
+    max_ram: 57.1328125
+    max_run_ram_diff: 22.23046875
 nbody:
   c:
     build_time: 0.06734381799469702
@@ -2652,6 +2749,18 @@ nbody:
     start_ram: 684.03515625
     max_ram: 886.65625
     max_run_ram_diff: 241.26953125
+  codon:
+    build_time: 5.464437028000248
+    build_ram: 184.375
+    status: ok
+    full_time: 11.454952988002333
+    start_time: 0.20605875900218962
+    runs: 5
+    min_run_time: 2.22737
+    max_run_time: 2.25582
+    start_ram: 12.26171875
+    max_ram: 12.26171875
+    max_run_ram_diff: 0.0
 pidigits:
   c:
     build_time: 0.12106269999640062
@@ -2933,6 +3042,18 @@ pidigits:
     start_ram: 681.80078125
     max_ram: 1647.30078125
     max_run_ram_diff: 962.515625
+  codon:
+    build_time: 0.10015054600080475
+    build_ram: 0
+    status: fail(status=127)
+    full_time: 0.1449499599984847
+    start_time:
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram:
+    max_ram:
+    max_run_ram_diff:
 regexdna:
   c:
     build_time: 0.06590711398166604
@@ -3234,6 +3355,18 @@ regexdna:
     start_ram: 1127.1875
     max_ram: 2513.375
     max_run_ram_diff: -1127.1875
+  codon:
+    build_time: 1.074770400999114
+    build_ram: 91.08203125
+    status: fail(status=127)
+    full_time: 0.11776983900199411
+    start_time:
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram:
+    max_ram:
+    max_run_ram_diff:
 revcomp:
   c:
     build_time: 0.09732412698213011
@@ -3523,6 +3656,18 @@ revcomp:
     start_ram: 671.64453125
     max_ram: 2836.8203125
     max_run_ram_diff: -671.64453125
+  codon:
+    build_time: 1.0294288500008406
+    build_ram: 92.75390625
+    status: fail(status=127)
+    full_time: 0.10327758300263667
+    start_time:
+    runs: 0
+    min_run_time:
+    max_run_time:
+    start_ram:
+    max_ram:
+    max_run_ram_diff:
 spectralnorm:
   c:
     build_time: 0.14743710900074802
@@ -3824,4 +3969,16 @@ spectralnorm:
     start_ram: 701.31640625
     max_ram: 704.5703125
     max_run_ram_diff: 36.70703125
+  codon:
+    build_time: 4.340446761001658
+    build_ram: 174.1328125
+    status: ok
+    full_time: 2.9350361219985643
+    start_time: 0.28554691500175977
+    runs: 5
+    min_run_time: 0.528503
+    max_run_time: 0.553448
+    start_ram: 14.2890625
+    max_ram: 14.69921875
+    max_run_ram_diff: 0.2578125
 date: '2023-02-28'
